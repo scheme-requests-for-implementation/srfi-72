@@ -1,12 +1,12 @@
 <html>
   <head>
-   <title>SRFI 72: Simple hygienic macros</title>
+   <title>SRFI 72: Hygienic macros</title>
   </head>
 
 <body>
 <H1>Title</H1>
 
-Simple hygienic macros.
+Hygienic macros.
 
 <H1>Author</H1>
 
@@ -27,7 +27,8 @@ archive of the mailing list</A>.
 <P>
 <ul>
   <li>Received: 2005/06/05</li>
-  <li>Draft: 2005/06/14 - 2005/08/14</li>
+  <li>Draft: <a href="http://srfi.schemers.org/cgi-bin/viewcvs.cgi/*checkout*/srfi/srfi-72/srfi-72.html?rev=1.1">2005/06/14 - 2005/04/14</a></li>
+  <li>Revised: <a href="http://srfi.schemers.org/cgi-bin/viewcvs.cgi/*checkout*/srfi/srfi-72/srfi-72.html?rev=1.2">2005/07/01</a></li>
 </ul>
 
 <h1>Index</h1>
@@ -73,15 +74,15 @@ features:
 <li>
  <h3>Improved hygiene:</h3>
  <p>
-  Existing hygienic macro systems work well for high-level macros, but tend to
-  run into 
-  unintended variable capture problems with procedural macros.
-  The proposal described here addresses a class of unintended
+  Existing hygienic macro algorithms work well for high-level macros, but
+  do not solve the 
+  unintended variable capture problem in the case of procedural macros.
+  The proposal described here identifies and solves a class of 
   capture problems that may occur in procedural macros. 
 </li>
 <p>
 <li>
- <h3>Improved hygiene breaking:</h3>
+ <h3>Composable hygiene-breaking macros:</h3>
  <p>
    A primitive is provided for writing hygiene-breaking macros
    that are composable and referentially transparent, correcting
@@ -89,20 +90,18 @@ features:
 </li>
 <p>
 <li>
- <h3>Simplicity:</h3>
+ <h3>Minimal:</h3>
  <p>
-   The design provides a small number of primitives with simple semantics. 
-More complex features, including pattern matching facilities and
-     syntax-case, may be built on top of the current design and are available as libraries.  
+   The design provides a small number of core primitives. 
+More complex features, including pattern matching and substitution facilities
+ such as <tt>syntax-case</tt> and <tt>quasisyntax</tt>, are specified as library syntax.  
 </li>
 <p>
 <li>
- <h3><tt>SYNTAX-RULES</tt> and <tt>SYNTAX-CASE:</tt></h3>
+ <h3>Syntax-case:</h3>
  <p>
-Both <tt>syntax-rules</tt> and <tt>syntax-case</tt> have been implemented as macros in the system described here
-and are available as libraries.  In particular, one obtains a 
-concise and portable implementation and
-semantics for <tt>syntax-case</tt> in terms of a simpler macro system.
+<tt>Syntax-case</tt> is expressible as a macro in this proposal and specified as library syntax.
+The version specified here incorporates a proposal for improved hygiene in procedural macros.
 </li> 
 <p>
 <li>
@@ -116,16 +115,26 @@ semantics for <tt>syntax-case</tt> in terms of a simpler macro system.
 <li>
  <h3>Source-object correlation:</h3>
  <p>
-   Source correlation information is not associated with syntax 
-   objects, but instead instead recorded separately during expansion.  
-   All intermediate expansion steps from the source to the object code
-   are made available. 
+   Source correlation information is not tied to syntax 
+   objects, but instead recorded separately by the expander,
+   allowing not just source location but also
+   intermediate expansion steps to be tracked. 
+</li>
+<p>
+<li>
+ <h3>Procedural interface:</h3>
+ <p>
+The primitive interface to compound syntax objects is procedural 
+rather than through special forms.  In particular,
+   the usual and very useful abstractions <tt>car</tt>, <tt>cdr</tt>, <tt>cons</tt>
+, <tt>...</tt>, for manipulating syntactic objects in a Lisp are available to the 
+macro writer.    
 </li>
 <p>
 <li>
  <h3>Tractable implementation:</h3>
  <p>
-   The implementation is small and tractable, written in mostly portable 
+   The reference implementation is small and tractable, written in mostly portable 
    R5RS Scheme without using R5RS macros.  It should run out of the box on 
    most existing Schemes. 
 </li>
@@ -145,83 +154,66 @@ We start with a simple example:
          (set! ,b temp))))
 </pre>
 
-This macro builds a syntax object using the <tt>quasisyntax</tt> primitive.
-Identifiers appearing in the quoted part of the quasisyntax
-expression are hygienically introduced.  Syntax provided as part 
+This macro builds a syntax object using the <tt>quasisyntax</tt> substitution 
+form.  
+Syntax provided as part 
 of the input expression is inserted in the result using <tt>unquote</tt> 
-or <tt>unquote-splicing</tt>.  
+or <tt>unquote-splicing</tt>.  Macros written in this way are hygienic
+and referentially transparent.  For example,
 
-<p>
-To test hygiene, we may evaluate:
-
-<pre>   
+<pre>
    (let ((temp 1)
          (set! 2))
      (swap! set! temp)
-     (values temp set!))   ;==&gt; 2 1
+     (values temp set!))   ==&gt; 2 1
 </pre>
 
 The above macro may also be written as
-
 <pre>
-   (define-syntax swap!
-     (lambda form
-       (let ((a (cadr  form))
-             (b (caddr form)))
-         (quasisyntax
-           (let ((temp ,a)) 
-             (set! ,a ,b) 
-             (set! ,b temp))))))
+  (define-syntax swap!
+    (lambda (form)
+      (let ((a (cadr  form))
+            (b (caddr form)))
+        `(,(syntax let) ((,(syntax temp) ,a))
+          (,(syntax set!) ,a ,b)
+          (,(syntax set!) ,b ,(syntax temp))))))
 </pre>
-This illustrates that syntax objects are s-expressions manipulable
-with the usual Scheme primitives.  Instead of symbols,
-these s-expressions contain identifiers, which belong to a separate
-data type.  
+showing that <tt>quasisyntax</tt> may itself be defined as library syntax
+in terms of a primitive <tt>syntax</tt> form [12].  
+<p>
+The example illustrates that we can use
+the traditional and very useful abstractions <tt>car</tt>, <tt>cdr</tt>, <tt>...</tt>,
+for handling compound syntax objects in a Lisp.  
+Indeed, the core interface to compound 
+syntax objects is procedural rather than via special forms.  
+  
 
 <p>
-For comparing identifiers, the primitives <tt>free-identifier=?</tt>, 
+For comparing identifiers, primitives <tt>free-identifier=?</tt>, 
 <tt>bound-identifier=?</tt>
-and <tt>literal-identifier=?</tt>, familiar from <tt>syntax-case</tt> 
-[6, 7], are provided.
+and <tt>literal-identifier=?</tt> are provided.
 For example, a simplified <tt>cond</tt> macro can be written as follows: 
 
 
 <pre>
   (define-syntax (my-cond clause . clauses)
-    (if (and (list? clause) (>= (length clause) 2))
-        (cond ((literal-identifier=? (car clause) 
-                                     (syntax else)) (quasisyntax (begin ,@(cdr clause))))
-              ((null? clauses)                      (quasisyntax (if ,(car clause) (begin ,@(cdr clause)))))
-              (else                                 (quasisyntax (if ,(car clause)
-                                                                     (begin ,@(cdr clause))
-                                                                     (my-cond ,@clauses)))))
-        (syntax-error)))
+    (or (and (pair? clause) 
+             (pair? (cdr clause)))
+        (syntax-error))
+    (cond ((literal-identifier=? (car clause) 
+                                 (syntax else)) (quasisyntax (begin ,@(cdr clause))))
+          ((null? clauses)                      (quasisyntax (if ,(car clause) (begin ,@(cdr clause)))))
+          (else                                 (quasisyntax (if ,(car clause)
+                                                                 (begin ,@(cdr clause))
+                                                                 (my-cond ,@clauses))))))
            
   (my-cond (#f 1) (else 2))                ==> 2
   (let ((else #f)) (my-cond (else 2)))     ==> unspecified
 </pre>
 
-This concludes the lightning overview of the core proposal.  
-
-<p>
-We mention that, while not part of the core design, a pattern matcher is 
-available separately as a library, allowing the above macro to be written as:
-  
-<pre>
-  (define-syntax my-cond
-    (lambda form
-      (match form
-        ((_ ((syntax else) e1 e2 ...)) (quasisyntax (begin ,e1 ,,e2 ...)))
-        ((_ (e0 e1 e2 ...))            (quasisyntax (if ,e0 (begin ,e1 ,,e2 ...))))
-        ((_ (e0 e1 e2 ...) c1 c2 ...)  (quasisyntax (if ,e0
-					                (begin ,e1 ,,e2 ...)
-                                                        (my-cond ,c1 ,,c2 ...))))
-        (_ (syntax-error)))))
-</pre>
-
-Finally, both <tt>syntax-rules</tt> and <tt>syntax-case</tt> can be implemented
-as macros in the system described here and are available as 
-libraries, so that we can write, for example.  
+<tt>Syntax-case</tt> is expressible as a macro and
+specified as library syntax, 
+so that we can write, for example.  
 
 <pre>
   (define-syntax my-cond
@@ -234,100 +226,75 @@ libraries, so that we can write, for example.
                                                   (my-cond c1 c2 ...)))))))
 </pre>
 
-These extensions are described at [1].
+While <tt>syntax-case</tt> combines the concerns of pattern 
+matching and substitution,  these concerns may be separated.  
+For example, the programmer may also write
+<pre>
+  (define-syntax my-cond
+    (lambda (form)
+      (syntax-case form (else)
+        ((_ (else e1 e2 ...))         (quasisyntax (begin ,e1 ,e2 ...)))
+        ((_ (e0 e1 e2 ...))           (quasisyntax (if ,e0 (begin ,e1 ,e2 ...))))
+        ((_ (e0 e1 e2 ...) c1 c2 ...) (quasisyntax (if ,e0
+                                                       (begin ,e1 ,e2 ...)
+                                                       (my-cond ,c1 ,c2 ...)))))))
+</pre>
 
+One is not limited to using <tt>syntax-case</tt> for matching.
+More general pattern matchers are easily integrated with the system 
+described here [1].  
 
 <a name="hygiene"></a><h1>Improved Hygiene</h1>
 
-The semantics of the predicate <tt>bound-identifier=?</tt> is
-similar to its counterpart in the <tt>syntax-case</tt>
-system, and is described in the specification section below.
+Existing hygiene algorithms are well suited for
+<tt>syntax-rules</tt> macros but still suffer from accidental 
+variable capture problems in procedural macros.  
 
 <p>
-Our design differs from the <tt>syntax-case</tt> system in
-the way in which
-<tt>bound-identifier=?</tt> identifiers are introduced.  
-Each evaluation of a <tt>quasisyntax</tt> expression occurs in a fresh 
-hygienic context, so that identifiers 
-introduced during separate evaluations of <tt>quasisyntax</tt> expressions are 
-never <tt>bound-identifier=?</tt>, even if these occur during the same 
-macro invocation.
-
+In the proposal of this SRFI, <tt>quasisyntax</tt>, 
+<tt>syntax-case</tt>, and <tt>with-syntax</tt> are specified
+so that the following macro will give the 
+answer <tt>1</tt>
 <pre>
-  (bound-identifier=? (quasisyntax x) (quasisyntax x))   ==&gt; #f
-</pre>
-
-This choice, inspired by [3, 4], makes it easier to avoid a class of unintentional variable capture problems that
-may occur in procedural macros, an issue that had been largely neglected in 
-most existing designs. 
-
-<p>  
-To see the problem, consider converting the helper macro in the following
-
-<pre>
-  (define-syntax no-capture
-    (syntax-rules ()
-      ((no-capture) (let ((temp 1)) (helper temp)))))
-
-  (define-syntax helper
-    (syntax-rules ()
-      ((helper value) (let ((temp 2)) value))))
-
-  (no-capture)    ==&gt; 1
-</pre>
-
-to a procedure.  The naive <tt>syntax-case</tt> implementation 
-
-<pre>
- (define-syntax (capture stx)
-
-   (define (helper value)
-     (with-syntax ((value value)) 
-       (syntax (let ((temp 2)) value))))
-
-   (syntax-case stx ()
-     ((capture)
-      (with-syntax ((nested (helper (syntax temp))))
-        (syntax (let ((temp 1))
-                  nested))))))
-
-  (capture)    ==&gt; 2
-</pre>
-
-gives the wrong answer.
-The binding for <tt>temp</tt> introduced by 
-<tt>helper</tt> has captured the <tt>temp</tt> introduced in the syntax-case body, 
-which was not our intent.  
-
-<p>                                       
-In the system proposed here, the above macro is expressed as follows:
-
-<pre>
-  (define-syntax (no-more-capture)
+  (define-syntax (no-capture)
 
     (define (helper value)
-      (quasisyntax 
-        (let ((temp 2)) ,value)))
+      (quasisyntax
+       (let ((temp 2)) ,value)))
+    
+    (quasisyntax
+     (let ((temp 1))
+       ,(helper (syntax temp)))))
 
-    (let ((temp (quasisyntax temp)))
-      (quasisyntax 
-        (let ((,temp 1))
-          ,(helper temp)))))
-
-  (no-more-capture)            ==&gt; 1
+  (no-capture)    ==> 1
 </pre>
-Since each <tt>quasisyntax</tt> evaluation occurs in a new hygienic 
-context, the two identifiers <tt>temp</tt> are distinct in the 
-sense of <tt>bound-identifier=?</tt>.  As a result, no accidental 
-capture will take place, and we get the correct answer.  
-
-<p>    
-The unintentional capture problem becomes particularly insidious when code is generated recursively. 
-Consider the following reasonable-looking <tt>syntax-case</tt> implementation of 
-a <tt>let</tt> macro with guaranteed left to right evaluation:
-
+or equivalently
 <pre>
-  (define-syntax let-ordered
+  (define-syntax (no-capture) 
+    
+    (define (helper value)
+      (with-syntax ((value value)) 
+        (syntax (let ((temp 2)) value))))
+     
+    (with-syntax ((nested (helper (syntax temp))))
+      (syntax (let ((temp 1))
+                nested))))
+  
+  (no-capture)    ==> 1
+</pre>
+whereas the same macro would give the answer <tt>2</tt>
+in existing systems due to a variable capture.  
+Note that if the helper procedure were written as a macro, one would 
+expect to obtain the answer <tt>1</tt> due to automatic hygiene.  In
+the current proposal, the macro
+writer is not penalized for using a procedure instead. 
+<p>
+
+Next consider the following macros for a version of <tt>let</tt>
+with left to right evaluation.  With the proposal of this SRFI, this 
+definition is correct:
+<pre>
+  (define-syntax let-in-order
     (lambda (form)
       
       (define (let-help form temps vars)
@@ -335,121 +302,101 @@ a <tt>let</tt> macro with guaranteed left to right evaluation:
           ((_ () . body)
            (with-syntax (((var ...) vars)
                          ((temp ...) temps))
-             (syntax
-              (let ((var temp) ...) . body))))      
+             (syntax 
+              (let ((var temp) ...) . body)))) 
+  
           ((_ ((var exp) binding ...) . body)
-           (with-syntax ((rest (let-help (syntax (_ (binding ...) . body))
-                                         (cons (syntax temp) temps)
-                                         (cons (syntax var) vars))))
-             (syntax (let ((temp exp))
-                       rest))))))
-      
+           (with-syntax 
+               ((rest (let-help (syntax (_ (binding ...) . body))
+                                (cons (syntax temp) temps)
+                                (cons (syntax var) vars))))
+             (syntax 
+              (let ((temp exp)) rest))))))
+    
       (let-help form '() '())))
-
-  (let-ordered ((x 1)
-                (y 2))
-    (+ x y))               ==> 4    
-</pre>
-
-The error occurs because all the identifiers <tt>temp</tt>, occurring in nested
-bindings, are <tt>bound-identifier=?</tt>, so that an unintended variable capture
-occurs.  Note that, because of hygiene, this problem would not 
-have occurred  if <tt>let-helper</tt> had been implemented as a macro instead of 
-a helper procedure. 
-<p>
-
-In the MzScheme <tt>syntax-case</tt> extension, primitives <tt>make-syntax-introducer</tt> and 
-<tt>syntax-local-introduce</tt> may be inserted in the appropriate places 
-to obtain the correct behaviour in the 
-above macros.  However, correct usage of these primitives is nontrivial, and 
-requires the programmer to 
-be aware that the problem occurs in the first place.   
-The default behaviour remains unsafe.
  
-<p>
-We see that, in these macro systems, the programmer has to keep track of the names of 
-all identifiers introduced in the macro and
-all its helper procedures.  This may be nontrivial if the macro is 
-large or has various helpers, and is reminiscent of the difficulties
-one encounters in languages with dynamic scoping of variables.
-Avoiding name clashes is not enough, as the <tt>let-ordered</tt>
-macro shows.   In general, it may be quite hard to verify
-whether accidental 
-captures occur if code is generated recursively.  
-
-<p>
-This issue clearly violates the spirit of lexical scoping and hygiene. 
-It breaks the modularity and constrains the maintainability
-of complex macros such as pattern matchers.  
-                         
-<p>
-With the proposal of this SRFI, the above macro can be expressed as follows:
-
-
+  (let-in-order ((x 1)
+                 (y 2))
+    (+ x y))                ==> 3
+</pre>
+or equivalently
 <pre>
-  (define-syntax (let-ordered bindings . body)
+  (define-syntax (let-in-order bindings . body)
 
-    (define (let-help bindings temps variables)
+    (define (let-help bindings temps vars)
       (cond ((null? bindings) (quasisyntax
-                                (let ,(map list variables temps) ,@body)))
-            ((pair? bindings) (let ((temp (quasisyntax temp)))
-                                (quasisyntax
-                                  (let ((,temp ,(cadar bindings)))
-                                    ,(let-help (cdr bindings)
-                                               (cons temp temps)
-                                               (cons (caar bindings) variables))))))))
+                               (let ,(map list vars temps) ,@body)))
+            ((pair? bindings) (quasisyntax
+                               (let ((temp ,(cadar bindings)))
+                                 ,(let-help (cdr bindings)
+                                            (cons (syntax temp) temps)
+                                            (cons (caar bindings) vars)))))))
 
     (let-help bindings '() '()))
-                                               
 
-  (let-ordered ((x 1)
-                (y 2))
-    (+ x y))              ==> 3
+  (let-in-order ((x 1)
+                 (y 2))
+    (+ x y))                ==> 3
 </pre>
+whereas existing systems will give the wrong answer <tt>4</tt> due to 
+variable capture. 
 
-We obtain the correct result, despite having used the same name
-for the distinct temporaries, since each <tt>quasisyntax</tt> evaluation occurs
-in its own hygienic context.  
+Again, if the helper were
+expressed as a macro, one would not expect variable capture.  With the 
+current proposal, this good behaviour is guaranteed also for
+procedural helpers.  
 
 <p>
-Notice that <tt>quasisyntax</tt> allows the following implementation of generate-temporaries:
+To preserve hygiene,
+identifiers introduced during a macro invocation are effectively renamed
+to prevent accidental capture.  In 
+existing systems only one renaming function is 
+typically used during the entire dynamic extent of the macro
+invocation.  
+This means that accidental captures may still take
+place in 
+procedural macros
+unless the programmer keeps careful track of
+all identifiers introduced in different parts of the macro and
+all its helper procedures.  This burden is reminiscent of the difficulties
+one encounters in languages with dynamic scoping of variables.
+It limits the modularity and constrains the maintainability
+of complex macros.
+Especially if code is generated recursively, as in the
+<tt>let-in-order</tt> macro, it may be quite hard, in these systems,
+to verify whether accidental captures occur.  
+
+
+
+<p>
+The solution proposed here is based on a form
+<tt>with-fresh-renaming-scope</tt> that effectively causes a fresh renaming 
+function to be used in the static region following this keyword.
+Identifiers introduced while expanding this region cannot capture or be 
+captured by identifiers introduced outside this region.  
+It is important to note that this is a lexical, not a dynamic, construct.  
+For example, we have
 <pre>
-  (define (generate-temporaries lst)
-    (map (lambda (_) (quasisyntax temp))
-         lst))
+  (let ((f (lambda () (syntax x))))
+    (with-fresh-renaming-scope 
+     (bound-identifier=? (syntax x)
+                         (f))))         ==> #f
 </pre>
+where <tt>bound-identifier=?</tt> non-equivalence means that a binding of
+one identifier cannot capture references to the other.   
 
-To support macro-generating macros correctly, we have to keep the traditional
-semantics for <tt>syntax</tt>.  All 
-<tt>syntax</tt> evaluations occurring during a single macro invocation
-occur in the same hygienic context:
-<pre>
-  (bound-identifier=? (syntax x) (syntax x))     ==&gt; #t
-</pre>
-We may then use the traditional Lisp techniques for 
-splicing syntax into a generated macro, with <tt>quasisyntax</tt> 
-in place of <tt>quasiquote</tt> and <tt>syntax</tt> in place of <tt>quote</tt>:
-<pre>
-  (define-syntax (macro-generate name id)
-    (quasisyntax 
-      (define-syntax (,name)
-        (quasisyntax (let ((,(syntax ,id) 4)) ,(syntax ,id))))))
+<p>
+It should be clear from studying the examples of this section 
+that the capture 
+problems occur when splicing together syntax generated in a lexically
+separate parts of the program text.  We can therefore largely avoid these 
+capture problems by requiring all <i>substitution forms</i> to 
+expand to an occurrence of <tt>with-fresh-renaming-scope</tt>.  
 
-  (macro-generate test z)
-  
-  (test)   ==&gt; 4
-</pre>
-
-As a bonus, this semantics makes it possible to define <tt>syntax-case</tt>
-as a macro in our system.  
-We point out, though, that careless use of <tt>syntax</tt>  
-can lead to exactly the capture problems decribed above.
-Indeed, if we had instead written <pre>  (let ((temp (syntax temp))) ...</pre>
-in <tt>let-help</tt>, the macro would be wrong.  
-This problem can be avoided by programmer discipline,
-restricting the use of <tt>syntax</tt> to the kind of essential
-splicing situations that occur in macro-generating macros.  
-
+<p>
+In the current proposal, the substitution forms are <tt>quasisyntax</tt>, 
+<tt>syntax-case</tt> and <tt>with-syntax</tt>, which are indeed defined in this way.  With this 
+specification, the above macros all behave correctly as they stand.  
 
 
 
@@ -463,7 +410,9 @@ and alternative.
   (if-it 1 it 42)      ==&gt; 1
 </pre>
 
-We would also like to be able to compose unhygienic macros.  
+We would also like to be able to freely compose unhygienic macros, something
+that is
+notoriously difficult to do in existing systems.    
 In particular, we would like to be able to write macros <tt>when-it</tt>, 
 <tt>if-flag-it</tt> and <tt>my-or</tt> in terms of <tt>if-it</tt> as follows:
 
@@ -483,7 +432,7 @@ In particular, we would like to be able to write macros <tt>when-it</tt>,
       (if-it ,expr1 it ,expr2)))
 </pre>
 
-We impose the following requirements on the semantics:
+These macros should behave as follows:
    
 <pre>
   (when-it 42 it)                ==&gt; 42
@@ -496,23 +445,24 @@ We impose the following requirements on the semantics:
 </pre>
 
 The macro system described here has a primitive <tt>datum->syntax</tt>
-similar to that provided by <tt>syntax-case</tt>.  However, 
+similar to that provided in the Chez <tt>syntax-case</tt> specification.  
+However, 
 as far as the author is aware, it is impossible to satisfy these four 
 conditions using <tt>datum-&gt;syntax</tt> without code-walking.  
-Furthermore, we wish to impose the 
-following referential transparency conditions
+Furthermore, we may wish to impose 
+referential transparency requirements such as
 
 <pre>
   (let ((it 1)) (if-it 42 it #f))   ==&gt; 1
   (let ((it 1)) (when-it 42 it))    ==&gt; 1
-  (let ((it 1)) (my-or 2 it))       ==&gt; 2 (note)
+  (let ((it 1)) (my-or 2 it))       ==&gt; 2 
   (let ((it 1)) (my-or #f it))      ==&gt; 1  
 </pre>
 
 by analogy with the behaviour of 
 
 <pre>
-  (let ((else #f)) (my-cond (else 2)))    ==&gt; unspecified
+  (let ((else #f)) (my-cond (else 2)))    ==&gt; void
 </pre>
 
 To satisfy these requirements, we provide a new primitive, 
@@ -533,20 +483,20 @@ all the above requirements:
 
 A similar idea has been proposed by Oleg Kiselyov in [2].
 <p>
-The denotation of the new identifier is determined by the syntactic
-environment of the first argument.  This allows us fine control
+The meaning of the new identifier is determined by the lexical
+binding of the first argument.  This allows us fine control
 over what we mean by referential transparency.  Compare for example the 
 above with:
 
 <pre>
-  (define-syntax if-it 
-    (lambda (_ condition consequent alternative)
-      (let ((it (make-capturing-identifier _ 'it)))
+  (define-syntax if-it
+    (lambda (form)
+      (let ((it (make-capturing-identifier (car form) 'it)))
         (quasisyntax
-          (let ((,it ,condition)) 
-            (if ,it
-                ,consequent 
-                ,alternative))))))
+         (let ((,it ,(cadr form))) 
+           (if ,it
+               ,(caddr form) 
+               ,(cadddr form)))))))
 
   (let ((it 1)) (if-it 42 it #f))   ==&gt; 42
 </pre>
@@ -563,32 +513,33 @@ while the other introduces identifiers that should be the <i>object</i> of captu
 Source-object correlation:
 </h1>
 
-In the reference implementation,
- invoking <tt>syntax-error</tt> will display all the expansion
-steps starting from the source expression.  The same information may
-be made available to runtime debugging tools if required.
-
+  Source correlation information is not tied to syntax 
+   objects, but instead recorded separately by the expander. 
+   In addition to tracking source location, this also allows intermediate expansion 
+   steps from 
+   the source to the object code to be recorded and made available to 
+   tools. 
 
 
 <a name="spec"></a>
 <h1>Specification</h1>
 
-The following macros and procedures are provided:
+The following primitive forms are provided:
 
-<pre><b>
-         define-syntax
+<pre>         define-syntax
          let-syntax
          letrec-syntax
          set-syntax!
                         
-         syntax
-         quasisyntax
-	 syntax-quote
          identifier?
          bound-identifier=?
          free-identifier=?
          literal-identifier=?
-                        
+         
+         syntax
+	 syntax-quote
+         with-fresh-renaming-scope 
+      
          make-capturing-identifier
          datum-&gt;syntax       
          syntax-&gt;datum
@@ -596,14 +547,19 @@ The following macros and procedures are provided:
          expand  
          syntax-debug        
          syntax-error 
-</b>
+</pre>
+The following library forms are provided:
+<pre>         quasisyntax
+         syntax-case
+         with-syntax
+         syntax-rules
 </pre>
 <dl>
 
 <dt><pre><b>Syntax objects:</b></pre>
 
-<dd>A syntax object is an s-expression whose leaves
-                are constants or identifiers.  The following expressions
+<dd>A syntax object is a graph whose nodes are Scheme pairs or vectors
+    and whose leaves are constants or identifiers.  The following expressions
                 evaluate to syntax objects:
 <pre>
   '()
@@ -629,30 +585,16 @@ Symbols may not appear in syntax objects:
 <p>
         The second variant is equivalent to 
 <pre>
-  (DEFINE-SYNTAX var (lambda (dummy . formals) exp1 exp ...)).
+  (DEFINE-SYNTAX var 
+     (let ((transformer (lambda (dummy . formals) exp1 exp ...)))
+       (lambda (form)
+         (apply transformer form))))
 </pre>
 
-        <tt>Exp</tt> may evaluate to a procedure, also called a transformer.  
-        When the expander encounters a macro invocation, the corresponding
-        transformer is invoked on the input form as follows:
-<pre>
-               (apply transformer input-form)
-</pre>
-        Examples:
-<pre>
-  (define-syntax a #f)
+        <tt>Exp</tt> may, but does not have to, evaluate to a procedure, 
+        also called a transformer.
 
-  (define-syntax my-let 
-    (lambda form
-      (let ((bindings (cadr form))
-            (body     (cddr form)))
-        (quasisyntax 
-          ((lambda ,(map car bindings) ,@body) ,@(map cadr bindings))))))
 
-   (define-syntax (my-let bindings . body)
-     (quasisyntax 
-       ((lambda ,(map car bindings) ,@body) ,@(map cadr bindings))))
-</pre>
 
 <dt>
 <pre><b>syntax: (LET[REC]-SYNTAX ((var exp) ...) exp* ...)</b>
@@ -661,45 +603,24 @@ Symbols may not appear in syntax objects:
 <dd>
         These primitives have the semantics described in R5RS:
 <pre>
-  (letrec-syntax
-      ((my-or (lambda (_ . body)
-                (cond ((null? body)       #f)
-                      ((null? (cdr body)) (car body))
-                      (else 
-                       (quasisyntax 
-                         (let ((temp ,(car body)))
-                           (if temp 
-                               temp
-                               (my-or ,@(cdr body))))))))))
-    (let ((x #f)
-          (y 7)
-          (temp 8)
-          (let odd?)
-          (if even?))
-      (my-or x
-             (let temp)
-             (if y)
-             y)))                  ==&gt;  7
-
   (let ((x 'outer))
-    (let-syntax ((m (lambda (_) (syntax x))))
+    (let-syntax ((m (lambda (form) (syntax x))))
       (let ((x 'inner))
         (m))))                     ==&gt;  outer
 
-  (let-syntax ((when (lambda (_ test . body)
-                       (quasisyntax 
-                         (if ,test
-                             (begin . ,body))))))
+  (let-syntax ((when (lambda (form)
+                       (quasisyntax (if ,(cadr form)
+                                        (begin ,@(cddr form)))))))
     (let ((if #t))
       (when if (set! if 'now))
-      if))                         ==&gt; now
+      if))                              ==> now
 </pre>
         The language for expanding further nested macros is incrementally 
         extended, as the following example shows:    
 <pre>
   (let ((x 1))
-    (let-syntax ((m (lambda (_) (syntax (syntax x)))))
-      (let-syntax ((n (lambda (_) (m))))
+    (let-syntax ((m (lambda (form) (syntax (syntax x)))))
+      (let-syntax ((n (lambda (form) (m))))
         (n))))                      
                                    ==&gt; 1 
 </pre>
@@ -709,180 +630,9 @@ Symbols may not appear in syntax objects:
 <dd>        <tt>Set-syntax</tt> is to <tt>define-syntax</tt> as <tt>set!</tt> is to <tt>define</tt>. 
 <pre>
   (define-syntax (test) (syntax (syntax 'a)))
-  (set-syntax! test (lambda (_) (test)))
+  (set-syntax! test (lambda (form) (test)))
   (test)                                   ==> a
 </pre>
-
-<dt>
-<pre><b>syntax: (SYNTAX template)</b>
-</pre>
-<dd>        Constructs a new syntax object from the template, which 
-           must be an s-expression
-        with either identifiers or constants as leaves,
-        by transforming the leaves as follows:  
-        Constants are unaffected, while
-        identifiers are replaced by fresh identifiers
-     that occur nowhere else in the program.   
-These fresh identifiers are bound to the denotations of the 
-original identifiers in the syntactic environment in which the template occurred. 
-This means that a fresh identifier will denote the same thing as the original 
-identifier in the template unless the macro application 
-places an occurrence of it in a binding position [8].
-<p>
-        During the course of a single macro invocation, <tt>syntax</tt> acts 
-        like a one-to-one mathematical function on identifiers: Two identifiers introduced via <tt>syntax</tt> expressions will be 
-        <tt>bound-identifier=?</tt> if and only if the <tt>syntax</tt> expressions were evaluated during 
-        the same macro invocation and the original identifiers in the templates 
-        were <tt>bound-identifier=?</tt>.  
-
-<p>
-Identifiers that are <tt>bound-identifier=?</tt> are required to have the same 
-denotation.  Any attempt to break this invariant should cause an error to be 
-signaled. 
-
-<pre>
-  (cons (syntax x) 
-        (let ((x 1)) (syntax x)))      ==> error
-</pre>
-
-
-    <tt>Syntax</tt> differs from the identically named form in the <tt>syntax-case</tt> 
-    system in that here we have no concept of pattern variable substitution.
-    Instead, existing syntax objects can be inserted in new syntax objects using
-    <tt>quasisyntax</tt> with <tt>unquote</tt> or 
-    <tt>unquote-splicing</tt>, using <tt>cons</tt>, <tt>list</tt>,
-    <tt>vector</tt>, <tt>...</tt>  
-
-    <p>
-    <tt>Syntax-case</tt> can be implemented
-    as a macro on top of the current system and is available as a library.
-
-<p>
-<b>Examples:</b>
-
-<pre>
-  (bound-identifier=? (syntax x) (syntax x))   ==&gt; #t
-
-  (define-syntax (test)
-    (quasisyntax 
-      (let ((,(syntax x) 1)) ,(syntax x))))
-
-  (test)    ==&gt; 1
-</pre>
-
-In the following example, <tt>(m)</tt> expands to <tt>(syntax x)</tt>, where 
-<tt>x</tt> denotes the outer binding.  Although the expanded
-<tt>(syntax x)</tt> occurs in the syntactic environment of the middle binding, 
-the fresh identifier resulting from evaluating it will denote the same thing as the 
-identifier <tt>x</tt> in the template.  It will therefore also refer to the outer binding.
-
-<pre>
-  (let ((x 'outer))
-    (let-syntax ((m (lambda (_) (syntax (syntax x)))))
-      (let ((x 'middle))
-        (let-syntax ((n (lambda (_) (m))))
-          (let ((x 'inner))
-            (n))))))               ==&gt; outer
-</pre>
-
-
-The fact that <tt>syntax</tt> preserves <tt>bound-identifier=?</tt> equivalence
-during the course of the macro invocation is useful for 
-writing macro-generating macros using the traditional Lisp techniques for 
-splicing syntax into a generated macro (with quasisyntax instead of
-quasiquote and syntax in place of quote):   
-
-<pre>
-  (define-syntax (macro-generate name id)
-    (quasisyntax 
-      (define-syntax (,name)
-        (quasisyntax 
-          (let ((,(syntax ,id) 4)) ,(syntax ,id))))))
-
-  (macro-generate test z)
-  
-  (test)   ==&gt; 4
-</pre>
-
-
-  Note that <tt>syntax</tt> does not unify identifiers previously distinct in the sense
-  of <tt>bound-identifier=?</tt> occurring 
-  in <tt>template</tt> even if they
-  have the same symbolic name:
-
-<pre>  (let ((x 1))
-    (let-syntax ((m (lambda (_) (syntax (syntax x)))))
-      (let ((x 2))
-        (let-syntax ((n (lambda (_)
-                          (quasisyntax
-                           (let-syntax ((o (lambda (_)
-                                             (,(syntax syntax)
-                                               (,(syntax list) 
-                                                 ,(m)
-                                                 ,(syntax x))))))
-                             (o))))))
-          (n)))))                                ==&gt; (1 2)
-
-</pre>
-
-
-
-  
-
-<dt>
-<pre><b>syntax: (QUASISYNTAX template)</b>
-</pre>
-<dd>        
-Constructs a new syntax object from the template, which 
-           must be an s-expression
-        with either identifiers or constants as leaves, and where parts 
-        of the expression may be unquoted
-using <tt>unquote</tt> or <tt>unquote-splicing</tt>. 
-<p>
-        As in the case of <tt>syntax</tt>, identifiers appearing in the quoted part of 
-        the template are replaced by fresh identifiers 
-bound to the denotations of the 
-original identifiers in the syntactic environment in which the template occurred. 
-<p>
-        However, <tt>quasisyntax</tt> differs from <tt>syntax</tt> in that two identifiers 
-        introduced by <tt>quasisyntax</tt> will be <tt>bound-identifier=?</tt> only if
-        they are introduced during the same <i>evaluation</i> of 
-        a <tt>quasisyntax</tt> expression, and the original identifiers in the 
-        template were <tt>bound-identifier=?</tt>.
-<p>
-        Similarly to quasiquote, values may be inserted into the template 
-        using <tt>unquote</tt> and <tt>unquote-splicing</tt>.  To make nested splicing 
-        behave in a more useful way, the R5RS-compatible extension
-        described in appendix B of Bawden's paper [10] is recommended.   
-<pre>
-  (bound-identifier=? (quasisyntax x) (quasisyntax x))   ==&gt; #f
-
-  (define-syntax (test)
-    (quasisyntax 
-      (let ((,(quasisyntax x) 1)) ,(quasisyntax x))))
-
-  (test)                ==&gt; reference to undefined identifier
-</pre>
-
-<dt>
-<pre><b>syntax: (SYNTAX-QUOTE template)</b>
-</pre>
-<dd>        
-Returns the existing syntax object <tt>template</tt>.  Unlike
-<tt>syntax</tt>, no new syntax object is constructed.  
-This primitive is useful for defining certain kinds of
-macro-generating macros.    
-
-<pre>
-  (let-syntax ((m (lambda (_ x)
-                    (quasisyntax
-                      (let-syntax ((n (lambda (_ y)
-                                        (quasisyntax
-                                         (let ((,y 1))
-                                           ,(syntax-quote ,x))))))
-                        (n ,x))))))
-    (m z))   ==> 1
-</pre>                 
 
 
 <dt>
@@ -910,23 +660,164 @@ macro-generating macros.
 <p>
         Identifiers are <tt>bound-identifier=?</tt> if a binding of one would capture 
         references to the other in the scope of the binding.  Two identifiers 
-        are <tt>bound-identifier=?</tt> only if they are present in the same toplevel
-        expression in the original program, if they were introduced by <tt>syntax</tt> 
-        during the same macro-invocation, or if they were introduced during a 
-        single evaluation of a <tt>quasisyntax</tt> expression.  In addition, 
+        with the same name are <tt>bound-identifier=?</tt> if they were present in the same toplevel
+        expression in the original program text.  Identifiers will also
+ be <tt>bound-identifier=?</tt> if they were created by applying <tt>syntax</tt> to existing <tt>bound-identifier=?</tt> identifiers
+        during the same macro-invocation or invocation of
+        <tt>with-fresh-renaming-scope</tt>.  In addition, 
         <tt>datum-&gt;syntax</tt> may create identifiers that are <tt>bound-identifier=?</tt> 
         to previously introduced identifiers.
 <p>
         These procedures return #f if either argument is not an identifier.  
 
+
+<dt>
+<pre><b>syntax: (SYNTAX datum)</b>
+</pre>
+<dd>       
+ Creates a new syntax object from <tt>datum</tt>, which 
+ must be a syntax object, as follows:  
+        Constants contained in <tt>datum</tt> are unaffected, while
+        identifiers are effectively renamed to obtain fresh identifiers 
+  in the sense of <tt>bound-identifier=?</tt>.  
+   
+These fresh identifiers remain <tt>free-identifier=?</tt> to the original 
+identifiers.  
+This means that a fresh identifier will denote the same thing as the original 
+identifier in <tt>datum</tt> unless the macro application 
+places an occurrence of it in a binding position.
+<p>
+        During the course of a single macro invocation, <tt>syntax</tt> 
+ordinarily acts 
+        like a one-to-one mathematical function on identifiers: Two identifiers created by evaluating <tt>syntax</tt> expressions will be 
+        <tt>bound-identifier=?</tt> if and only if the <tt>syntax</tt> expressions were evaluated during 
+        the same macro invocation and the original identifiers in the templates 
+        were <tt>bound-identifier=?</tt>.
+
+<pre>
+  (bound-identifier=? (syntax x) (syntax x))   ==&gt; #t
+</pre>
+
+This behaviour may be modified by the form
+<tt>with-fresh-renaming-scope</tt>, which in effect causes a  
+fresh renaming function to be used for evaluating <tt>syntax</tt>
+expressions occurring in the static region following
+this keyword.  Note that this is a lexical, not dynamic, construct.  For example, one has
+<pre>
+  (let ((f (lambda () (syntax x))))
+    (with-fresh-renaming-scope 
+     (bound-identifier=? (syntax x)
+                         (f))))         ==> #f
+</pre>
+
+<p>
+Identifiers that are <tt>bound-identifier=?</tt> are required to also 
+be <tt>free-identifier=?</tt>, denoting the same binding.  
+Any attempt to break this invariant should cause an error to be 
+signaled. 
+
+<pre>
+  (cons (syntax x) 
+        (let ((x 1)) (syntax x)))       ==> error
+</pre>
+
+
+ 
+<p>
+<b>Examples:</b>
+<p>
+In the following example, <tt>(m)</tt> expands to <tt>(syntax x)</tt>, where 
+<tt>x</tt> denotes the outer binding.  Although the expanded
+<tt>(syntax x)</tt> occurs in the syntactic environment of the middle binding, 
+the fresh identifier resulting from evaluating it will denote the same thing as the 
+identifier <tt>x</tt> in the template.  It will therefore also refer to the outer binding.
+
+<pre>
+  (let ((x 'outer))
+    (let-syntax ((m (lambda (_) (syntax (syntax x)))))
+      (let ((x 'middle))
+        (let-syntax ((n (lambda (_) (m))))
+          (let ((x 'inner))
+            (n))))))               ==&gt; outer
+</pre>
+
+
+
+
+  Note that <tt>syntax</tt> does not unify identifiers previously distinct in the sense
+  of <tt>bound-identifier=?</tt> occurring 
+  in <tt>template</tt> even if they
+  have the same symbolic name:
+
+<pre>  (let ((x 1))
+    (let-syntax ((m (lambda (_) (syntax (syntax x)))))
+      (let ((x 2))
+        (let-syntax ((n (lambda (_)
+                          (quasisyntax
+                           (let-syntax ((o (lambda (_)
+                                             (,(syntax syntax)
+                                               (,(syntax list) 
+                                                 ,(m)
+                                                 ,(syntax x))))))
+                             (o))))))
+          (n)))))                      ==&gt; (1 2)
+
+</pre>
+
+<dt>
+<pre><b>syntax: (SYNTAX-QUOTE datum)</b>
+</pre>
+<dd>        
+Returns the existing syntax object <tt>datum</tt> embedded in the 
+program.  Unlike
+<tt>syntax</tt>, no new syntax object is constructed.  
+This primitive is useful for defining certain kinds of
+macro-generating macros
+that have to compose pieces of code preserving <tt>bound-identifier=?</tt>
+equivalence where not all the pieces are passed via the same chain of macro calls.
+
+<p>
+For example, in the following fragment, <tt>z</tt> is passed to the inner
+macro by two paths, one of them via <tt>x</tt> and then <tt>y</tt>, and the other
+via only <tt>x</tt>.  Using <tt>syntax-quote</tt>, we can "tunnel" 
+<tt>x</tt> to the inner macro as follows:
+<pre>
+   (let-syntax ((m (lambda (form)
+                     (syntax-case form ()
+                       ((_ x)
+                        (syntax
+                         (let-syntax ((n (lambda (form*)
+                                           (syntax-case form* ()
+                                             ((_ y)
+                                              (with-syntax ((x (syntax-quote x)))
+                                                (syntax (let ((y 1))
+                                                          x))))))))
+                             (n x))))))))
+         (m z))     ==> 1
+</pre>
+
+<dt>
+<pre><b>syntax: (WITH-FRESH-RENAMING-SCOPE exp1 exp ...)</b>
+</pre>
+<dd>     
+
+Causes a fresh syntactic renaming function to be used in 
+the lexical region <tt>exp1 exp ...</tt> as described in the 
+specification of <tt>syntax</tt> above.  
+
+<p>
+The body <tt>exp1 exp ...</tt> is subject to the rules for 
+a <tt>lambda</tt> body, and may contain internal definitions.
+  
+
 <dt>
 <pre>
-<b>procedure: (MAKE-CAPTURING-IDENTIFIER template-identifier symbol)</b>
+<b>procedure: (MAKE-CAPTURING-IDENTIFIER context-identifier symbol)</b>
 </pre>
 <dd>
         This procedure returns a fresh identifier with symbolic
-        name <tt>symbol</tt>, and with initial binding that of <tt>symbol</tt> in 
-        the syntactic environment in which <tt>template-identifier</tt> was 
+        name <tt>symbol</tt>, and with denotation that of <tt>symbol</tt> in 
+        the syntactic environment in which <tt>context-identifier</tt> was 
         introduced.  If the resulting 
         identifier occurs in a binding, it will capture any identifiers 
         in the scope of the binding that are <tt>free-identifier=?</tt> to it. 
@@ -946,18 +837,19 @@ macro-generating macros.
 </pre>
 
 The following examples illustrate how the behaviour 
-of non-hygienic macros may be controlled by the <tt>template-identifier</tt>
-argument.
+of the capturing identifier is affected by the <tt>context-identifier</tt>
+argument.  Compare in particular the first example below with the one 
+above.
  
 <pre>
-  (define-syntax if-it 
-    (lambda (_ condition consequent alternative)
-      (let ((it (make-capturing-identifier _ 'it)))
+  (define-syntax if-it
+    (lambda (form)
+      (let ((it (make-capturing-identifier (car form) 'it)))
         (quasisyntax
-          (let ((,it ,condition)) 
-            (if ,it
-                ,consequent 
-                ,alternative))))))
+         (let ((,it ,(cadr form))) 
+           (if ,it
+               ,(caddr form) 
+               ,(cadddr form)))))))
 
   (let ((it 1)) (if-it 42 it #f))   ==&gt; 42
 
@@ -967,49 +859,61 @@ argument.
         (m))))                      ==&gt; outer
 
   (let ((y 'outer))
-    (let-syntax ((m (lambda (_ . rest) 
+    (let-syntax ((m (lambda (form) 
                       (let ((y (make-capturing-identifier (syntax here) 'y)))
-                        (quasisyntax 
-                          (let ((,y 'inner)) . ,rest))))))
+                        (quasisyntax
+                         (let ((,y 'inner)) ,@(cdr form)))))))
       (m y)))  
                                     ==&gt; inner
 
   (let ((y 'outer))
-    (let-syntax ((m (lambda (_ . rest) 
+    (let-syntax ((m (lambda (form) 
                       (let ((y (make-capturing-identifier (syntax here) 'y)))
-                        (quasisyntax 
-                          (let ((,y 'inner)) . ,rest))))))
+                        (quasisyntax
+                         (let ((,y 'inner)) ,@(cdr form)))))))
       (let ((y 'more))
         (m y))))  
                                     ==&gt; more 
 </pre>
+
+
+
 <dt>
 <pre>
-<b>procedure: (DATUM-&gt;SYNTAX template-identifier obj)</b> 
+<b>procedure: (DATUM-&gt;SYNTAX context-identifier obj)</b> 
 </pre>
 <dd>
-        Transforms <tt>obj</tt>, which must be an s-expression with symbols 
-        or constants as leaves, to a syntax object.  
-        Symbols appearing in <tt>obj</tt> are converted to identifiers that behave 
+        Transforms <tt>obj</tt>, which must be a Scheme object with symbols 
+        or constants as leaves, to a syntax object as follows:  Constants
+        in <tt>obj</tt> are unaffected, while  
+        symbols appearing in <tt>obj</tt> are converted to identifiers that behave 
         under <tt>bound-identifier=?</tt> and <tt>free-identifier=?</tt>
         exactly the same as an identifier with the same symbolic name would 
         behave if it had occurred together
-        with <tt>template-identifier</tt> in the same source toplevel expression
-        or was produced during the same evaluation of the <tt>syntax</tt> or <tt>quasisyntax</tt> 
-        expression producing <tt>template-identifier</tt>.
+        with <tt>context-identifier</tt> in the same source toplevel expression
+        or was produced during the same evaluation of the <tt>syntax</tt>
+        expression producing <tt>context-identifier</tt>.
 <p>
 If <tt>template-identifier</tt> is a capturing identifier, the symbols
-in <tt>obj</tt> will also be converted to capturing identifiers.    
-<p>
-This procedure has the same meaning as <tt>datum->syntax-object</tt> in the 
-<tt>syntax-case</tt> system [6, 7].  
+in <tt>obj</tt> will also be converted to capturing identifiers.
+   
+<pre>
+  (let ((x 'outer))
+    (let-syntax ((m (lambda (_) (syntax (syntax z)))))
+      (let ((x 'middle))
+        (let-syntax ((n (lambda (_) (datum->syntax (m) 'x))))
+          (let ((x 'inner))
+            (n))))))               ==> outer
+</pre> 
+
+
 <dt>
 <pre>
 <b>procedure: (SYNTAX-&gt;DATUM syntax-object)</b>
 </pre>
 <dd>
-        Transforms a syntax object s-expression into an ordinary s-expression
-        with embedded identifiers replaced by their symbolic names.
+        Transforms a syntax object by replacing
+        contained identifiers by their symbolic names.
 <dt>
 <pre>
 <b>procedure: (EXPAND syntax-object)</b>
@@ -1033,12 +937,207 @@ This procedure has the same meaning as <tt>datum->syntax-object</tt> in the
 <b>procedure: (SYNTAX-ERROR obj ...)</b>
 </pre>
 <dd>
-        Throws a syntax error.  The objects <tt>obj ...</tt> are displayed,
-        any available source-object correlation information is displayed
-        (for example, intermediate expansion steps), and the expander
-        is stopped.  
+        Invokes a syntax error.  The objects <tt>obj ...</tt> are displayed,
+        available source-object correlation information is displayed or
+        provided to debugging tools, and 
+        the expander is stopped.  
 
+
+<dt>
+<pre><b>library syntax: (QUASISYNTAX template)</b>
+</pre>
+<dd>        
+Constructs a new syntax object from the template, parts 
+of which may be unquoted using <tt>unquote</tt> or <tt>unquote-splicing</tt>.
+<tt>Quasisyntax</tt> is to <tt>syntax</tt> as <tt>quasiquote</tt> is 
+to <tt>quote</tt>.  <tt>Quasisyntax</tt> may be implemented as a macro
+in terms of <tt>with-fresh-renaming-scope</tt> and <tt>syntax</tt>.
+
+<p>
+To reliably preserve hygiene in the presence of substitions, the 
+proposal of the section <a href="#hygiene">Improved hygiene</a> is
+implemented.  Namely, the expansion of <tt>quasisyntax</tt> includes 
+an enclosing occurrence of <tt>with-fresh-renaming-scope</tt>,
+causing a fresh syntactic renaming function to be used in the static region
+lexically following the <tt>quasisyntax</tt> keyword. 
+
+<p>
+For example, no variable capture 
+occurs in the following macro:
+<pre>
+  (define-syntax (no-capture)
+
+    (define (helper value)
+      (quasisyntax
+       (let ((temp 2)) ,value)))
+    
+    (quasisyntax
+     (let ((temp 1))
+       ,(helper (syntax temp)))))
+ 
+  (no-capture)   ==> 1
+</pre>
+since, for example, the second <tt>quasisyntax</tt> expression
+expands to the equivalent of
+<pre>
+    (with-fresh-renaming-scope
+     `(,(syntax let) ((,(syntax temp) 1))
+       ,(helper (syntax temp))))
+</pre>
+See section <a href="#hygiene">Improved hygiene</a> for a more practical
+example.
+<p>
+ To make nested <tt>unquote-splicing</tt> 
+        behave in a more useful way than R5RS, the R5RS-compatible extension
+        described in appendix B of Bawden's paper [10] is recommended.
+
+<p>
+For convenient use with <tt>syntax-case</tt>, 
+<tt>quasisyntax</tt> templates may contain ellipses, which 
+will be expanded exactly like the corresponding <tt>syntax-rules</tt>
+template, with the proviso that the inserted values have to be 
+explicitly unquoted.  Ellipsis-bound values belong to a special
+data type and are created when binding <tt>syntax-case</tt>
+pattern variables.  
+
+<pre>
+  (define-syntax my-cond
+    (lambda (form)
+      (syntax-case form (else)
+        ((_ (else e1 e2 ...))         (quasisyntax (begin ,e1 ,e2 ...)))
+        ((_ (e0 e1 e2 ...))           (quasisyntax (if ,e0 (begin ,e1 ,e2 ...))))
+        ((_ (e0 e1 e2 ...) c1 c2 ...) (quasisyntax (if ,e0
+                                                       (begin ,e1 ,e2 ...)
+                                                       (my-cond ,c1 ,c2 ...)))))))
+</pre>
+
+
+<p><b>Further examples:</b>   
+<pre>
+  (bound-identifier=? (quasisyntax x) (quasisyntax x))   ==&gt; #f
+
+  (define-syntax (macro-generate name id)
+    (quasisyntax 
+      (define-syntax (,name)
+        (quasisyntax 
+          (let ((,(syntax ,id) 4)) ,(syntax ,id))))))
+
+  (macro-generate test z)
+  
+  (test)   ==&gt; 4
+
+  (define (generate-temporaries lst)
+    (map (lambda (_) (quasisyntax temp))
+         lst))
+
+  (define-syntax (test-temporaries)
+    (let ((temps (generate-temporaries '(1 2))))
+      (quasisyntax ((lambda ,temps (list ,@temps)) 1 2))))
+
+  (test-temporaries)   ==> (1 2)
+</pre>
+
+<p>
+
+<dt>
+<pre><b>library syntax: (SYNTAX-CASE exp (literal ...) clause ...)
+
+                clause := (pattern output-expression)
+	                  (pattern fender output-expression)</b>
+</pre>
+<dd>    
+
+In the current proposal, the <tt>syntax-case</tt> form can be written as a 
+macro in terms of the core primitives specified above.
+<p>
+ Each pattern is identical to a <tt>syntax-rules</tt> pattern, and the optional 
+<tt>fender</tt> may specify additional constraints on acceptance of the 
+clause [6, 7].  Literals in the list <tt>(literal ...)</tt> are matched against
+identifiers in the input form using <tt>literal-identifier=?</tt>. 
+In the <tt>output-expression</tt> of each clause, the <tt>syntax</tt> keyword is effectively
+rebound to implement implicit substitution of variables bound in 
+lexically enclosing syntax-case <tt>pattern</tt>'s, so that the template in 
+<tt>(syntax template)</tt> is treated identically to a <tt>syntax-rules</tt>
+template.   
+<p>
+The current proposal adds the following requirement:
+<p>
+<ul>
+<li>
+To reliably preserve hygiene in the presence of substitions, the 
+proposal of the section <a href="#hygiene">Improved hygiene</a> is
+implemented.  Namely, the expansion of <tt>syntax-case</tt> includes
+an enclosing occurrence of <tt>with-fresh-renaming-scope</tt>,
+causing a fresh syntactic renaming function to be used in the static region
+lexically following the <tt>syntax-case</tt> keyword.
+</ul> 
+<p>
+For example, no variable capture 
+occurs in the following macro:
+<pre>
+  (define-syntax (no-capture) 
+    
+    (define (helper value)
+      (with-syntax ((value value)) 
+        (syntax (let ((temp 2)) value))))
+      
+    (with-syntax ((nested (helper (syntax temp))))
+      (syntax (let ((temp 1))
+                nested))))
+  
+  (no-capture)    ==> 1
+</pre>
+See section <a href="#hygiene">Improved hygiene</a> for a more practical
+example.
+
+<p>
+For convenient use with <tt>quasisyntax</tt> (see the <tt>my-cond</tt> example under the <tt>quasisyntax</tt> specification), we add the requirement:
+<p>
+<ul>
+<li> 
+Non-ellipsis pattern variables are bound to the corresponding syntax object
+in the input syntax.  Ellipsis pattern variables are bound to values
+of a data type that can be inserted in a <tt>quasisyntax</tt> expression
+with a compatible nesting of ellipses.
+</ul>
+<p>
+In contrast to the <tt>syntax</tt> form, <tt>quasisyntax</tt> 
+does not
+provide implicit insertion of pattern variables in the scope of
+a <tt>syntax-case</tt> clause.  
+All inserted syntax must be explicitly unquoted.
+
+
+
+
+
+
+<dt>
+<pre><b>library syntax: (WITH-SYNTAX template)</b>
+</pre>
+<dd>    
+As in [6, 7], <tt>with-syntax</tt> expands to an instance of 
+<tt>syntax-case</tt>
+<pre>
+  (define-syntax with-syntax
+    (lambda (x)
+      (syntax-case x ()
+        ((_ ((p e0) ...) e1 e2 ...)
+         (syntax (syntax-case (list e0 ...) ()
+                   ((p ...) (begin e1 e2 ...)))))))) 
+</pre>
+and inherits the modification for improved hygiene specified above for
+the latter.  
+
+
+<dt>
+<pre><b>library syntax: (SYNTAX-RULES template)</b>
+</pre>
+<dd> 
+As defined in R5RS.
+   
 </dl>
+
 
 
 
@@ -1049,12 +1148,13 @@ It does not require R5RS macros or any other existing macro system.
 In addition, it uses <tt>gensym</tt> with an optional string prefix
 argument, and an interaction-environment, no-argument variant of 
 <tt>eval</tt>.  It should run unmodified on systems that provide 
-these additional procedures.  These include Chez, Chicken and MzScheme.    
+these additional procedures.  
+Portability hooks are provided for Schemes that lack either
+of these primitives or provide them with a different interface.
 
 <p>
-Portability hooks are provided for Schemes that lack either
-of these additional primitives.  For example, to run the code on 
-Gambit, unquote the definition of <tt>gensym</tt> provided.
+The implementation has been successfully tested on
+Chez, Chicken, Gambit and MzScheme.    
 
 <p>
 The implementation was strongly influenced by the explicit renaming 
@@ -1069,7 +1169,7 @@ simple imperative update of an identifier and no
 additional work is required to propagate substitutions or environments to leaves.
 In addition, source-object correlation information is not stored in 
 syntax objects, but tracked independently, which makes it possible 
-to represent syntax objects as ordinary s-expressions.    
+to represent syntax objects as ordinary list or vector structure.    
 
 
 
@@ -1127,6 +1227,10 @@ During the draft period, the reference implementation will be available
 [11] Richard Kelsey and Jonathan Rees - The Scheme 48 implementation
 
      http://s48.org/
+
+[12] Robert Hieb, R. Kent Dybvig - A compatible low-level macro facility
+
+     Revised(4) Report on the Algorithmic Language Scheme (appendix)
      
 
 </pre>
