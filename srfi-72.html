@@ -29,7 +29,7 @@ archive of the mailing list</a>.
   <li>Revised: <a href="http://srfi.schemers.org/cgi-bin/viewcvs.cgi/*checkout*/srfi/srfi-72/srfi-72.html?rev=1.5">2005/08/26</a></li>
   <li>Draft extension: 2005/09/20</li>
   <li>Revised: <a href="http://srfi.schemers.org/cgi-bin/viewcvs.cgi/*checkout*/srfi/srfi-72/srfi-72.html?rev=1.6">2005/09/14</a></li>
-  <li>Final: <a href="http://srfi.schemers.org/cgi-bin/viewcvs.cgi/*checkout*/srfi/srfi-72/srfi-72.html?rev=1.7">2005/09/21</a></li>
+  <li>Final: <a href="http://srfi.schemers.org/cgi-bin/viewcvs.cgi/*checkout*/srfi/srfi-72/srfi-72.html?rev=1.8">2005/09/21</a></li>
 </ul>
 
 <h1>Index</h1>
@@ -60,7 +60,7 @@ archive of the mailing list</a>.
 <a href="#implementation">Implementation</a>
 </li>
 <li>
-<a href="#ack">Acknowledgements</a>
+<a href="#ack">Acknowledgments</a>
 </li>
 <li>
 <a href="#refs">References</a>
@@ -129,11 +129,11 @@ rather than special forms.  In particular,
 </p>
 <p></p><p>
 </p></li><li>
- <h3>Fluid identifiers:</h3>
+ <h3>Capturing identifiers:</h3>
  <p>
-  A primitive <tt>make-capturing-identifier</tt> is provided for building 
-  expansion-time fluid binding constructs.  It also provides an 
-alternative mechanism for intentional variable capture.  
+  A primitive <tt>make-capturing-identifier</tt> is provided for intentional
+  variable capture and for building 
+  expansion-time fluid binding constructs. 
 </p></li></ul>
 
 
@@ -288,52 +288,97 @@ With this proposal, the above macros are correct as they stand.
 
 A reflective tower consists of a sequence of disjoint environments, each
 determining a set of bindings in effect during a given 
-phase of execution.  
-For example, in
+phase of execution [11, 14].  
+
+<p>
+In the following example, the second definition and the right hand
+side of the macro binding for <tt>m</tt> are evaluated in the expand-time
+environment, 
+while
+the first definition and the result of expanding the
+<tt>let-syntax</tt> expression are evaluated in the runtime
+environment. 
+These two environments constitute a two-level reflective tower.
+<pre>
+  (define x 1)
+  
+  (begin-for-syntax (define x 2))
+    
+  (let-syntax ((m (lambda (form)
+                    (quasisyntax (list x ,x)))))
+    (m))  ==> (1 2)
+</pre>
+The second <tt>x</tt> in <tt>(list x ,x)</tt> is evaluated during
+expand-time, whereas the first <tt>x</tt> is evaluated during runtime.
+Each is looked up in the appropriate environment.
+<p>
+
+The necessity for the tower of environments can be understood as follows:  
+In an interpreter, expand-time and runtime bindings 
+have to be in memory simultaneously, since expansion and evaluation 
+alternate. 
+These bindings must be kept strictly separate to ensure the following property, 
+ of fundamental importance in a statically scoped language:
+</p><p>
+</p><blockquote>
+<i>
+The meaning of a program must depend unambiguously on
+its textual representation.
+</i><p>
+</p></blockquote>
+
+To see this, consider expanding and evaluating the
+above sequence of expressions one by one.    If we were to allow the second definition 
+to shadow the first in a unified environment, 
+the answer would differ from 
+the one obtained by running a precompiled version of the program, so that the 
+meaning would
+be ambiguous.  
+
+<p>
+The presence of the reflective tower, with the implied absence of 
+inter-phase shadowing, is expressed by the following 
+lexical scoping rule:
+</p><p>
+</p><blockquote>
+<i>
+The meaning of an identifier is determined by lexically visible bindings
+in force during the phase of its use.
+</i><p>
+</p></blockquote> 
+  
+
+<p>
+This SRFI differs from comparable macro systems in uniformly applying this
+rule to both toplevel and local bindings.  Compare the above example with the following:
 <pre>
   (let ((x 1))
     (let-syntax ((m (lambda (form)
                       (let ((x 2))
-                        (syntax x)))))
-      (m)))  ==> 1
+                        (quasisyntax (list x ,x))))))
+      (m)))  ==> (1 2)
 </pre>
-the right hand side of the macro is evaluated in a compile-time environment, and the
-expanded expression is evaluated in a runtime
-environment.  These two environments form a two-level reflective
-tower.  
+Here the inner <tt>let</tt> establishes a binding in the expand-time
+environment.  As before, this binding cannot shadow the outer binding, 
+which exists
+in the runtime environment.  Each <tt>x</tt> in 
+<tt>(list x ,x)</tt> is looked up in the appropriate environment
+when evaluated.
+
 
 <p>
-This SRFI differs from comparable macro systems in the following requirement:
-
-</p><p>
-</p><blockquote>
-<i>
-Variables can only refer to existing lexical bindings.
-</i><p>
-</p></blockquote>
-
-In the above example, <tt>(syntax x)</tt> evaluates to an object, not a
-variable, at 
-compile-time.  This object
-becomes a variable only after expansion,    
-and its meaning is therefore determined by the
-outer runtime binding.  Indeed, at runtime the inner binding
-does not exist any longer.  
-
- 
-
-<p>In the following example,
- in addition to the runtime and compile-time phases,
+The reflective tower can have an arbitrary number of levels.
+In the following example,
+ in addition to the runtime and expand-time phases,
 the right hand side of the inner macro is evaluated in a
- meta-compile-time phase.  There are therefore three environments in
+ meta-expand-time phase.  There are therefore three environments in
  the reflective tower, a construction that can obviously be iterated
- to arbitrary level.  Each <tt>x</tt> in the expression
+ to arbitrary level.  
+By nesting <tt>begin-for-syntax</tt> commands, we may specify bindings at 
+arbitrary phase.  Each <tt>x</tt> in the expression
 <tt>(list x ,x ,,x)</tt> is used as a variable in a separate phase.
 
-<p>
-A primitive <tt>begin-for-syntax</tt>
-is provided for controlling the phase of a computation.  
-By nesting these, we may specify bindings at arbitrary level:
+
 
 <pre>
   (define x 0)
@@ -350,42 +395,6 @@ By nesting these, we may specify bindings at arbitrary level:
                         (bar)))))
       (foo))  ==> (0 1 2)
 </pre>
-
-
-A fundamental principle of block-structured languages is that the meaning of a program 
-should depend only on its textual representation.
-In particular, 
-
-</p><p>
-</p><blockquote>
-<i>
-One should obtain the same results whether one expands and 
-evaluates a sequence of top-level forms one by one in an interpreter, or first expands and
-compiles the whole sequence and then evaluates it.
-</i><p>
-</p></blockquote>
- 
-<p>
-Applying this principle to the above sequence then shows the necessity
-for maintaining effectively separate namespaces, each with separate lexical
-scoping, for each phase.  
-Indeed, in a REPL, the three bindings <tt>x</tt> are in memory at the same time. 
-If we did
-not have separate lexical scopes for the three phases, the answer would differ from 
-the one obtained by running a precompiled version.
-
-<p>
-For prior work on reflective towers, see [11, 14].
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -483,20 +492,19 @@ in macro definitions, the number of phases, and therefore
 the height of the reflective tower, may be made arbitrarily large.
 
 <p>
-At each level, the environment is required to initially contain by default the standard
+The environment at each level in the tower 
+initially contains the standard
 bindings of the host Scheme, as well as the additional primitives
 described in this SRFI.
 
 <p> 
-The hygiene
-algorithm implements a refinement of lexical scoping whereby
-the meaning of an identifier is determined by lexically visible
+The meaning of an identifier is determined by lexically visible
 bindings during the phase of its use.
 
 
 </p><p>
 In the following expression, the occurrence of <tt>(syntax x)</tt> on the right
-hand side of <tt>m</tt> evaluates to an object during compile-time and therefore
+hand side of <tt>m</tt> evaluates to an object during expand-time and is therefore
 not affected by the inner binding.  The resulting identifier is used as a 
 runtime variable in the expanded code, and 
 therefore denotes the outer binding.  
@@ -508,7 +516,7 @@ therefore denotes the outer binding.
 </pre>
 In the following example, there are two instances of <tt>x</tt> 
 introduced by the macro <tt>n</tt>.  
-The first is used during compile-time, where 
+The first is used during expand-time, where 
 it refers to the binding <tt>2</tt>, whereas the second is used at runtime,
 where it refers to the binding <tt>1</tt>.
 <pre>  (let ((x 1))
@@ -525,6 +533,37 @@ where it refers to the binding <tt>1</tt>.
 The primitive <tt>begin-for-syntax</tt>, described below, 
  is provided for specifying computations
 at arbitrary reflective level.  
+
+<p>
+A fundamental principle of block-structured languages is that the meaning of a program 
+should depend only on its textual representation.
+In particular, implementations should respect the following principle:
+
+</p><p>
+</p><blockquote>
+<i>
+One should obtain the same results whether one expands and 
+evaluates a sequence of top-level forms one by one in an interpreter, or first expands and
+compiles the whole sequence and then evaluates it.
+</i><p>
+</p></blockquote>
+ 
+<p>
+Applying this principle to the following sequence then shows the necessity
+for maintaining a separate namespace, with separate lexical
+scoping, for each reflective level.  
+In an interpreter, the two bindings for <tt>x</tt> will be in memory at the same time. 
+If we allowed one to shadow the other in a unified environment, the answer would differ from 
+the one obtained by running a precompiled version.
+<pre>
+  (define x 1)
+
+  (begin-for-syntax (define x 2))
+
+  (let-syntax ((m (lambda (form)
+                    (quasisyntax (list x ,x)))))
+    (m))  ==> (1 2)
+</pre>
 
 
 <br><br>
@@ -691,7 +730,7 @@ identifier in <tt>datum</tt> unless macro expansion
 places an occurrence of it in a binding position.
 </p><p>
 
-The core <tt>syntax</tt> form decribed here has no notion of pattern 
+The core <tt>syntax</tt> form described here has no notion of pattern 
 variable insertion, but is effectively rebound in the scope of <tt>syntax-case</tt>
 clauses to implement that feature (see below).  
  
@@ -777,7 +816,7 @@ places an occurrence of it in a binding position.
 
 </p><p>
 
-The core <tt>quasisyntax</tt> form decribed here has no notion of pattern 
+The core <tt>quasisyntax</tt> form described here has no notion of pattern 
 variable insertion, but is effectively rebound in the scope of <tt>syntax-case</tt>
 clauses to implement that feature (see below). 
 
@@ -922,7 +961,7 @@ literature, we present a worked-out example, courtesy of [2]:
   (let ((if-it 1)) (when-it 42 it))  ==&gt; 42
 </pre>
 Notice how <tt>my-or</tt> purposely does not expose <tt>it</tt> to the user.  
-On the other hand, the definition of <tt>when-it</tt> explicitly reexports 
+On the other hand, the definition of <tt>when-it</tt> explicitly re-exports 
 <tt>it</tt> to the use site, while preserving referential transparency in the 
 last example.  
   
@@ -950,47 +989,13 @@ last example.
         existing identifiers.  If the identifier is inserted as a bound identifier 
         in a binding form, 
         the binding will capture any identifiers 
-        in the scope of the binding that are <tt>free-identifier=?</tt> to 
-        <tt>(datum-&gt;syntax-object template-identifier symbol)</tt>.
-        
-
-
+        in the scope of the binding that are <tt>free-identifier=?</tt> to it.
+     
 <p>
-This primitive is useful for implementing expand-time fluid binding forms. 
-The following example illustrates how one may use it to implement <tt>fluid-let-syntax</tt>
-from [6, 7]:
-</p><pre>  (define-syntax fluid-let-syntax
-    (lambda (form)
-      (syntax-case form ()
-        ((_ ((i e) ...) e1 e2 ...) 
-         (with-syntax (((fi ...) 
-                        (map (lambda (i)
-                               (make-capturing-identifier i
-                                                          (syntax-object-&gt;datum i)))
-                             (syntax (i ...)))))
-           (syntax 
-            (let-syntax ((fi e) ...) e1 e2 ...)))))))
-          
-  
-  (let ((f (lambda (x) (+ x 1))))
-    (let-syntax ((g (syntax-rules ()
-                      ((_ x) (f x)))))
-      (let-syntax ((f (syntax-rules ()
-                        ((_ x) x))))
-        (g 1))))   ==&gt; 2
-
-  
-  (let ((f (lambda (x) (+ x 1))))
-    (let-syntax ((g (syntax-rules ()
-                      ((_ x) (f x)))))
-      (fluid-let-syntax ((f (syntax-rules ()
-                              ((_ x) x))))
-        (g 1))))   ==&gt; 1
-</pre>  
-
-This primitive also provides an alternative mechanism for 
-inserting bindings 
-that intentionally capture existing references.  
+This primitive provides an alternative to <tt>datum->syntax-object</tt> for 
+intentional capture.  Since the capture mechanism is now based on <tt>free-identifier=?</tt> equivalence rather than <tt>bound-identifier=?</tt> equivalence, the 
+implementation and the semantics
+are subtly different.  
 Consider:
 <pre>  (define-syntax if-it
     (lambda (x)
@@ -1025,14 +1030,51 @@ Consider:
   (let ((it 1)) (my-or #f it))        ==&gt; 1
   (let ((if-it 1)) (when-it 42 it))   ==&gt; 42
 </pre>
-Although <tt>when-it</tt> here is simpler than the above
+Notice that <tt>when-it</tt> here is simpler than the above
 solution using <tt>datum-&gt;syntax-object</tt>, since captures do not have to be 
 explicitly
-propagated, it now takes a little more work to prevent propagation of captures,
+propagated.  However, 
+ it now takes a little more work to prevent propagation of captures,
 as the  <tt>my-or</tt> macro shows.  Also, in two cases the answer is different, with
 explicit bindings here taking precedence over implicit bindings.  This behaviour  
 is the same as that of the MzScheme solution suggested in [13], but can be 
 changed by modifying the first argument to <tt>make-capturing-identifier</tt>. 
+   
+
+
+<p>
+This primitive is useful for implementing expand-time fluid binding forms. 
+The following example illustrates how one may use it to implement the Chez Scheme <tt>fluid-let-syntax</tt>
+form [6, 7]:
+</p><pre>  (define-syntax fluid-let-syntax
+    (lambda (form)
+      (syntax-case form ()
+        ((_ ((i e) ...) e1 e2 ...) 
+         (with-syntax (((fi ...) 
+                        (map (lambda (i)
+                               (make-capturing-identifier i
+                                                          (syntax-object-&gt;datum i)))
+                             (syntax (i ...)))))
+           (syntax 
+            (let-syntax ((fi e) ...) e1 e2 ...)))))))
+          
+  
+  (let ((f (lambda (x) (+ x 1))))
+    (let-syntax ((g (syntax-rules ()
+                      ((_ x) (f x)))))
+      (let-syntax ((f (syntax-rules ()
+                        ((_ x) x))))
+        (g 1))))   ==&gt; 2
+
+  
+  (let ((f (lambda (x) (+ x 1))))
+    (let-syntax ((g (syntax-rules ()
+                      ((_ x) (f x)))))
+      (fluid-let-syntax ((f (syntax-rules ()
+                              ((_ x) x))))
+        (g 1))))   ==&gt; 1
+</pre>  
+
 
 
 
@@ -1296,7 +1338,7 @@ occurrence to give it its own identity.
 
 
 
-<a name="ack"></a></p><h1>Acknowledgements</h1>
+<a name="ack"></a></p><h1>Acknowledgments</h1>
 
 Special thanks to Kent Dybvig, Matthew Flatt and Felix Winkelmann for helpful
 comments.  
@@ -1362,7 +1404,6 @@ comments.
 [14] Christian Queinnec - Macroexpansion Reflective Tower
 
      http://www2.parc.com/csl/groups/sda/projects/reflection96/abstracts/queinnec.html
-
 </pre>
 
 
