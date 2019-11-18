@@ -30,48 +30,50 @@
       <li>
         <a href="mailto:srfi-72@srfi.schemers.org">srfi-72@<span class="antispam">nospam</span>srfi.schemers.org (subscribers only)</a></li>
       <li>
-        <form method="POST" action="https://www.simplelists.com/subscribe.php">
-          <div class="title">Subscribe to srfi-72 mailing list</div>
-          <input name="email"
-                 placeholder="email address"
-                 tabindex="1"
-                 type="email" >
-          <input name="name"
-                 placeholder="full name"
-                 tabindex="2"
-                 type="text" >
-          <p>
-            <input id="sub-digest"
-                   name="digest"
-                   tabindex="3"
-                   type="checkbox"
-                   value="digest" >
-            <label for="sub-digest">daily digest?</label></p>
-          <input class="submit"
-                 name="submit"
-                 tabindex="4"
-                 type="submit"
-                 value="Subscribe to srfi-72" >
-          <input type="hidden" name="action" value="subscribe">
-          <input type="hidden" name="list" value="srfi-72@srfi.schemers.org"></form></li>
+        <span class="firefox-column-workaround">
+          <form method="POST" action="https://www.simplelists.com/subscribe.php">
+            <div class="title">Subscribe to srfi-72 mailing list</div>
+            <input name="email"
+                   placeholder="email address"
+                   tabindex="1"
+                   type="email" >
+            <input name="name"
+                   placeholder="full name"
+                   tabindex="2"
+                   type="text" >
+            <p>
+              <input id="sub-digest"
+                     name="digest"
+                     tabindex="3"
+                     type="checkbox"
+                     value="digest" >
+              <label for="sub-digest">daily digest?</label></p>
+            <input class="submit"
+                   name="submit"
+                   tabindex="4"
+                   type="submit"
+                   value="Subscribe to srfi-72" >
+            <input type="hidden" name="action" value="subscribe">
+            <input type="hidden" name="list" value="srfi-72@srfi.schemers.org"></form></a></li>
       <li>
-        <form method="POST" action="https://www.simplelists.com/subscribe.php">
-          <p class="title">Unsubscribe from srfi-72 mailing list</p>
-          <input name="email"
-                 placeholder="email address"
-                 tabindex="5"
-                 type="email" >
-          <input class="submit"
-                 name="submit"
-                 tabindex="6"
-                 type="submit"
-                 value="Unsubscribe from srfi-72" >
-          <input name="action"
-                 type="hidden"
-                 value="unsubscribe" >
-          <input name="list"
-                 type="hidden"
-                 value="srfi-72@srfi.schemers.org"></form></li></ul>
+        <span class="firefox-column-workaround">
+          <form method="POST" action="https://www.simplelists.com/subscribe.php">
+            <p class="title">Unsubscribe from srfi-72 mailing list</p>
+            <input name="email"
+                   placeholder="email address"
+                   tabindex="5"
+                   type="email" >
+            <input class="submit"
+                   name="submit"
+                   tabindex="6"
+                   type="submit"
+                   value="Unsubscribe from srfi-72" >
+            <input name="action"
+                   type="hidden"
+                   value="unsubscribe" >
+            <input name="list"
+                   type="hidden"
+                   value="srfi-72@srfi.schemers.org"></form></a></li></ul>
     <h2>Abstract</h2>      <p>This SRFI describes a procedural macro proposal
       for Scheme with the following features:
       <ul>
@@ -90,14 +92,14 @@
         <li>
           <h3>Syntax-case:</h3>
           <p>In the current proposal, the
-          <tt>syntax-case</tt> form is expressible as a macro in terms of a
+          <code>syntax-case</code> form is expressible as a macro in terms of a
           simpler set of primitives and is specified as library syntax.
         <li>
           <h3>Procedural interface:</h3>
           <p>The primitive interface for manipulating
           compound syntax objects consists of procedures rather than special
-          forms. In particular, the traditional abstractions <tt>car</tt>,
-          <tt>cdr</tt>, <tt>cons</tt> , <tt>...</tt> can be used on syntactic
+          forms. In particular, the traditional abstractions <code>car</code>,
+          <code>cdr</code>, <code>cons</code> , <code>...</code> can be used on syntactic
           data.
         <li>
           <h3>Fast hygiene algorithm:</h3>
@@ -107,7 +109,7 @@
         <li>
           <h3>Capturing identifiers:</h3>
           <p>A primitive
-          <tt>make-capturing-identifier</tt> is provided for intentional
+          <code>make-capturing-identifier</code> is provided for intentional
           variable capture and for building expansion-time fluid binding
           constructs.
       </ul></body></html>
