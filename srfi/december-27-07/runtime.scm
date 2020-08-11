@@ -1,4 +1,4 @@
-;;; 
+;;;
 ;;; Runtime include file:
 ;;; Contains the minimal set of binding necessary
 ;;; for running a fully expanded program.
@@ -40,9 +40,9 @@
         (let ((library (ex:lookup-library name)))
           (or (not build)
               (eq? build (ex:library-build library))
-              (assertion-violation 
+              (assertion-violation
                'import "Client was expanded against a different build of this library" name))
-          (import-libraries (ex:library-imports library) 
+          (import-libraries (ex:library-imports library)
                             (ex:library-builds library)
                             phase)
           (importer library phase ex:imported)
@@ -50,13 +50,13 @@
   (import-libraries imports builds phase))
 
 (define (ex:import-libraries-for-run imports builds phase)
-  (ex:import-libraries-for imports 
+  (ex:import-libraries-for imports
                            builds
-                           phase 
+                           phase
                            (lambda (library phase imported)
                              (if (and (= phase 0)
                                       (not (ex:library-invoked? library)))
-                                 (begin 
+                                 (begin
                                    ((ex:library-invoker library))
                                    (ex:library-invoked?-set! library #t))))
                            'run))
@@ -64,14 +64,14 @@
 (define ex:register-library! #f)
 (define ex:lookup-library    #f)
 (let ((table '()))
-  (set! ex:register-library! 
+  (set! ex:register-library!
         (lambda (library)
           (set! table (cons library table))
           (set! ex:imported (filter (lambda (entry)
-                                      (not (equal? (ex:library-name library) 
+                                      (not (equal? (ex:library-name library)
                                                    (car entry))))
                                     ex:imported))))
-  (set! ex:lookup-library 
+  (set! ex:lookup-library
         (lambda (name)
           (let ((library (assoc name table)))
             (if library
@@ -81,16 +81,16 @@
                 ;; Instead of assertion-violation, something like the following
                 ;; can be used to load libraries automatically
                 ;;(begin
-                ;;  (ex:load (library-name->filename name)) 
+                ;;  (ex:load (library-name->filename name))
                 ;;  (ex:lookup-library name))
                 )))))
 
-;; Only instantiate part of the bootstrap library 
+;; Only instantiate part of the bootstrap library
 ;; that would be needed for invocation at runtime.
 
-(ex:register-library! 
- (let ((error (lambda () 
-                (assertion-violation 
+(ex:register-library!
+ (let ((error (lambda ()
+                (assertion-violation
                  'runtime.scm
                  "Attempt to use runtime instance of (core primitive-macros) for expansion.  Make sure expander.scm is loaded after runtime.scm."))))
    (ex:make-library

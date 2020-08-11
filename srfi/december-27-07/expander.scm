@@ -44,12 +44,12 @@
 ;;;                            Suitable for separate compilation.
 ;;;   - ex:run-r6rs-sequence : Evaluates a sequence of forms of the format
 ;;;                            <library>* | <library>* <toplevel program>.
-;;;                            The <toplevel program> environment is separate from the 
+;;;                            The <toplevel program> environment is separate from the
 ;;;                            interactive REPL environment and does not persist
-;;;                            between invocations of run-r6rs-sequence.  
-;;;                            For importing and evaluating stuff in the persistent 
+;;;                            between invocations of run-r6rs-sequence.
+;;;                            For importing and evaluating stuff in the persistent
 ;;;                            interactive environment, ex:REPL should be used instead.
-;;;   - ex:run-r6rs-program  : Same as ex:run-r6rs-sequence, except that it reads the 
+;;;   - ex:run-r6rs-program  : Same as ex:run-r6rs-sequence, except that it reads the
 ;;;                            input from a file.
 ;;;   - ex:expand-r5rs-file  : For expanding r5rs-like toplevel files in a given environment.
 ;;;                            Mainly provided so this expander can expand itself, but may
@@ -76,14 +76,14 @@
 ;;; definitions, evaluate toplevel expressions, enter libraries and
 ;;; <toplevel programs> at the prompt, as well as import libraries
 ;;; into the toplevel environment.
-;;;    
-;;; EX:REPL evaluates a sequence of library definitions, commands, and top-level 
-;;; import forms in the interactive environment.  The semantics for 
-;;; evaluating libraries in and importing bindings into the interactive 
+;;;
+;;; EX:REPL evaluates a sequence of library definitions, commands, and top-level
+;;; import forms in the interactive environment.  The semantics for
+;;; evaluating libraries in and importing bindings into the interactive
 ;;; environment is consistent with the ERR5RS proposal at
 ;;; http://scheme-punks.cyber-rush.org/wiki/index.php?title=ERR5RS:Libraries.
-;;; Bindings in the interactive environment persist between invocations 
-;;; of REPL. 
+;;; Bindings in the interactive environment persist between invocations
+;;; of REPL.
 ;;;
 ;;; An example session where I do all these things is in examples.scm.
 ;;; All an integrator would need to do is to automate the call to
@@ -105,17 +105,17 @@
 ;;; This section is mostly of interest for r5rs non-compliant systems.
 ;;;
 ;;; The expander relies on r5rs (or r6rs) syntax-rules and letrec-syntax
-;;; and should run in a correct r5rs system, but if you don't have 
+;;; and should run in a correct r5rs system, but if you don't have
 ;;; r5rs macros, you may bootstrap it by expanding the expander itself
 ;;; first on an R5RS system.
 ;;; Here is how to do it:
 ;;;
-;;;   (load "compat-mzscheme.scm")   ; for example bootstrapping from mzscheme 
+;;;   (load "compat-mzscheme.scm")   ; for example bootstrapping from mzscheme
 ;;;   (load "runtime.scm")
 ;;;   (load "expander.scm")
 ;;;   (ex:expand-file "standard-libraries.scm" "standard-libraries.exp")
 ;;;   (ex:expand-r5rs-file "expander.scm" "expander.exp" (ex:environment '(rnrs base)))
-;;; 
+;;;
 ;;; The expanded (.exp) files are vanilla Scheme and can then be run on the target
 ;;; system as follows:
 ;;;
@@ -1433,7 +1433,7 @@
          (process-template p dim #t))
         ((? (lambda (_) (not ellipses-quoted?))
             (t (syntax ...) . tail))
-         (let* ((head (segment-head template)) 
+         (let* ((head (segment-head template))
                 (vars
                  (map (lambda (mapping)
                         (let ((id      (car mapping))
@@ -1447,18 +1447,18 @@
                (let* ((x (process-template head (+ dim 1) ellipses-quoted?))
                       (gen (if (equal? (list x) vars)   ; +++
                                x                        ; +++
-                               (if (= (length vars) 1) 
+                               (if (= (length vars) 1)
                                    `(map (lambda ,vars ,x)
                                          ,@vars)
-                                   `(if (= ,@(map (lambda (var) 
+                                   `(if (= ,@(map (lambda (var)
                                                     `(length ,var))
                                                   vars))
                                         (map (lambda ,vars ,x)
                                              ,@vars)
-                                        (ex:syntax-violation 
-                                         'syntax 
+                                        (ex:syntax-violation
+                                         'syntax
                                          "Pattern variables denoting lists of unequal length preceding ellipses"
-                                         ',(syntax->datum template) 
+                                         ',(syntax->datum template)
                                          (list ,@vars))))))
                       (gen (if (> (segment-depth template) 1)
                                `(apply append ,gen)
@@ -1473,7 +1473,7 @@
          `(list->vector ,(process-template ts dim ellipses-quoted?)))
         (other
          `(quote ,(expand other)))))
-    
+
     (define (free-meta-variables template dim free deeper)
       (match template
         ((? identifier? id)
@@ -1483,23 +1483,23 @@
                (if (and binding
                         (eq? (binding-type binding) 'pattern-variable)
                         (let ((pdim (binding-dimension binding)))
-                          (and (> pdim 0) 
+                          (and (> pdim 0)
                                (not (>= deeper pdim))
-                               (<= (- pdim deeper) 
+                               (<= (- pdim deeper)
                                    dim))))
                    (cons (cons id binding) free)
                    free))))
         ((t (syntax ...) . rest)
-         (free-meta-variables t 
-                              dim 
+         (free-meta-variables t
+                              dim
                               (free-meta-variables (segment-tail template) dim free deeper)
-                              (+ deeper (segment-depth template))))  
+                              (+ deeper (segment-depth template))))
         ((t1 . t2)
          (free-meta-variables t1 dim (free-meta-variables t2 dim free deeper) deeper))
-        (#(ts ___) 
+        (#(ts ___)
          (free-meta-variables ts dim free deeper))
         (- free)))
- 
+
     ;; Count the number of `...'s in PATTERN.
 
     (define (segment-depth pattern)
@@ -1507,9 +1507,9 @@
         ((p (syntax ...) . rest)
          (+ 1 (segment-depth (cdr pattern))))
         (- 0)))
-      
+
     ;; All but the last ellipses
-    
+
     (define (segment-head pattern)
       (let ((head
              (let recur ((pattern pattern))
@@ -1518,10 +1518,10 @@
                   (cons h (recur (cdr pattern))))
                  ((h (syntax ...) . rest)
                   (list h))))))
-        (match head 
+        (match head
           ((h (syntax ...) . rest)
            head)
-          (- (car head)))))   
+          (- (car head)))))
 
     ;; Get whatever is after the `...'s in PATTERN.
 
@@ -1712,7 +1712,7 @@
                (ex:library-visited?-set! library #t)))
          (if (and (>= phase 1)
                   (not (ex:library-invoked? library)))
-             (begin 
+             (begin
                ((ex:library-invoker library))
                (ex:library-invoked?-set! library #t))))
        'expand))
@@ -2033,7 +2033,7 @@
       (fluid-let ((*usage-env* (make-unit-env)))
         (env-import! eval-template (make-library-language) *usage-env*)
         (call-with-values
-            (lambda () 
+            (lambda ()
               (fluid-let ((*phase* 0))
                 (scan-imports
                  (map (lambda (spec)
@@ -2164,7 +2164,7 @@
                (if (memv (car (car sets)) rest)
                    rest
                    (cons (car (car sets)) rest))))))
-    
+
     (define (drop-tail list tail)
       (cond ((null? list)    '())
             ((eq? list tail) '())
@@ -2205,14 +2205,14 @@
     ;;
     ;;============================================================================
 
-    ;; Evaluates a sequence of library definitions, commands, and top-level 
-    ;; import forms in the interactive environment.  The semantics for 
-    ;; evaluating libraries in and importing bindings into the interactive 
+    ;; Evaluates a sequence of library definitions, commands, and top-level
+    ;; import forms in the interactive environment.  The semantics for
+    ;; evaluating libraries in and importing bindings into the interactive
     ;; environment is consistent with the ERR5RS proposal at
     ;; http://scheme-punks.cyber-rush.org/wiki/index.php?title=ERR5RS:Libraries.
-    ;; Bindings in the interactive environment persist between invocations 
+    ;; Bindings in the interactive environment persist between invocations
     ;; of REPL.
-    
+
     (define (repl exps)
       (with-toplevel-parameters
        (lambda ()
@@ -2227,27 +2227,27 @@
                                             list)))
                                (expand-toplevel-sequence (list exp))))
                    exps))))
-    
+
     ;; Evaluates a sequence of forms of the format
     ;; <library>* | <library>* <toplevel program>.
-    ;; The <toplevel program> environment is separate from the 
+    ;; The <toplevel program> environment is separate from the
     ;; interactive REPL environment and does not persist
-    ;; between invocations of run-r6rs-sequence.  
-    ;; For importing and evaluating stuff in the persistent 
+    ;; between invocations of run-r6rs-sequence.
+    ;; For importing and evaluating stuff in the persistent
     ;; interactive environment, see REPL above.
-    
+
     (define (run-r6rs-sequence forms)
       (with-toplevel-parameters
        (lambda ()
          (for-each (lambda (exp) (eval exp (interaction-environment)))
                    (expand-toplevel-sequence (normalize forms))))))
-    
+
     (define (run-r6rs-program filename)
       (run-r6rs-sequence (read-file filename)))
 
     ;; Puts parameters to a consistent state for the toplevel
     ;; Old state is restored afterwards so that things will be
-    ;; reentrant. 
+    ;; reentrant.
 
     (define with-toplevel-parameters
       (lambda (thunk)
@@ -2259,7 +2259,7 @@
                     (*usage-env*        *toplevel-env*)
                     (*syntax-reflected* #f))
           (thunk))))
-    
+
     (define (expand-toplevel-sequence forms)
       (scan-sequence 'toplevel
                      make-toplevel-mapping
@@ -2268,10 +2268,10 @@
                        (emit-body forms 'define))))
 
     ;; ERR5RS load:
-    ;; We take some care to make this reentrant so that 
+    ;; We take some care to make this reentrant so that
     ;; it can be used to recursively load libraries while
     ;; expanding a client library or program.
-    
+
     (define (r6rs-load filename)
       (with-toplevel-parameters
        (lambda ()
@@ -2280,7 +2280,7 @@
                                  (eval exp (interaction-environment)))
                                (expand-toplevel-sequence (list exp))))
                    (read-file filename)))))
-      
+
     ;; This may be used as a front end for the compiler.
     ;; It expands a file consisting of a possibly empty sequence
     ;; of libraries optionally followed by a <toplevel program>.
@@ -2320,7 +2320,7 @@
                                                              0)
                                (expand-toplevel-sequence (read-file filename)))
                          target-filename))))))
-       
+
     ;; Keeps (<library> ...) the same.
     ;; Converts (<library> ... . <toplevel program>)
     ;; to (<library> ... (program . <toplevel program>))
@@ -2476,7 +2476,7 @@
     (set! ex:eval                      r6rs-eval)
     (set! ex:load                      r6rs-load)
     (set! ex:syntax-violation          syntax-violation)
-    
+
     (set! ex:expand-file               expand-file)
     (set! ex:repl                      repl)
     (set! ex:expand-r5rs-file          expand-r5rs-file)
@@ -2495,5 +2495,3 @@
 
     ) ; let
   ) ; letrec-syntax
-
-

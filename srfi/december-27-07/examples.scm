@@ -12,11 +12,11 @@
 ;; Uncomment whichever is applicable or provide your own.
 ;; Compat-r5rs.scm should run on most r5rs-compliant Schemes.
 
-;; (load "compat-r5rs.scm") 
+;; (load "compat-r5rs.scm")
  (load "compat-mzscheme.scm")
 ;; (load "compat-larceny.scm")
 ;; (load "compat-chez.scm")
-;; (load "compat-scheme48.scm") ; but first ,open structures listed in this file 
+;; (load "compat-scheme48.scm") ; but first ,open structures listed in this file
 
 ;;======================================================================
 ;;
@@ -39,10 +39,10 @@
 ;; (Examples of static compilation scripts are at the end of this file).
 ;;
 ;; The REPL goes beyond r6rs to allow incremental development in
-;; a toplevel environment.  The developer can freely change, replace 
-;; and make new toplevel definitions, evaluate toplevel expressions, 
-;; enter libraries and <toplevel programs> at the prompt, 
-;; dynamically load library definitions from files and import 
+;; a toplevel environment.  The developer can freely change, replace
+;; and make new toplevel definitions, evaluate toplevel expressions,
+;; enter libraries and <toplevel programs> at the prompt,
+;; dynamically load library definitions from files and import
 ;; library bindings into the toplevel environment.
 ;;
 ;;======================================================================
@@ -52,7 +52,7 @@
    ;; Make rnrs available at toplevel:
 
    (import (rnrs))
-   
+
     ;;;=====================================================================
     ;;;
     ;;; LIBRARIES AND PROGRAMS:
@@ -141,7 +141,7 @@
    ;; this to execute a library in the REPL:
 
    (import (main))
-   
+
    ;;======================================================================
    ;;
    ;; Dynamic loading of libraries and programs as in ERR5RS.
@@ -149,20 +149,20 @@
    ;; See http://scheme-punks.cyber-rush.org/wiki/index.php?title=ERR5RS:Libraries.
    ;;
    ;;======================================================================
-   
+
    (import (rnrs load))
-   
+
    (load "sample-stack.scm")
    (load "sample-balloons.scm")
    (load "sample-party.scm")
    (load "sample-program.scm")  ;;  displays "Boom! 108" and "Boom! 24"
-   
+
    ;;======================================================================
    ;;
    ;; Library reflection:
    ;;
    ;;======================================================================
-   
+
    ;; Reflection facility useful for development and debugging:
    ;; See uses of (environment-bindings ---) in examples below:
 
@@ -1214,49 +1214,49 @@
 
    (syntax-case '((1 2) (3 4) . 3) ()
      (((a b) ... . c) (syntax ((a ...) (b ...))))) ;==> ((1 3) (2 4))
-   
+
    (define-syntax foo
      (lambda (x)
        (syntax-case x ()
-         ((_ (Var ...) 
+         ((_ (Var ...)
              (Var2 ...) ...)
-          #'(quote 
-             ((((Var 
+          #'(quote
+             ((((Var
                  Var2 ...) ...))))))))
-   
+
    (syntax-case '((1 2 3) (4 5) (7 8) (10 11)) ()
-     (((Var ...) 
+     (((Var ...)
        (Var2 ...) ...)
       (syntax ((Var Var2 ...) ...))))  ;==> ((1 4 5) (2 7 8) (3 10 11))
-   
+
    (syntax-case '((1 2 3) (4 5 6) (7 8 9)) ()
-     (((Var ...) 
+     (((Var ...)
        (Var2 ...) ...)
       (syntax
        (((Var ... Var2 ...) ...)))))  ;==> (((1 2 3 4 5 6) (1 2 3 7 8 9)))
-   
+
    (syntax-case '(((4 5 6) (7 8 9)) ((4 5 6) (7 8 9))) ()
      ((((Var2 ...) ...) ...)
       (syntax
        (Var2 ... ... ...))))  ;==> (4 5 6 7 8 9 4 5 6 7 8 9)
-   
+
    (syntax-case '((1 2 3) ((4 5 6) (7 8 9)) ((4 5 6) (7 8 9))) ()
-     (((Var ...) 
+     (((Var ...)
        ((Var2 ...) ...) ...)
       (syntax
        (((Var ... Var2 ...) ... ...))))) ;==> (((1 2 3 4 5 6) (1 2 3 7 8 9) (1 2 3 4 5 6) (1 2 3 7 8 9)))
-      
+
    (syntax-case '((1 2 3) ((4 5 6) (7 8 9)) ((4 5 6) (7 8 9))) ()
-     (((Var ...) 
+     (((Var ...)
        ((Var2 ...) ...) ...)
       (syntax
        (((Var ... Var2 ...) ...) ...)))) ;==> (((1 2 3 4 5 6) (1 2 3 7 8 9)) ((1 2 3 4 5 6) (1 2 3 7 8 9)))
-      
+
    ;;(syntax-case '((1 2 3) (4 5 6) (7 8 9)) ()
    ;;  (((Var ...) ...)
    ;;   (syntax
    ;;    (Var ... ... ...))))   ; Syntax violation: Too many ...'s
-   
+
    ;; Wildcards:
 
    (let-syntax ((foo (syntax-rules ()

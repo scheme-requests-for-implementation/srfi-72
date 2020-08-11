@@ -24,8 +24,8 @@
 
 ;; Just give this damn thing a binding
 
-(define assertion-violation 
-  (lambda args 
+(define assertion-violation
+  (lambda args
     (display 'assertion-violation)
     (newline)
     (for-each pretty-print args)
@@ -46,8 +46,8 @@
 
 ; filter already in MzScheme
 
-;; Only the most minimal partial implementation of 
-;; r6rs records as needed for our purposes.  
+;; Only the most minimal partial implementation of
+;; r6rs records as needed for our purposes.
 ;; Note that most arguments are ignored.
 
 (define (make-record-type-descriptor name parent uid sealed? opaque? fields)
@@ -72,6 +72,3 @@
 (define (record-accessor rtd k)
   (let ((generic-access (cadddr rtd)))
     (lambda (r) (generic-access r k))))
-
-
-

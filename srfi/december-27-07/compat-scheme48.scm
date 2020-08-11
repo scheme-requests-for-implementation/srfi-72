@@ -121,4 +121,3 @@
      "R6RS-error:")
     (or (equal? exp '(exit))
         (r6rs))))
- 

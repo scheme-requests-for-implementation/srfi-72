@@ -8,12 +8,12 @@
 ;;;   Copyright statement at srfi.schemers.org/srfi-process.html
 ;;;
 ;;;===============================================================================
- 
+
 ----------------------------------------------------------------------
 TO RUN : execute examples.scm
 ----------------------------------------------------------------------
 
-Should run out of the box on any R5RS-compliant system that 
+Should run out of the box on any R5RS-compliant system that
 provides (interaction-environment) and load.
 
 Tested on: MzScheme     (compat file provided)
@@ -24,161 +24,161 @@ Tested on: MzScheme     (compat file provided)
 R6RS COMPLIANCE NOTES:
 ======================
 
-SYNTAX-CASE: 
-------------   
+SYNTAX-CASE:
+------------
 
  FULLY R6RS-COMPLIANT, WITH THE FOLLOWING OPTIONAL OR RECOMMENDED FEATURES:
-  
+
    * Expansion algorithm (r6rs optional):
-   
+
        We use a renaming algorithm instead of the mark-antimark
-       algorithm described in the draft.  The difference will not 
+       algorithm described in the draft.  The difference will not
        matter for r6rs-conforming macros.
 
    * Wrapped = Unwrapped (r6rs optional):
-   
-       A wrapped syntax object is the same as an unwrapped syntax 
-       object, and can be directly manipulated using car, cdr, ... 
-       without syntax-case deconstruction.  
+
+       A wrapped syntax object is the same as an unwrapped syntax
+       object, and can be directly manipulated using car, cdr, ...
+       without syntax-case deconstruction.
        This should make porting of legacy low-level macros,
        e.g., explicit renaming or define-macro, easier.
-       Macros depending on this feature wil not be 
-       portable to all r6rs implementations.  
-                 
+       Macros depending on this feature wil not be
+       portable to all r6rs implementations.
+
    * Lexical scoping violation detection (r6rs recommended):
-   
+
        We treat a violation of the following restriction in chapter 8
        as a syntax violation:
-       
-       A definition in the sequence of forms must not define any 
+
+       A definition in the sequence of forms must not define any
        identifier whose binding is used to determine the meaning of the
-       undeferred portions of the definition or any definition that 
-       precedes it in the sequence of forms.       
+       undeferred portions of the definition or any definition that
+       precedes it in the sequence of forms.
 
 LIBRARIES:
 ----------
 
- FULLY R6RS-COMPLIANT WITH ONE EXCEPTION (SEE BELOW) WITH THE FOLLOWING 
- OPTIONAL FEATURES: 
-   
+ FULLY R6RS-COMPLIANT WITH ONE EXCEPTION (SEE BELOW) WITH THE FOLLOWING
+ OPTIONAL FEATURES:
+
    * Phase semantics (r6rs optional):
-   
+
        - A syntax violation is raised at expand-time if a binding is
-         referenced outside its declared levels.  We do this for 
-         both variable references and macro references.  As we are 
+         referenced outside its declared levels.  We do this for
+         both variable references and macro references.  As we are
          entitled to do by R5.97RS, we also check levels for some
          references that occur when free-identifier=? is called.
-         Specifically: 
-          
-         A syntax error is raised if free-identifier=? succeeds 
-         but either argument is outside its declared level.  This is sufficient 
-         to ensure that literals such as ... in syntax-case are used at the 
-         correct level.  See the examples file for more discussion, and for 
-         an explanation of why the levels should not be checked if the 
-         comparison fails.  
-         
+         Specifically:
+
+         A syntax error is raised if free-identifier=? succeeds
+         but either argument is outside its declared level.  This is sufficient
+         to ensure that literals such as ... in syntax-case are used at the
+         correct level.  See the examples file for more discussion, and for
+         an explanation of why the levels should not be checked if the
+         comparison fails.
+
          Note: This choice raises a syntax violation when MzScheme and Chez
                would disagree, thus ensuring that a program blessed by this
-               expander will be maximally portable.  
-                
-       - Any given library is visited at most once per session, and 
+               expander will be maximally portable.
+
+       - Any given library is visited at most once per session, and
          is invoked at most once per session, unless the library is redefined.
          Thus, any state the library may have will persist during the session
-         until it is redefined.  
+         until it is redefined.
 
-         This behaviour, which is R6RS-compliant, avoids possible quadratic 
-         growth in the number of library invocations when importing many libraries 
-         with lots of dependencies.  
-       
-       - While expanding a library form, we use an instance/visit at any phase as 
-         an instance/visit at any other phase.     
-                   
-       - We may create instances/visits of more libraries than are 
-         strictly required to satisfy references, but only in the case - of 
-         which the semantics is unspecified in r6rs - where a library is imported 
-         but none of its bindings is used.  
+         This behaviour, which is R6RS-compliant, avoids possible quadratic
+         growth in the number of library invocations when importing many libraries
+         with lots of dependencies.
+
+       - While expanding a library form, we use an instance/visit at any phase as
+         an instance/visit at any other phase.
+
+       - We may create instances/visits of more libraries than are
+         strictly required to satisfy references, but only in the case - of
+         which the semantics is unspecified in r6rs - where a library is imported
+         but none of its bindings is used.
          Specifically:
-                
-         During expansion of a library or program, each library imported 
-         at phase n > 0 is instantiated once, and each library imported 
-         at phase n >= 0 is visited once.   
-                
-         During execution of a program, each library imported 
+
+         During expansion of a library or program, each library imported
+         at phase n > 0 is instantiated once, and each library imported
+         at phase n >= 0 is visited once.
+
+         During execution of a program, each library imported
          at phase n = 0 is instantiated once.
-       
- KNOWN R6RS-NONCOMPLIANCE:       
-       
-   * Version name and reference are syntax-checked, but otherwise ignored. 
- 
+
+ KNOWN R6RS-NONCOMPLIANCE:
+
+   * Version name and reference are syntax-checked, but otherwise ignored.
+
 ADDITIONAL FEATURES:
-==================== 
+====================
 
    * Separate and joint code organization and expansion:
-   
+
        Libraries and programs may be in separate files or in the same file,
-       and may be separately or jointly expanded. 
+       and may be separately or jointly expanded.
        See example scripts in examples.scm.
 
    * Repl:
-   
-       A REPL is provided that is integrated with the r6rs library system.  
-       Libraries and programs can be defined at, imported into and run in the REPL toplevel. 
-       The ex:repl procedure expands and evaluates a sequence of forms one by one. 
+
+       A REPL is provided that is integrated with the r6rs library system.
+       Libraries and programs can be defined at, imported into and run in the REPL toplevel.
+       The ex:repl procedure expands and evaluates a sequence of forms one by one.
        See example REPL session examples.scm.
 
    * Dynamic loading of libraries:
 
        A non-standard library (rnrs load) is provided containing LOAD, which can be
-       used for dynamic loading of any code, including dynamic loading 
+       used for dynamic loading of any code, including dynamic loading
        of R6RS libraries.
        See example in examples.scm.
-       
+
    * Reflection:
-    
-       A library (rnrs eval reflection (6)) is provided.  
+
+       A library (rnrs eval reflection (6)) is provided.
        It exports the procedure (environment-bindings <environment>).
        Displays for each binding whether it is a variable or macro, its
        source library, and its levels.
-       Very useful for library development and debugging. 
-       See examples of use in examples.scm.  
-       
+       Very useful for library development and debugging.
+       See examples of use in examples.scm.
+
    * Explicit renaming:
-     
-       A compatible explicit renaming library (explicit-renaming) has 
+
+       A compatible explicit renaming library (explicit-renaming) has
        been included.  Although such a library is definable in syntax-case
-       implementations that follow the algorithm described in the r6rs draft, 
+       implementations that follow the algorithm described in the r6rs draft,
        it would be inherently inefficient, suffering from an unavoidable
-       increase in complexity class over comparable syntax-case macros.  
+       increase in complexity class over comparable syntax-case macros.
        Our algorithm does not have this problem, is in fact nothing but
        explicit renaming behind the scenes, and allows us to expose
        explicit renaming efficiently.
-       See further documentation in standard-libraries.scm and 
-       tutorial in examples.scm.  
- 
+       See further documentation in standard-libraries.scm and
+       tutorial in examples.scm.
+
 CHANGELOG:
-========== 
+==========
 
 CHANGES SINCE VERSION OF NOV 6, 2007:
 -------------------------------------
 
 - ONCE PER SESSION SEMANTICS:
   Libraries are now visited/invoked at most ONCE PER SESSION unless
-  they get redefined.  This prevents possible quadratic growth in the 
+  they get redefined.  This prevents possible quadratic growth in the
   number of library invocations when importing many libraries with
-  lots of dependencies.  
-- LOAD ON IMPORT: 
+  lots of dependencies.
+- LOAD ON IMPORT:
   Fixed issue preventing expander from being called reentrantly by
-  ex:load, ex:compile-file, etc.  These can now be used, for example, 
-  to compile/load libraries automatically on import.  
+  ex:load, ex:compile-file, etc.  These can now be used, for example,
+  to compile/load libraries automatically on import.
   See example code in ex:lookup-library in runtime.scm
-  for how to do this.  
-- Fixed bug preventing certain R6RS template extensions from working.  
-  Now the following will work correctly: 
+  for how to do this.
+- Fixed bug preventing certain R6RS template extensions from working.
+  Now the following will work correctly:
    (syntax-case '((1 2 3) (4 5 6) (7 8 9)) ()
-     (((Var ...) 
+     (((Var ...)
        (Var2 ...) ...)
       (syntax
-       ((Var ... Var2 ...) ...))))  ;==> ((1 2 3 4 5 6) (1 2 3 7 8 9)) 
+       ((Var ... Var2 ...) ...))))  ;==> ((1 2 3 4 5 6) (1 2 3 7 8 9))
 - Improved definition of procedure LOAD in (rnrs load).
 - Now raises proper error message when using R6RS-invalid syntax
   (define-syntax (foo x) ----) instead of (define-syntax foo (lambda (x) ----))
@@ -188,9 +188,9 @@ CHANGES SINCE VERSION OF NOV 6, 2007:
 CHANGES SINCE VERSION OF OCT 29, 2007:
 --------------------------------------
 
-- Fixed bug where lists denoted by pattern variables in 
-  templates like ((x y) ...) were not being checked for being 
-  equal in length 
+- Fixed bug where lists denoted by pattern variables in
+  templates like ((x y) ...) were not being checked for being
+  equal in length
 - Fixed bug causing inconsistent/useless toplevel when syntax error
   happened while expanding library
 
@@ -198,13 +198,13 @@ CHANGES SINCE VERSION OF AUG 19, 2007:
 --------------------------------------
 
 - Added non-standard library (rnrs load) containing LOAD, which can be
-  used for dynamic loading of any code, including dynamic loading 
+  used for dynamic loading of any code, including dynamic loading
   of R6RS libraries.
 - Added (r5rs) non-standard library.
 - Added ASSERT to (rnrs base) and (rnrs).
 - Added missing stuff to (rnrs unicode).
 - Added (rnrs sorting), (rnrs records procedural), (rnrs records inspection),
-  (rnrs files), (rnrs arithmetic fixnums), (rnrs arithmetic flonums), 
+  (rnrs files), (rnrs arithmetic fixnums), (rnrs arithmetic flonums),
   (rnrs arithmetic bitwise).
 - Added additional bindings in these libraries to (rnrs).
 - Removed mutable string primitives from (rnrs (6)).
@@ -279,13 +279,13 @@ CHANGES SINCE VERSION OF JULY 12, 2007:
 --------------------------------------
 
 - Immutability checks:
-  It is now a syntax violation if an explicitly exported variable appears on the 
+  It is now a syntax violation if an explicitly exported variable appears on the
   left-hand side of a set! expression, either in the exporting or importing libraries.
   It is also a syntax violation if a variable appears on the left-hand side of a set!
-  expression in any code produced by an exported macro outside of the library in which 
-  the variable is defined. 
-  It is also a syntax violation if a reference to an assigned variable appears in any 
-  code produced by an exported macro outside of the library in which the variable is 
+  expression in any code produced by an exported macro outside of the library in which
+  the variable is defined.
+  It is also a syntax violation if a reference to an assigned variable appears in any
+  code produced by an exported macro outside of the library in which the variable is
   defined.
 - Added library (rnrs eval reflection (6)) for reflection facilities:
   (environment-bindings <environment>) lists the bindings in an environment
@@ -329,17 +329,17 @@ CHANGES SINCE VERSION OF JUNE 22, 2007:
  - as allowed by R6RS, included refined phase checking of arguments to free-identifier=?
    An out of phase error is raised if the comparison succeeds but either argument is
    out of phase.  This is sufficient to ensure that literals such as ... in syntax-case
-   are used in the correct phase.  See the examples file for more discussion.  
+   are used in the correct phase.  See the examples file for more discussion.
  - out of phase uses of internal DEFINE, DEFINE-SYNTAX, LET[REC]-SYNTAX, BEGIN will now give a phase error
  - for portability, out of context references to let[rec]-syntax bindings now give a syntax error
  - refined algorithm for better detection of definitions that affect previously expanded
    undeferred portions of body.  Should now catch all cases.
- - changed syntax of (primitives (id ...)) to (primitives id ...) 
+ - changed syntax of (primitives (id ...)) to (primitives id ...)
  - implemented r6rs library version reference syntax
  - implemented (library ---) import clause
  - EVAL now raises a syntax error for definition or sequence containing definition
- - added (rnrs r5rs) including 
-      (null-environment 5) 
+ - added (rnrs r5rs) including
+      (null-environment 5)
       (scheme-report-environment 5)
       delay and force
  - Added stubs for (rnrs uncode), (rnrs io simple), (rnrs mutable-strings)
@@ -350,22 +350,22 @@ CHANGES SINCE VERSION OF MARCH 1, 2007:
 
  - added Larceny, MzScheme and Chez compatibilty files.
  - procedure ex:expand-file provided, that can be used as an r6rs front end
-   to an existing r5rs compiler.  Libraries and toplevel programs may be in 
-   separate files or in the same file, and may be separately or jointly 
-   expanded or compiled.  Interface is 
+   to an existing r5rs compiler.  Libraries and toplevel programs may be in
+   separate files or in the same file, and may be separately or jointly
+   expanded or compiled.  Interface is
    (ex:expand-file source-filename target-filename dependency ...)
    The dependencies must list the already expanded files
-   containing libraries to be imported.  
+   containing libraries to be imported.
  - added examples and scripts for separate and joint compilation in examples.scm
- - code no longer depends on the non-r5rs assumption of letrec* semantics for 
+ - code no longer depends on the non-r5rs assumption of letrec* semantics for
    internal definitions.
  - replaced uses of define-struct by uses of srfi-9.
  - export-levels of identifiers in standard libraries made consistent with 5.95,
-   although I think 5.95 is still wrong on this.  
- - ... and _ disallowed as literals, although I think 5.95 is wrong on this.   
+   although I think 5.95 is still wrong on this.
+ - ... and _ disallowed as literals, although I think 5.95 is wrong on this.
  - removed requirement that toplevel program should end with expression.
- - removed unused "level" argument in expanded library visiting and instantiation code. 
- - fixed bug that prevented certain redefinitions in toplevel repl (begin ...) sequences.  
+ - removed unused "level" argument in expanded library visiting and instantiation code.
+ - fixed bug that prevented certain redefinitions in toplevel repl (begin ...) sequences.
  - changed contract-violation -> assertion-violation.
  - added (r6rs control) to standard libraries.
  - fixed bug that prevented shadowing of macro keywords by later variable definitions
@@ -380,8 +380,8 @@ CHANGES SINCE VERSION OF DECEMBER 25, 2006:
 -------------------------------------------
 
  - corrected bug in phase shift enforcement while visiting and
-   invoking, which affected behaviour of syntax forms evaluated 
-   in a library's top-level expand-time or runtime sequence.  
+   invoking, which affected behaviour of syntax forms evaluated
+   in a library's top-level expand-time or runtime sequence.
  - (r6rs base) now also exports ... and _ for use with syntax-rules.
 
 CHANGES SINCE VERSION OF DECEMBER 17, 2006:
@@ -389,9 +389,9 @@ CHANGES SINCE VERSION OF DECEMBER 17, 2006:
 
  - dropped unshared instantiation option, keeping only shared semantics.
  - corrected export phase of syntax-rules and identifier-syntax
-   in (r6rs base).  These are now exported for expand instead of 
+   in (r6rs base).  These are now exported for expand instead of
    for run.
- - simplified documentation in readme.    
+ - simplified documentation in readme.
 
 CHANGES SINCE VERSION OF DECEMBER 14, 2006:
 -------------------------------------------
@@ -406,24 +406,22 @@ CHANGES SINCE VERSION OF DECEMBER 14, 2006:
 
 CHANGES SINCE VERSION OF NOVEMBER 27, 2006:
 -------------------------------------------
- 
- - corrected implementation and description of invocation semantics  
-   and its interaction with negative import levels.    
-   
+
+ - corrected implementation and description of invocation semantics
+   and its interaction with negative import levels.
+
 CHANGES SINCE VERSION OF NOVEMBER 5, 2006:
 ------------------------------------------
- 
- - added UNSHARED semantics (see above) as a configurable option.  
- 
+
+ - added UNSHARED semantics (see above) as a configurable option.
+
 CHANGES SINCE VERSION OF SEPTEMBER 13, 2006:
 --------------------------------------------
- 
+
  - added support for scripts.
- - quasisyntax now works with unsyntax(-splicing) instead of unquote(-splicing). 
+ - quasisyntax now works with unsyntax(-splicing) instead of unquote(-splicing).
  - many bug fixes and improvements in code.
- - reorganized standard libraries. 
- - properly avoids defect in R(5.91)RS assigning lexical scope violating 
+ - reorganized standard libraries.
+ - properly avoids defect in R(5.91)RS assigning lexical scope violating
    semantics to certain expressions.
  - implemented library reference syntax.
-   
-   

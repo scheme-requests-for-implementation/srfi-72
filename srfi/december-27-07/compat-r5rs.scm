@@ -8,7 +8,7 @@
 
 ;; A numeric string that uniquely identifies this run in the universe
 
-(define (ex:unique-token) 
+(define (ex:unique-token)
   (display "Type a globally unique nonnegative integer: ")
   (number->string (read)))
 
@@ -26,8 +26,8 @@
 
 ;; Just give this damn thing a binding
 
-(define assertion-violation 
-  (lambda args 
+(define assertion-violation
+  (lambda args
     (display 'assertion-violation)
     (newline)
     (display args)
@@ -61,14 +61,14 @@
 
 ;; The best we can do in r5rs is make these no-ops
 
-(define (file-exists? fn) 
+(define (file-exists? fn)
   #f)
 
 (define (delete-file fn)
   (values))
 
 ;; Only the most minimal extremely partial implementation
-;; of  r6rs records as needed for our specific use cases.  
+;; of  r6rs records as needed for our specific use cases.
 ;; Note that most arguments are ignored.
 
 (define (make-record-type-descriptor name parent uid sealed? opaque? fields)
@@ -80,28 +80,26 @@
 (define (record-accessor rtd k)
   (lambda (r) (vector-ref r (+ k 2))))
 
-(define record-constructor #f) 
-(define record-predicate   #f) 
+(define record-constructor #f)
+(define record-predicate   #f)
 
 (let ((record-tag (list 'record)))
 
-  (set! record-constructor 
-        (lambda (cd) 
+  (set! record-constructor
+        (lambda (cd)
           (lambda args
             (apply vector record-tag cd args))))
-        
-  (set! record-predicate 
-        (lambda (rtd) 
+
+  (set! record-predicate
+        (lambda (rtd)
           (let ((real-vector? (eval 'vector? (scheme-report-environment 5))))
             (lambda (x)
               (and (real-vector? x)
                    (eq? (vector-ref x 0) record-tag)
                    (eq? (vector-ref x 1) rtd))))))
-  
+
   (set! vector?
         (let ((real-vector? (eval 'vector? (scheme-report-environment 5))))
           (lambda (x)
             (and (real-vector? x)
                  (not (eq? (vector-ref x 0) record-tag)))))))
-
-
