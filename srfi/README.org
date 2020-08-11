@@ -1,0 +1,17 @@
+This directory contains the implementation by André van Tonder that
+was originally hosted at:
+
+http://www.het.brown.edu/people/andre/macros/index.htm
+
+That page no longer responds, so I've downloaded that page and the
+most recent version (6.0.2) of the implementation from the Wayback
+Machine here:
+
+[[https://web.archive.org/web/20190211120127/http://www.het.brown.edu/people/andre/macros/index.htm][https://web.archive.org/web/20190211120127/http://www.het.brown.edu/people/andre/macros/index.htm]]
+
+and stored them in this Github repo.
+
+Thanks to Jeronimo Pellegrini for suggesting this and for finding this
+copy on the Wayback Machine.
+
+— SRFI Editor
