@@ -3,15 +3,44 @@ was originally hosted at:
 
 http://www.het.brown.edu/people/andre/macros/index.htm
 
-That page no longer responds, so I've downloaded that page and the
-most recent version (6.0.2) of the implementation from the Wayback
-Machine here:
+That page no longer responds, so I downloaded that page and the most
+recent version (6.0.2) of the implementation from the Wayback Machine
+here:
 
 [[https://web.archive.org/web/20190211120127/http://www.het.brown.edu/people/andre/macros/index.htm][https://web.archive.org/web/20190211120127/http://www.het.brown.edu/people/andre/macros/index.htm]]
 
-and stored them in this Github repo.
+and stored them in this Github repo under [[https://srfi.schemeres.org/srfi-72/srfi/2007-12.27][srfi/2007-12-27]].
 
 Thanks to Jeronimo Pellegrini for suggesting this and for finding this
 copy on the Wayback Machine.
+
+Later, Daphne Preston-Kendal pointed out that that version was more
+recent than the version that was published with this SRFI.
+
+#+begin_quote
+The version of van Tonder’s macro expander included in the SRFI 72
+repository is not the correct one.
+
+After publishing SRFI 72, van Tonder came out with a version meant to
+conform to the (older) psyntax-style semantics chosen by R6RS, which
+SRFI 72 explicitly criticizes (rightly or wrongly). The version in the
+repo [(2007-12-27)] is the later R6RS-style one.
+
+In practice, since R6RS decided on Dybvig’s ‘original’ syntax-case
+semantics, probably nobody will want to run the ‘correct’ version of
+SRFI 72 any more.  But SRFI sample implementations should reflect
+their text as a matter of principle; and van Tonder’s original
+specification is of historical interest, as well as of interest to
+those who might want to implement hygienic macros in other languages
+than Scheme, who might prefer van Tonder’s semantics.
+
+The correct versions are in the Internet Archive here, predating SRFI
+93: <[[https://web.archive.org/web/20060823223350/http://www.het.brown.edu/people/andre/macros/implementation/][https://web.archive.org/web/20060823223350/http://www.het.brown.edu/people/andre/macros/implementation/]]>
+#+end_quote
+
+Therefore, I've downloaded the older, contemporaneous version and
+preserved it under [[https://srfi.schemeres.org/srfi-72/srfi/2005-09-14][srfi/2005-09-14]].
+
+Thanks, Daphne!
 
 — SRFI Editor
