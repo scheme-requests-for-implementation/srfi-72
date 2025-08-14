@@ -1,146 +1,498 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Wayback Machine</title>
-<script src="//archive.org/includes/athena.js" type="text/javascript"></script>
-<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app220.us.archive.org';v.server_ms=216;archive_analytics.send_pageview({});});</script>
-<script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2mqEsuX0" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt" />
-<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ" />
-<script src="https://web-static.archive.org/_static/js/jquery-1.11.1.min.js"></script>
-</head>
-<body style="height:100vh;overflow:hidden;margin:0;display:flex;flex-flow:column nowrap;align-items:stretch;">
-<div style="flex:0 0;">
-<!-- BEGIN WAYBACK TOOLBAR INSERT -->
-<script>__wm.rw(0);</script>
-<div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;">
-<div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
-<div id="donato" style="position:relative;width:100%;">
-  <div id="donato-base">
-    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20060901211239/http%3A//www.het.brown.edu/people/andre/macros/implementation/version%25202.1/simple-syntax-case.scm"
-	    scrolling="no" frameborder="0" style="width:100%; height:100%">
-    </iframe>
-  </div>
-</div><div id="wm-ipp-inside">
-  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;">
-    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
-      <a href="/web/" title="Wayback Machine home page"><img src="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-100.png, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0" /></a>
-    </div>
-    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
-      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm" onfocus="this.focus();this.select();" style="flex:1;"/><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20060901211239" /><input type="submit" value="Go" />
-      </form>
-      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
-                <div class="s" id="wm-nav-captures" style="flex:1;">
-                    <a class="t" href="/web/20060901211239*/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm" title="See a list of every capture for this URL">3 captures</a>
-          <div class="r" title="Timespan for captures of this URL">01 Sep 2006 - 20 Dec 2015</div>
-          </div>
-        <div class="k">
-          <a href="" id="wm-graph-anchor">
-            <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
-              <canvas id="wm-sparkline-canvas" width="725" height="27" border="0"></canvas>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="n">
-      <table>
-        <tbody>
-          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
-          <tr class="m">
-            <td class="b" nowrap="nowrap">Aug</td>
-            <td class="c" id="displayMonthEl" title="You are here: 21:12:39 Sep 01, 2006">SEP</td>
-            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20100629022309/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm" title="29 Jun 2010"><strong>Jun</strong></a></td>
-          </tr>
-          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
-          <tr class="d">
-            <td class="b" nowrap="nowrap"><img src="https://web-static.archive.org/_static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
-            <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 21:12:39 Sep 01, 2006">01</td>
-            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20100629022309/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm" title="02:23:09 Jun 29, 2010"><img src="https://web-static.archive.org/_static/images/toolbar/wm_tb_nxt_on.png" alt="Next capture" width="14" height="16" border="0" /></a></td>
-          </tr>
-          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
-          <tr class="y">
-            <td class="b" nowrap="nowrap">2005</td>
-            <td class="c" id="displayYearEl" title="You are here: 21:12:39 Sep 01, 2006">2006</td>
-            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20100629022309/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm" title="29 Jun 2010"><strong>2010</strong></a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
-      <div id="wm-btns" style="text-align:right;height:23px;">
-                <span class="xxs">
-          <div id="wm-save-snapshot-success">success</div>
-          <div id="wm-save-snapshot-fail">fail</div>
-          <a id="wm-save-snapshot-open" href="#" title="Share via My Web Archive" >
-            <span class="iconochive-web"></span>
-          </a>
-          <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in">
-            <span class="iconochive-person"></span>
-          </a>
-          <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
-        </span>
-                <a class="xxs" href="http://faq.web.archive.org/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
-        <a id="wm-tb-close" href="#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
-      </div>
-      <div id="wm-share" class="xxs">
-        <a href="/web/20060901211239/http://web.archive.org/screenshot/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm"
-           id="wm-screenshot"
-           title="screenshot">
-          <span class="wm-icon-screen-shot"></span>
-        </a>
-        <a href="#" id="wm-video" title="video">
-          <span class="iconochive-movies"></span>
-        </a>
-        <a id="wm-share-facebook" href="#" data-url="https://web.archive.org/web/20060901211239/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
-        <a id="wm-share-twitter" href="#" data-url="https://web.archive.org/web/20060901211239/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
-      </div>
-      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
-        <a id="wm-expand" class="wm-btn wm-closed" href="#expand"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
-      </div>
-    </div>
-  </div>
-    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
-        <div id="wm-capinfo-notice" source="api"></div>
-                <div id="wm-capinfo-collected-by">
-    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">COLLECTED BY</div>
-    <div style="padding:3px;position:relative" id="wm-collected-by-content">
-      <div style="display:inline-block;vertical-align:top;width:49%;">
-			<span class="c-logo" style="background-image:url(https://archive.org/services/img/accelovation)"></span>
-		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/accelovation" target="_new"><span class="wm-title">Accelovation Crawl</span></a></div>
-		<div style="max-height:75px;overflow:hidden;position:relative;">
-	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
-	  Web crawl snapshots generously donated from <a href="http://web.archive.org/web/20060409102451/http://www.accelovation.com/">Accelovation</a>.  This data is currently not publicly accessible.
-<br /><br />
-From <a href="http://web.archive.org/web/20060409102451/http://www.accelovation.com/">the site</a>:
-Accelovation is pioneering the delivery of Insight Discovery™ software solutions that help companies move from innovation idea to product reality faster and with more success.
-<br /><br />
-Our solutions are used by leading firms in the Fortune 500 and beyond – companies from a diverse set of industries ranging from consumer packaged goods to high tech, foods to chemicals, and others. We help them mine the online world for market and technical insights to help speed the process of innovation.
-<br />
-	</div>
-	      </div>
-    </div>
-    </div>
-    <div id="wm-capinfo-timestamps">
-    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center" title="Timestamps for the elements of this page">TIMESTAMPS</div>
-    <div>
-      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
-      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="https://web-static.archive.org/_static/images/loading.gif" alt="loading" /></div>
-    </div>
-    </div>
-  </div></div></div></div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20060901211239/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm</div>
-<script type="text/javascript">//<![CDATA[
-__wm.bt(725,27,25,2,"web","http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm","20060901211239",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt","https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ"], false);
-  __wm.rw(1);
-//]]></script>
-<!-- END WAYBACK TOOLBAR INSERT -->
- </div>
-<iframe id="playback" src="https://web.archive.org/web/20060901211239if_/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-syntax-case.scm" frameborder="0" style="flex:1 0">
-</iframe>
-<script>
-if (window.location.hash) {
-  document.getElementById("playback").src += window.location.hash;
-}
-</script>
-</body>
-</html>
+
+;;;=======================================================================
+;;;
+;;; SYNTAX-CASE: A portable implementation
+;;;
+;;;   Andre van Tonder, 2005 
+;;;
+;;;    Copyright:  Significant parts of this code was adapted
+;;;                from the Scheme48 syntax-rules implementation.
+;;;                I am therefore reproducing their original 
+;;;                copyright notice below. 
+;;; 
+;;;=======================================================================
+
+
+;;=======================================================================
+;;
+;; The Scheme48 copyright notice.
+;;
+;; Copyright (c) 1993-2004 Richard Kelsey and Jonathan Rees
+;; All rights reserved.
+;;
+;; Redistribution and use in source and binary forms, with or without
+;; modification, are permitted provided that the following conditions
+;; are met:
+;; 1. Redistributions of source code must retain the above copyright
+;;    notice, this list of conditions and the following disclaimer.
+;; 2. Redistributions in binary form must reproduce the above copyright
+;;    notice, this list of conditions and the following disclaimer in the
+;;    documentation and/or other materials provided with the distribution.
+;; 3. The name of the authors may not be used to endorse or promote products
+;;    derived from this software without specific prior written permission.
+;;
+;; THIS SOFTWARE IS PROVIDED BY THE AUTHORS ``AS IS'' AND ANY EXPRESS OR
+;; IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+;; OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+;; IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+;; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+;; NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+;; DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+;; THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+;; (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+;; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+;;
+;;=========================================================================
+
+
+;; Assumes simple-macros.scm preloaded.
+
+
+
+(repl '
+ (    
+  
+  (module syntax-case-base (syntax quasisyntax syntax-case)
+    
+    (define-syntax syntax-case
+      (lambda (exp)
+        (if (and (list? exp)
+                 (>= (length exp) 3))
+            (let ((context (car exp))
+                  (subkeywords (caddr exp))
+                  (rules (cdddr exp)))
+              (if (and (list? subkeywords)
+                       (every? identifier? subkeywords)) 
+                  (quasisyntax
+                   (,(process-cases context rules subkeywords) ,(cadr exp)))  
+                  (syntax-error)))
+            (syntax-error))))
+    
+    
+    ;; Since we will redefine SYNTAX, we need a way 
+    ;; to still  refer to the original SYNTAX.
+    
+    (import scheme (lambda (sym)
+                     (case sym
+                       ((syntax) 'scheme:syntax)
+                       (else #f))))
+    
+    (define-syntax syntax
+      (lambda (form)
+        (or (and (pair? (cdr form))
+                 (null? (cddr form)))
+            (syntax-error "Invalid syntax template"))
+        (if (null? pattern-env)
+            (quasisyntax (scheme:syntax ,(cadr form)))
+            (quasisyntax 
+             (quasisyntax  ;; for renaming scope
+              ,,(process-template (cadr form) 
+                                  0
+                                  (car pattern-env)))))))
+      
+     
+    (begin-for-syntax 
+      
+      ;; Toplevel pattern variable environment.
+      ;; Incrementally extended in nested pattern contexts.
+      ;; See the LET-SYNTAX generated by PROCESS-RULE.
+      
+      (define pattern-env (list '()))
+      
+      ;; Mechanism for reflecting expand-time values into syntax  
+      ;; that can be included in generated code for later expand-time
+      ;; access across macro invocations.
+      
+      (define reflected-objects '())
+      
+      (define reflect
+        (let ((n 0))
+          (lambda (x)
+            (set! n (+ n 1))
+            (set! reflected-objects (cons (cons n x) reflected-objects))
+            n)))
+      
+      (define (reify reflected)
+        (cdr (assq reflected reflected-objects)))
+ 
+      
+      ;; Syntax-case helpers:
+      
+      (define (process-cases context rules subkeywords)  
+        
+        (define (make-transformer rules)
+          (if (null? rules)
+              (quasisyntax (lambda (input) (syntax-error)))
+              (quasisyntax
+               (let ((next ,(make-transformer (cdr rules))))
+                 (lambda (input)
+                   (if ,@(process-rule (car rules) (syntax input) (syntax next)) 
+                       (next input))))))) 
+                   
+        (define (process-rule rule input next)       
+          (cond ((and (pair? rule)
+                      (pair? (cdr rule))
+                      (pair? (cddr rule))
+                      (null? (cdddr rule)))
+                 (process-rule (quasisyntax
+                                (,(car rule)
+                                  (if ,(cadr rule)
+                                      ,(caddr rule)
+                                      (,next ,input))))
+                               input
+                               next))
+                ((and (pair? rule)
+                      (pair? (cdr rule))
+                      (null? (cddr rule)))
+                 (let ((pattern (car rule))
+                       (template (cadr rule)))       
+                      
+                   (quasisyntax
+                    ((and ,@(process-match input pattern))
+                     (let ,(process-pattern pattern
+                                            input
+                                            (lambda (x) x))
+                       ;; Dynamically extends the pattern variable environment to control
+                       ;; expansion of SYNTAX forms in subexpressions of template.
+                       (around-syntax
+                        (set! pattern-env 
+                              (cons (append (reify
+                                             ,(reflect (meta-variables pattern
+                                                                       subkeywords
+                                                                       0 
+                                                                       '())))
+                                            (car pattern-env))
+                                    pattern-env))   
+                        ,template 
+                        (set! pattern-env (cdr pattern-env))))))))
+                (else (syntax-error "Ill-formed syntax case:" rule))))
+        
+        ; Generate code to test whether input expression matches pattern
+        
+        (define (process-match input pattern)
+          (cond ((identifier? pattern)
+                 (if (member=? pattern subkeywords bound-identifier=?)
+                     (quasisyntax ((literal-identifier=? ,input (scheme:syntax ,pattern))))
+                     (quasisyntax ())))
+                ((segment-pattern? pattern)
+                 (process-segment-match input (car pattern)))
+                ((pair? pattern)
+                 (let ((temp (syntax temp)))
+                   (quasisyntax 
+                    ((let ((,temp ,input))
+                       (and (pair? ,temp)
+                            ,@(process-match (quasisyntax (car ,temp)) (car pattern))
+                            ,@(process-match (quasisyntax (cdr ,temp)) (cdr pattern))))))))
+                ((or (null? pattern) (boolean? pattern) (char? pattern))
+                 (quasisyntax ((eq? ,input ',pattern))))
+                (else
+                 (quasisyntax ((equal? ,input ',pattern))))))
+        
+        (define (process-segment-match input pattern)
+          (let ((l (syntax l)))
+            (let ((conjuncts (process-match (quasisyntax (car ,l)) pattern)))
+              (if (null? conjuncts)
+                  (quasisyntax ((list? ,input)))			;+++
+                  (quasisyntax 
+                   ((let loop ((,l ,input))
+                      (or (null? ,l)
+                          (and (pair? ,l)
+                               ,@conjuncts
+                               (loop (cdr ,l)))))))))))
+        
+        ; Generate code to take apart the input expression
+        ; This is pretty bad, but it seems to work (can't say why).
+        
+        (define (process-pattern pattern path mapit)
+          (cond ((identifier? pattern)
+                 (if (member=? pattern subkeywords bound-identifier=?)
+                     '()
+                     (list (list pattern (mapit path)))))
+                ((segment-pattern? pattern)
+                 (let ((temp (syntax temp)))
+                   (process-pattern (car pattern)
+                                    temp
+                                    (lambda (x)	;temp is free in x
+                                      (mapit (quasisyntax
+                                              (map (lambda (,temp) ,x)
+                                                   ,path)))))))
+                ((pair? pattern)
+                 (append (process-pattern (car pattern) (quasisyntax (car ,path)) mapit)
+                         (process-pattern (cdr pattern) (quasisyntax (cdr ,path)) mapit)))
+                (else '())))
+        
+        ; Generate code to compose the output expression according to template
+        
+        (make-transformer rules))  ; process-cases
+      
+      
+      (define (process-template template dim env)
+        (cond ((identifier? template)
+               (let ((probe (assoc= template env bound-identifier=?))) 
+                 (if probe
+                     (if (<= (cdr probe) dim)
+                         template
+                         (syntax-error "Syntax-case: Template dimension error (too few ...'s?):" template))
+                     (quasisyntax (scheme:syntax ,template)))))
+              ((segment-template? template)
+               (let* ((depth (segment-depth template))
+                      (seg-dim (+ dim depth))
+                      (vars
+                       (free-meta-variables (car template) seg-dim env '())))  
+                 (if (null? vars)
+                     (syntax-error "too many ...'s:" template)
+                     (let* ((x (process-template (car template)
+                                                 seg-dim
+                                                 env))
+                            (gen (quasisyntax
+                                  (map (lambda ,vars ,x)
+                                       ,@vars)))
+                            (gen (do ((d depth (- d 1))
+                                      (gen gen (quasisyntax (apply append ,gen))))
+                                   ((= d 1)
+                                    gen))))
+                       (if (null? (segment-tail template))
+                           gen		;+++
+                           (quasisyntax
+                            (append ,gen ,(process-template (segment-tail template)
+                                                            dim env))))))))
+              ((pair? template)
+               (quasisyntax
+                (cons ,(process-template (car template) dim env)
+                      ,(process-template (cdr template) dim env))))
+              (else
+               (quasisyntax (quote ,template)))))
+      
+      
+      ;; Return an association list of (var . dim)
+      
+      (define (meta-variables pattern subkeywords dim vars)
+        (cond ((identifier? pattern)
+               (if (member=? pattern subkeywords bound-identifier=?)
+                   vars
+                   (cons (cons pattern dim) vars)))
+              ((segment-pattern? pattern)
+               (meta-variables (car pattern) subkeywords (+ dim 1) vars))
+              ((pair? pattern)
+               (meta-variables (car pattern) subkeywords dim
+                               (meta-variables (cdr pattern) subkeywords dim vars)))
+              (else vars)))
+      
+      
+      ;; Return a list of meta-variables of given higher dim
+      
+      (define (free-meta-variables template dim env free)
+        (cond ((identifier? template)
+               (if (and (not (member=? template free bound-identifier=?))
+                        (let ((probe (assoc= template env bound-identifier=?)))  
+                          (and probe (>= (cdr probe) dim))))
+                   (cons template free)
+                   free))
+              ((segment-template? template)
+               (free-meta-variables (car template)
+                                    dim env
+                                    (free-meta-variables (cddr template)
+                                                         dim env free)))
+              ((pair? template)
+               (free-meta-variables (car template)
+                                    dim env
+                                    (free-meta-variables (cdr template)
+                                                         dim env free)))
+              (else free)))
+      
+      
+      ;; Ellipsis utilities:
+      
+      (define indicators-for-zero-or-more (list (quasisyntax ...)))
+      
+      (define (segment-pattern? pattern)
+        (and (segment-template? pattern)
+             (or (null? (cddr pattern))
+                 (syntax-error "segment matching not implemented" pattern))))
+      
+      (define (segment-template? pattern)
+        (and (pair? pattern)
+             (pair? (cdr pattern))
+             (member=? (cadr pattern) indicators-for-zero-or-more literal-identifier=?)))
+      
+      ; Count the number of `...'s in PATTERN.
+      
+      (define (segment-depth pattern)
+        (if (segment-template? pattern)
+            (+ 1 (segment-depth (cdr pattern)))
+            0))
+      
+      ; Get whatever is after the `...'s in PATTERN.
+      
+      (define (segment-tail pattern)
+        (let loop ((pattern (cdr pattern)))
+          (if (and (pair? pattern)
+                   (member=? (car pattern) indicators-for-zero-or-more literal-identifier=?))
+              (loop (cdr pattern))
+              pattern)))
+      
+      
+      ;; We redefine QUASISYNTAX so that implicit unquoting will work
+      ;; as expected in the scope of a syntax-case pattern clause.
+      ;; This is done as follows:
+      ;; If a subexpression contains a level-0 unquote or unquote-splicing,
+      ;; expand as one would a quasisyntax and recurse.
+      ;; If not, wrap subexpression in SYNTAX so that implicit substitions
+      ;; will be performed by the algorithm for the latter.
+      
+      (define (expand-quasisyntax x quoter)  
+        
+        (define (contains-unquoted? x level)
+          
+          (cond
+            ((tag-backquote? x)                (contains-unquoted? (cadr x) (+ level 1)))
+            ((and (= level 0)
+                  (tag-comma? x)
+                  (pair? (cdr x)) 
+                  (null? (cddr x)))            #t)             
+            ((and (= level 0)
+                  (pair? x)
+                  (tag-comma? (car x)))        #t)
+            ((and (= level 0)
+                  (pair? x)
+                  (tag-comma-atsign? (car x))) #t)
+            ((and (> level 0)
+                  (or (tag-comma? x)
+                      (tag-comma-atsign? x)))  (contains-unquoted? (cdr x) (- level 1)))
+            ((pair? x)                         (or (contains-unquoted? (car x) level)
+                                                   (contains-unquoted? (cdr x) level)))
+            ((null? x)                         #f)
+            ((identifier? x)                   #f)
+            ((vector? x)                       (contains-unquoted? (vector->list x) level))
+            (else                              #f)))
+        
+        (define (qq-expand x level)
+          (cond
+            ((not (contains-unquoted? x level)) (quoter x))
+            ((tag-backquote? x)                 (quasisyntax
+                                                 (list ,(quoter (car x))
+                                                       ,(qq-expand (cadr x) (+ level 1)))))
+            ((and (= level 0)
+                  (tag-comma? x)
+                  (pair? (cdr x)) 
+                  (null? (cddr x)))             (cadr x))            
+            ((and (= level 0)
+                  (pair? x)
+                  (tag-comma? (car x)))         (quasisyntax
+                                                 (append (list . ,(cdar x))
+                                                         ,(qq-expand (cdr x) 0))))
+            ((and (= level 0)
+                  (pair? x)
+                  (tag-comma-atsign? (car x)))  (quasisyntax
+                                                 (append (append . ,(cdar x))
+                                                         ,(qq-expand (cdr x) 0))))
+            ((and (> level 0)
+                  (or (tag-comma? x)
+                      (tag-comma-atsign? x)))   (quasisyntax
+                                                 (cons ,(quoter (car x))
+                                                       ,(qq-expand (cdr x) (- level 1)))))
+            ((pair? x)                          (quasisyntax
+                                                 (cons ,(qq-expand (car x) level)
+                                                       ,(qq-expand (cdr x) level))))
+            ((null? x)                          (quasisyntax '()))
+            ((identifier? x)                    (quoter x))
+            ((vector? x)                        (quasisyntax
+                                                 (list->vector ,(qq-expand (vector->list x) level))))
+            (else                               x)))
+        
+        (define (tag-comma? x)        (and (pair? x) 
+                                           (literal-identifier=? (car x) (syntax unquote))))
+        (define (tag-comma-atsign? x) (and (pair? x)
+                                           (literal-identifier=? (car x) (syntax unquote-splicing))))
+        (define (tag-backquote? x)    (and (pair? x)
+                                           (pair? (cdr x))
+                                           (null? (cddr x))
+                                           (literal-identifier=? (car x) (syntax quasisyntax))))
+        (define (tag-dots? x)         (and (pair? x)
+                                           (pair? (cdr x))
+                                           (literal-identifier=? (cadr x) (syntax ...))))
+        
+        (qq-expand x 0))
+      
+  
+      ;; This gets expanded with the imported quasisyntax.
+      ;; It is then used to redefine quasisyntax below.
+      
+      (define quasisyntax-transformer 
+        (lambda (form)
+          (or (and (pair? (cdr form))
+                   (null? (cddr form)))
+              (syntax-error "Invalid quasisyntax template"))
+          (let ((implicit-syntax (datum->syntax-object (car form) 'syntax)))
+            (quasisyntax    
+             (quasisyntax  ;; for renaming scope
+              ,,(expand-quasisyntax (cadr form)
+                                    (lambda (e)
+                                      (quasisyntax (,implicit-syntax ,e)))))))))
+  
+      ) ; begin-for-syntax
+            
+    (define-syntax quasisyntax quasisyntax-transformer)
+    
+
+    ;; List and alist utilities:
+    
+    (begin-for-syntax 
+      
+      (define (member=? x ls =)
+        (cond ((null? ls) #f)
+              ((pair? ls) (or (= x (car ls))
+                              (member=? x (cdr ls) =)))
+              (else (error "Member=?" x ls =))))
+      
+      (define (assoc= x alist =)
+        (cond ((null? alist)      #f)
+              ((= x (caar alist)) (car alist))
+              (else               (assoc= x (cdr alist) =))))
+      
+      (define (every? p? ls)
+        (cond ((null? ls) #t)
+              ((pair? ls) (and (p? (car ls))
+                               (every? p? (cdr ls))))
+              (else #f)))
+      
+      ) ; begin-for-syntax  
+    
+    ) ; syntax-case-base
+  
+  
+  (module syntax-case (syntax
+                       quasisyntax
+                       syntax-case
+                       with-syntax
+                       syntax-rules)
+    
+    (import syntax-case-base)
+    
+    (begin-for-syntax 
+      (import syntax-case-base))
+    
+    ;; The usual macros:
+    
+    (define-syntax with-syntax
+      (lambda (x)
+        (syntax-case x ()
+          ((_ ((p e0) ...) e1 e2 ...)
+           (syntax (syntax-case (list e0 ...) ()
+                     ((p ...) (begin e1 e2 ...))))))))
+    
+    (define-syntax syntax-rules
+      (lambda (x)
+        (syntax-case x ()
+          ((_ (i ...) ((keyword . pattern) template) ...)
+           (syntax (lambda (form)
+                     (syntax-case form (i ...)
+                       ((dummy . pattern) (syntax template))
+                       ...)))))))
+    
+    ) ; syntax-case
+  
+  
+  
+  )) ; repl
+

@@ -1,146 +1,1116 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Wayback Machine</title>
-<script src="//archive.org/includes/athena.js" type="text/javascript"></script>
-<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app28.us.archive.org';v.server_ms=215;archive_analytics.send_pageview({});});</script>
-<script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2mqEsuX0" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt" />
-<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ" />
-<script src="https://web-static.archive.org/_static/js/jquery-1.11.1.min.js"></script>
-</head>
-<body style="height:100vh;overflow:hidden;margin:0;display:flex;flex-flow:column nowrap;align-items:stretch;">
-<div style="flex:0 0;">
-<!-- BEGIN WAYBACK TOOLBAR INSERT -->
-<script>__wm.rw(0);</script>
-<div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;">
-<div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
-<div id="donato" style="position:relative;width:100%;">
-  <div id="donato-base">
-    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20060901211402/http%3A//www.het.brown.edu/people/andre/macros/implementation/version%25202.1/simple-macros-tests.scm"
-	    scrolling="no" frameborder="0" style="width:100%; height:100%">
-    </iframe>
-  </div>
-</div><div id="wm-ipp-inside">
-  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;">
-    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
-      <a href="/web/" title="Wayback Machine home page"><img src="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-100.png, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0" /></a>
-    </div>
-    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
-      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm" onfocus="this.focus();this.select();" style="flex:1;"/><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20060901211402" /><input type="submit" value="Go" />
-      </form>
-      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
-                <div class="s" id="wm-nav-captures" style="flex:1;">
-                    <a class="t" href="/web/20060901211402*/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm" title="See a list of every capture for this URL">3 captures</a>
-          <div class="r" title="Timespan for captures of this URL">01 Sep 2006 - 20 Dec 2015</div>
-          </div>
-        <div class="k">
-          <a href="" id="wm-graph-anchor">
-            <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
-              <canvas id="wm-sparkline-canvas" width="725" height="27" border="0"></canvas>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="n">
-      <table>
-        <tbody>
-          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
-          <tr class="m">
-            <td class="b" nowrap="nowrap">Aug</td>
-            <td class="c" id="displayMonthEl" title="You are here: 21:14:02 Sep 01, 2006">SEP</td>
-            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20100629020854/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm" title="29 Jun 2010"><strong>Jun</strong></a></td>
-          </tr>
-          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
-          <tr class="d">
-            <td class="b" nowrap="nowrap"><img src="https://web-static.archive.org/_static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
-            <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 21:14:02 Sep 01, 2006">01</td>
-            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20100629020854/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm" title="02:08:54 Jun 29, 2010"><img src="https://web-static.archive.org/_static/images/toolbar/wm_tb_nxt_on.png" alt="Next capture" width="14" height="16" border="0" /></a></td>
-          </tr>
-          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
-          <tr class="y">
-            <td class="b" nowrap="nowrap">2005</td>
-            <td class="c" id="displayYearEl" title="You are here: 21:14:02 Sep 01, 2006">2006</td>
-            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20100629020854/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm" title="29 Jun 2010"><strong>2010</strong></a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
-      <div id="wm-btns" style="text-align:right;height:23px;">
-                <span class="xxs">
-          <div id="wm-save-snapshot-success">success</div>
-          <div id="wm-save-snapshot-fail">fail</div>
-          <a id="wm-save-snapshot-open" href="#" title="Share via My Web Archive" >
-            <span class="iconochive-web"></span>
-          </a>
-          <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in">
-            <span class="iconochive-person"></span>
-          </a>
-          <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
-        </span>
-                <a class="xxs" href="http://faq.web.archive.org/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
-        <a id="wm-tb-close" href="#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
-      </div>
-      <div id="wm-share" class="xxs">
-        <a href="/web/20060901211402/http://web.archive.org/screenshot/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm"
-           id="wm-screenshot"
-           title="screenshot">
-          <span class="wm-icon-screen-shot"></span>
-        </a>
-        <a href="#" id="wm-video" title="video">
-          <span class="iconochive-movies"></span>
-        </a>
-        <a id="wm-share-facebook" href="#" data-url="https://web.archive.org/web/20060901211402/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
-        <a id="wm-share-twitter" href="#" data-url="https://web.archive.org/web/20060901211402/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
-      </div>
-      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
-        <a id="wm-expand" class="wm-btn wm-closed" href="#expand"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
-      </div>
-    </div>
-  </div>
-    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
-        <div id="wm-capinfo-notice" source="api"></div>
-                <div id="wm-capinfo-collected-by">
-    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">COLLECTED BY</div>
-    <div style="padding:3px;position:relative" id="wm-collected-by-content">
-      <div style="display:inline-block;vertical-align:top;width:49%;">
-			<span class="c-logo" style="background-image:url(https://archive.org/services/img/accelovation)"></span>
-		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/accelovation" target="_new"><span class="wm-title">Accelovation Crawl</span></a></div>
-		<div style="max-height:75px;overflow:hidden;position:relative;">
-	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
-	  Web crawl snapshots generously donated from <a href="http://web.archive.org/web/20060409102451/http://www.accelovation.com/">Accelovation</a>.  This data is currently not publicly accessible.
-<br /><br />
-From <a href="http://web.archive.org/web/20060409102451/http://www.accelovation.com/">the site</a>:
-Accelovation is pioneering the delivery of Insight Discovery™ software solutions that help companies move from innovation idea to product reality faster and with more success.
-<br /><br />
-Our solutions are used by leading firms in the Fortune 500 and beyond – companies from a diverse set of industries ranging from consumer packaged goods to high tech, foods to chemicals, and others. We help them mine the online world for market and technical insights to help speed the process of innovation.
-<br />
-	</div>
-	      </div>
-    </div>
-    </div>
-    <div id="wm-capinfo-timestamps">
-    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center" title="Timestamps for the elements of this page">TIMESTAMPS</div>
-    <div>
-      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
-      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="https://web-static.archive.org/_static/images/loading.gif" alt="loading" /></div>
-    </div>
-    </div>
-  </div></div></div></div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20060901211402/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm</div>
-<script type="text/javascript">//<![CDATA[
-__wm.bt(725,27,25,2,"web","http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm","20060901211402",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt","https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ"], false);
-  __wm.rw(1);
-//]]></script>
-<!-- END WAYBACK TOOLBAR INSERT -->
- </div>
-<iframe id="playback" src="https://web.archive.org/web/20060901211402if_/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros-tests.scm" frameborder="0" style="flex:1 0">
-</iframe>
-<script>
-if (window.location.hash) {
-  document.getElementById("playback").src += window.location.hash;
-}
-</script>
-</body>
-</html>
+
+
+;;;===========================================================
+;;;
+;;; Portable Hygienic Macros: Examples and Tests
+;;;
+;;;   Andre van Tonder
+;;;
+;;;===========================================================
+
+(load "simple-macros.scm")
+(load "simple-syntax-case.scm")
+
+  
+(repl '
+ (
+  
+
+  ;;=========================================================================
+  ;;
+  ;; Introductory examples:
+  ;;
+  ;;=========================================================================
+  
+  (define-syntax (swap! a b)
+    (quasisyntax
+     (let ((temp ,a)) 
+       (set! ,a ,b) 
+       (set! ,b temp))))
+
+  (let ((temp 1)
+        (set! 2))
+    (swap! set! temp)
+    (values temp set!))   ;==> 2 1
+  
+  
+  ;; Simplified COND:
+  
+  (define-syntax (my-cond c . cs)
+    (if (literal-identifier=? (car c) (syntax else))
+        (quasisyntax (begin ,@(cdr c)))
+        (if (null? cs)                      
+            (quasisyntax (if ,(car c) (begin ,@(cdr c))))
+            (quasisyntax (if ,(car c)
+                             (begin ,@(cdr c))
+                             (my-cond ,@cs))))))
+ 
+  (my-cond (#f 1) (else 2))                 ;==> 2
+  (let ((else #f)) (my-cond (else 2)))      ;==> unspecified
+  
+  ;; Equivalently, with SYNTAX-CASE:
+
+  (begin-for-syntax 
+    (import syntax-case))
+  
+ 
+  (define-syntax my-cond
+    (lambda (form)
+      (syntax-case form (else)
+        ((_ (else e1 ...) c1 ...) (syntax (begin e1 ...)))
+        ((_ (e0 e1 ...))          (syntax (if e0 (begin e1 ...))))
+        ((_ (e0 e1 ...) c1 ...)   (syntax (if e0
+                                              (begin e1 ...)
+                                              (my-cond c1 ...)))))))
+
+
+  (my-cond (#f 1) (else 2))                 ;==> 2
+  (let ((else #f)) (my-cond (else 2)))      ;==> unspecified
+
+  
+  ;; Another nontrivial macro using only primitives, to be done
+  ;; further down also with syntax-case:
+
+  (define-syntax case   
+    (lambda (form)
+      (or (and (list? form)
+               (>= (length form) 3))
+          (syntax-error))
+      (let ((e     (cadr form))
+            (c1    (caddr form))
+            (c2... (cdddr form)))
+        (quasisyntax
+         (let ((t ,e))
+           ,(let f ((c1 c1) 
+                    (cmore c2...))
+              (or (and (list? c1)
+                       (>= (length c1) 2))
+                  (syntax-error))
+              (if (null? cmore)
+                  (cond ((literal-identifier=? (car c1) (syntax else))
+                         (quasisyntax 
+                          (begin ,@(cdr c1))))
+                        ((list? (car c1))
+                         (quasisyntax 
+                          (if (memv t ',(car c1))
+                              (begin ,@(cdr c1)))))
+                        (else (syntax-error)))
+                  (cond ((list? (car c1))
+                         (quasisyntax
+                          (if (memv t ',(car c1))
+                              (begin ,@(cdr c1))
+                              ,(f (car cmore) 
+                                  (cdr cmore)))))
+                        (else (syntax-error))))))))))
+
+  (case 'a
+    ((b c) 'no)
+    ((d a) 'yes))   ;==> yes
+
+
+  ;;=========================================================================
+  ;; 
+  ;; Syntax and quasisyntax semantics:
+  ;;
+  ;;=========================================================================
+  
+  
+  (bound-identifier=? (syntax x) (syntax x))                ;==> #f
+  (bound-identifier=? (quasisyntax x) (quasisyntax x))      ;==> #f
+  
+  (quasisyntax ,(bound-identifier=? (syntax x) (syntax x))) ;==> #t
+
+  (let-syntax ((f (lambda (form) (syntax (syntax x)))))
+    (quasisyntax ,(bound-identifier=? (f)
+                                      (f))))                ;==> #f
+  
+  (let ((y (syntax (x x))))
+    (bound-identifier=? (car y) (cadr y)))                  ;==> #t
+
+
+  (let ((x 1))
+    (let-syntax ((m (lambda (form)
+                      (quasisyntax
+                       (let ((x 2))
+                         (let-syntax ((n (lambda (form)
+                                           (free-identifier=? (cadr form) 
+                                                              (syntax x)))))
+                           (n ,(cadr form))))))))
+      (m x)))  ;==> #f
+
+  ;; SYNTAX inside QUASISYNTAX preserves bound-identifier=?
+
+  (let-syntax ((m (lambda (_) 
+                    (quasisyntax 
+                     (let ((,(syntax x) 1)) ,(syntax x))))))
+    (m))   ;==> 1
+ 
+  ;; With this semantics, macro-generating macros work correctly.
+
+  (let-syntax ((m (lambda (form)
+                    (let ((x (cadr form)))
+                      (quasisyntax 
+                       (let-syntax ((n (lambda (_)
+                                         (quasisyntax (let ((,(syntax ,x) 4)) ,(syntax ,x))))))
+                         (n)))))))
+    (m z))  ;==> 4
+                        
+  ;; and are exactly equivalent to the corresponding SYNTAX-CASE forms:
+  
+  (let-syntax ((m (lambda (form)
+                    (syntax-case form ()
+                      ((_ x) (syntax 
+                              (let-syntax ((n (lambda (_)
+                                                (syntax (let ((x 4)) x)))))
+                                (n))))))))
+    (m z))   ;==> 4
+
+
+  ;; Using more generative SYNTAX semantics to define generate-temporaries:
+
+  (define-syntax letrec0
+    (lambda (x)
+
+      (define (generate-temporaries ls)
+        (map (lambda (x) (syntax temp)) ls))
+      
+      (syntax-case x ()
+        ((_ ((i v) ...) e1 e2 ...)
+         (with-syntax (((t ...) (generate-temporaries (syntax (i ...)))))
+           (syntax (let ((i #f) ...)
+                     (let ((t v) ...)
+                       (set! i t) ...
+                       (let () e1 e2 ...)))))))))
+
+  (letrec0 ((x (lambda () y))
+            (y (lambda () 1)))
+    (y))                       ;==> 1
+  
+
+
+  ;;==========================================================================
+  ;;
+  ;; Examples of improved hygiene:
+  ;;
+  ;;==========================================================================
+
+  ;; In traditional SYNTAX-CASE, the procedural forms of the macros
+  ;; below would have accidental variable capture and/or violate
+  ;; referential transparency:
+  
+  (let-syntax ((main (lambda (form)
+                       
+                       (define (make-swap x y)
+                         (quasisyntax 
+                          (let ((t ,x))
+                            (set! ,x ,y)
+                            (set! ,y t))))
+                       
+                       (quasisyntax
+                        (let ((s 1)
+                              (t 2))
+                          ,(make-swap (syntax s) (syntax t))
+                          (list s t))))))
+    (main))  ;==> (2 1)
+  
+  
+  (begin-for-syntax
+    (define (make-swap x y)
+      (quasisyntax 
+       (let ((t ,x))
+         (set! ,x ,y)
+         (set! ,y t)))))
+    
+  (define-syntax (main)
+    (quasisyntax
+     (let ((s 1)
+           (t 2))
+       ,(make-swap (syntax s) (syntax t))
+       (list s t))))
+  
+  (main)   ;==> (2 1)
+
+  
+  ;========
+  
+  (letrec-syntax ((help (syntax-rules () ((help) (list 1 2))))
+                  (main (syntax-rules () ((main) (let ((list +)) (help))))))
+    (main)) ;==> (1 2)
+
+  ;; equivalent to:
+  
+  (let-syntax ((main (lambda (_)
+                       (define (help) (syntax (list 1 2)))
+                       (with-syntax ((rest (help)))
+                         (syntax (let ((list +)) rest))))))
+    (main)) ;==> (1 2)
+  
+  ;;============
+  
+  (let ((x 1))
+    (letrec-syntax ((help (syntax-rules () ((help) x)))
+                    (main (syntax-rules () ((main) (let ((x 2)) (help))))))
+      (main))) ;==> 1
+
+  ;; equivalent to:
+  
+  (let ((x 1))
+    (let-syntax ((main (lambda (form)
+                         (define (help) (syntax x))
+                         (with-syntax ((rest (help))) (syntax (let ((x 2)) rest))))))
+      (main))) ;==> 1
+
+  ;; or more concisely:
+  
+  (let ((x 1))
+    (let-syntax ((main (lambda (form)
+                         (define (help) (syntax x))
+                         (quasisyntax (let ((x 2)) ,(help))))))
+      (main))) ;==> 1
+
+  ;; but not equivalent to:
+  
+  (let ((x 1))
+    (let-syntax ((main (lambda (form)
+                         (quasisyntax (let ((x 2)) ,(syntax x))))))
+      (main))) ;==> 2
+
+  ;============
+  
+  (letrec-syntax ((help (syntax-rules () ((help y) (let ((x 2)) y))))
+                  (main (syntax-rules () ((main)   (let ((x 1)) (help x))))))
+    (main))
+
+  ;; equivalent to:
+  
+  (let ((x 1))
+    (let-syntax ((main (lambda (form)
+                         (define (help y) 
+                           (with-syntax ((y y)) 
+                             (syntax (let ((x 2)) y))))
+                         (with-syntax ((x (syntax x)))
+                           (with-syntax ((rest (help (syntax x))))
+                             (let ((x 1)) rest))))))
+      (main)))
+
+  ;; or more concisely:
+  
+  (let ((x 1))
+    (let-syntax ((main (lambda (form)
+                         (define (help y) 
+                           (quasisyntax (let ((x 2)) ,y)))
+                         (quasisyntax (let ((x 1)) ,(help (syntax x)))))))
+      (main)))
+
+
+  ;; A more practical example:
+  ;; The following macro does not suffer from accidental variable capture:
+  
+  (define-syntax let-in-order
+    (lambda (form)
+      (syntax-case form ()
+        ((_ ((i e) ...) e0 e1 ...)         
+         (let f ((ies (syntax ((i e) ...)))
+                 (its '())) 
+           (syntax-case ies () 
+             (()            (with-syntax ((its its))
+                              (syntax (let its e0 e1 ...))))
+             (((i e) . ies) (with-syntax ((t (syntax t)))
+                              (with-syntax ((rest (f (syntax ies)
+                                                     (cons (syntax (i t)) its))))
+                                (syntax (let ((t e)) rest)))))))))))  
+
+  
+  (let-in-order ((x 1)
+                 (y 2))
+    (+ x y))                ;==> 3
+
+  ;; ... whereas the same macro would give the wrong answer 4 in
+  ;; traditional SYNTAX-CASE implementations.
+  
+  ;; A bit shorter with QUASISYNTAX, which does not invert the
+  ;; structure of the code as above.  Also, the embedded occurrence
+  ;; of SYNTAX is regarded as a continuation of the outer QUASISYNTAX
+  ;; for the purpose of bound-identifier=? equivalence,
+  ;; so we do not need to introduce t separately.  
+  
+  (define-syntax let-in-order
+    (lambda (form)
+      (syntax-case form ()
+        ((_ ((i e) ...) e0 e1 ...)         
+         (let f ((ies (syntax ((i e) ...)))
+                 (its (syntax ()))) 
+           (syntax-case ies () 
+             (()            (quasisyntax (let ,its e0 e1 ...)))
+             (((i e) . ies) (quasisyntax 
+                             (let ((t e))
+                               ,(f (syntax ies)
+                                   (quasisyntax ((i t) ,@its))))))))))))
+  
+  (let-in-order ((x 1)
+                 (y 2))
+    (+ x y))                ;==> 3
+  
+ 
+  ;; The same macro expressed without syntax-case:
+
+  (define-syntax (let-in-order bindings . body)
+    (let f ((ies bindings)
+            (its (syntax ()))) 
+      (cond ((null? ies) (quasisyntax (let ,its ,@body)))
+            ((pair? ies) (quasisyntax
+                          (let ((t ,(cadar ies)))
+                            ,(f (cdr ies)
+                                (quasisyntax ((,(caar ies) t) ,@its)))))))))
+
+  (let-in-order ((x 1)
+                 (y 2))
+    (+ x y))                ;==> 3
+  
+  
+  ;;=========================================================================
+  ;;
+  ;; Syntactic tower examples
+  ;;
+  ;;=========================================================================
+
+   
+  (let ((x 1))
+    (let-syntax ((m (lambda (form)
+                      (let ((x 2))
+                        (syntax x)))))
+      (m)))  ;==> 1
+
+  
+  (let ((x 1))
+    (let-syntax ((m (lambda (form)
+                      (let ((x 2))
+                        (let-syntax ((n (lambda (form)
+                                          (let ((x 3))
+                                            (syntax (syntax x))))))
+                          (n))))))
+      (m)))  ;==> 1
+
+
+  
+  (let ((x 1))
+    (let-syntax ((m (lambda (form)
+                      (let ((x 2))
+                        (let-syntax ((n (lambda (form)
+                                          (syntax
+                                           (let ((y x))
+                                             (quasisyntax (list x ,y)))))))
+                          (n))))))
+      (m))) ;==> (1 2)
+
+
+  (define x 1)
+  (begin-for-syntax (define x 2))
+  
+  (let-syntax ((m (lambda (form)
+                    (quasisyntax (list x ,x)))))
+    (m))  ;==> (1 2)
+
+
+  (define x 0)
+  (begin-for-syntax
+    (define x 1)
+    (begin-for-syntax
+      (define x 2)))
+
+  (let-syntax ((foo (lambda (form)
+                      (let-syntax ((bar (lambda (form)
+                                          (quasisyntax
+                                           (quasisyntax 
+                                            (list x ,x ,,x))))))
+                        (bar)))))
+      (foo)) ;==> (0 1 2)
+  
+  
+  ;; In the following, all the references to x appear in the completely 
+  ;; expanded expression (cons x (cons x (cons x (list x)))) at syntactic
+  ;; level 0, and therefore all refer to the level 0 binding 'a.
+  ;; As long as the final expression is well-formed, there can be no
+  ;; "displaced identifier" errors.  
+  
+  (begin-for-syntax 
+    (define x 'b)
+    (begin-for-syntax 
+      (define x 'c)
+      (begin-for-syntax 
+        (define x 'd))))
+  
+  (let ((x 'a))
+    (let-syntax ((m (lambda (form)
+                      (let-syntax ((n (lambda (form)
+                                        (let-syntax ((o (lambda (form)
+                                                          (let-syntax ((p (lambda (form)
+                                                                            (syntax (syntax (list x))))))
+                                                            (quasisyntax (syntax (cons x ,(p))))))))
+                                          (quasisyntax (syntax (cons x ,(o))))))))
+                        (quasisyntax (cons x ,(n)))))))
+      (m)))   ;==> (a a a a)
+  
+ 
+
+  ;;=========================================================================
+  ;;
+  ;; Around-syntax:
+  ;;
+  ;;=========================================================================
+  
+
+  (begin-for-syntax
+   (define env (list (syntax a))))
+
+  (let-syntax ((foo (lambda (form)
+                      (quasisyntax ',env))))
+    (list
+     (around-syntax (set! env (cons (syntax b) env))
+                    (foo)
+                    (set! env (cdr env)))
+     (foo)))
+
+          ;==> ((b a) (a))
+
+ 
+  ;;=========================================================================
+  ;;
+  ;; Composing macros with intentional variable capture using DATUM->SYNTAX
+  ;;
+  ;;=========================================================================
+  
+
+  (define-syntax if-it
+    (lambda (x)
+      (syntax-case x ()
+        ((k e1 e2 e3)
+         (with-syntax ((it (datum->syntax-object (syntax k) 'it)))
+           (syntax (let ((it e1))
+                     (if it e2 e3)))))))) 
+  
+  (define-syntax when-it
+    (lambda (x)
+      (syntax-case x ()
+        ((k e1 e2)
+         (with-syntax ((it* (datum->syntax-object (syntax k) 'it)))
+           (syntax (if-it e1
+                          (let ((it* it)) e2)
+                          (if #f #f))))))))
+  
+  (define-syntax my-or
+    (lambda (x)
+      (syntax-case x ()
+        ((k e1 e2)
+         (syntax (if-it e1 it e2))))))
+
+  (if-it 2 it 3)    ;==> 2
+  (when-it 42 it)   ;==> 42
+  (my-or 2 3)       ;==> 2
+  ; (my-or #f it)   ;==> undefined identifier: it
+                                       
+  
+  (let ((it 1)) (if-it 42 it #f))   ;==> 42
+  (let ((it 1)) (when-it 42 it))    ;==> 42
+  (let ((it 1)) (my-or #f it))      ;==> 1
+  (let ((if-it 1)) (when-it 42 it)) ;==> 42
+  
+  
+
+  ;;=========================================================================
+  ;;
+  ;; Composing macros with intentional variable capture using
+  ;; MAKE-FLUID-IDENTIFIER:
+  ;;
+  ;;=========================================================================
+  
+  (define-syntax if-it
+    (lambda (x)
+      (syntax-case x ()
+        ((k e1 e2 e3)
+         (with-syntax ((it (make-capturing-identifier (syntax here) 'it)))
+           (syntax (let ((it e1))
+                     (if it e2 e3)))))))) 
+  
+  (define-syntax when-it
+    (lambda (x)
+      (syntax-case x ()
+        ((k e1 e2)
+         (syntax (if-it e1 e2 (if #f #f)))))))
+  
+  (define-syntax my-or
+    (lambda (x)
+      (syntax-case x ()
+        ((k e1 e2)
+         (syntax (let ((thunk (lambda () e2)))
+                   (if-it e1 it (thunk))))))))
+
+  (if-it 2 it 3)    ;==> 2
+  (when-it 42 it)   ;==> 42
+  (my-or 2 3)       ;==> 2
+  ; (my-or #f it)   ;==> undefined identifier: it
+                                       
+  
+  (let ((it 1)) (if-it 42 it #f))   ;==> 1
+  (let ((it 1)) (when-it 42 it))    ;==> 1
+  (let ((it 1)) (my-or 42 it))      ;==> 42
+  (let ((it 1)) (my-or #f it))      ;==> 1
+  (let ((if-it 1)) (when-it 42 it)) ;==> 42
+  
+
+  ;;=========================================================================
+  ;;
+  ;; Loop macro - see Petrofsky discussion at
+  ;; http://groups-beta.google.com/group/comp.lang.scheme/msg/5438d13dae4b9f71
+  ;;
+  ;;=========================================================================
+
+  (define-syntax loop 
+    (lambda (x) 
+      (syntax-case x () 
+        ((k e ...) 
+         (with-syntax ((break (make-capturing-identifier (syntax here) 'break))) 
+           (syntax
+            (call-with-current-continuation
+             (lambda (break) 
+               (let f () e ... (f)))))))))) 
+
+  (loop 
+   (break 'foo))     ;==> foo
+
+  (loop 
+   (loop 
+    (break 'foo)) 
+   (break 'bar))     ;==> bar
+  
+  (call-with-current-continuation
+   (lambda (break) 
+     (loop 
+      (break 'foo)) 
+     (break 'bar)))  ;==> foo (as in Petrofsky's example,
+                     ;         explicit binding takes precedence over implicit)
+
+  (define-syntax loop-while
+    (lambda (form)
+      (syntax-case form () 
+        ((_ test exp ...)
+         (syntax
+          (loop (if (not test) (break #f)) 
+                exp ...))))))
+  
+  (let ((n 0)) 
+    (loop-while (< n 5) 
+                (set! n (+ n 1))) 
+    n) 
+                        ;==>  5
+
+  (loop 
+   (let ((n 0)) 
+     (loop-while (< n 5) 
+                 (set! n (+ n 1)) 
+                 (if (= n 2) 
+                     (break 'foo))) 
+     (break 'bar))) 
+                        ;==>  bar
+
+  (let ((loop #f))
+    (loop-while #t (break 42)))  ;==> 42
+  
+
+  ;;=========================================================================
+  ;;
+  ;; An example of using make-capturing-identifier to implement fluid-let-syntax:
+  ;;
+  ;;=========================================================================
+  
+  
+  (define-syntax fluid-let-syntax
+    (lambda (form)
+      (syntax-case form ()
+        ((_ ((i e) ...) e1 e2 ...) 
+         (with-syntax (((fi ...) 
+                        (map (lambda (i)
+                               (make-capturing-identifier i (syntax-object->datum i)))
+                             (syntax (i ...)))))
+           (syntax 
+            (let-syntax ((fi e) ...) e1 e2 ...)))))))
+          
+  
+  (let ((f (lambda (x) (+ x 1))))
+    (let-syntax ((g (syntax-rules ()
+                      ((_ x) (f x)))))
+      (let-syntax ((f (syntax-rules ()
+                        ((_ x) x))))
+        (g 1))))  ;==> 2
+
+  
+  (let ((f (lambda (x) (+ x 1))))
+    (let-syntax ((g (syntax-rules ()
+                      ((_ x) (f x)))))
+      (fluid-let-syntax ((f (syntax-rules ()
+                              ((_ x) x))))
+        (g 1))))  ;==> 1
+  
+  
+  ;;=========================================================================
+  ;;
+  ;; Escaping ellipses:
+  ;;
+  ;;=========================================================================
+ 
+
+  (let-syntax ((m (lambda (form)
+                    (syntax-case form ()
+                      ((_ x ...)
+                       (with-syntax ((::: (syntax ...)))
+                         (syntax
+                          (let-syntax ((n (lambda (form)
+                                            (syntax-case form ()
+                                              ((_ x ... :::)
+                                               (syntax `(x ... :::)))))))
+                            (n a b c d)))))))))
+      (m u v))
+                                        ;==> (a b c d)
+ 
+ 
+  ;;====================================================================
+  ;;
+  ;; MISCELLANEOUS TESTS, CORNER CASES, ETC.
+  ;;
+  ;; Collected from various sources by (I believe) Scott Miller, and
+  ;; supplemented with some of my own.
+  ;;
+  ;;====================================================================
+
+  ;; From R5RS:
+  
+  (define-syntax or
+    (syntax-rules ()
+      ((or)          #f)
+      ((or e)        e)
+      ((or e1 e ...) (let ((temp e1))
+                       (if temp temp (or e ...))))))
+  
+  (or #f #f 1)
+  
+  (define-syntax or
+    (lambda (form)
+      (syntax-case form ()
+        ((or)          (syntax #f))
+        ((or e)        (syntax e))
+        ((or e1 e ...) (syntax (let ((temp e1))
+                                 (if temp temp (or e ...))))))))
+  
+  (or #f #f 1)
+  
+  
+  (let-syntax ((when (syntax-rules ()
+                       ((when test stmt1 stmt2 ...)
+                        (if test
+                            (begin stmt1
+                                   stmt2 ...))))))
+    (let ((if #t))
+      (when if (set! if 'now))
+      if))                                  ;===>  now
+  
+  (let ((x 'outer))
+    (let-syntax ((m (syntax-rules () ((m) x))))
+      (let ((x 'inner))
+        (m))))                              ;===>  outer
+  
+  (letrec-syntax
+      ((my-or (syntax-rules ()
+                ((my-or) #f)
+                ((my-or e) e)
+                ((my-or e1 e2 ...)
+                 (let ((temp e1))
+                   (if temp
+                       temp
+                       (my-or e2 ...)))))))
+    (let ((x #f)
+          (y 7)
+          (temp 8)
+          (let odd?)
+          (if even?))
+      (my-or x
+             (let temp)
+             (if y)
+             y)))                ;===>  7
+  
+  
+  (define-syntax cond
+    (syntax-rules (else =>)
+      ((cond (else result1 result2 ...))
+       (begin result1 result2 ...))
+      ((cond (test => result))
+       (let ((temp test))
+         (if temp (result temp))))
+      ((cond (test => result) clause1 clause2 ...)
+       (let ((temp test))
+         (if temp
+             (result temp)
+             (cond clause1 clause2 ...))))
+      ((cond (test)) test)
+      ((cond (test) clause1 clause2 ...)
+       (let ((temp test))
+         (if temp
+             temp
+             (cond clause1 clause2 ...))))
+      ((cond (test result1 result2 ...))
+       (if test (begin result1 result2 ...)))
+      ((cond (test result1 result2 ...)
+             clause1 clause2 ...)
+       (if test
+           (begin result1 result2 ...)
+           (cond clause1 clause2 ...)))))
+  
+  (let ((=> #f))
+    (cond (#t => 'ok)))                   ;===> ok
+  
+  (cond ('(1 2) => cdr))                  ;===> (2)
+  
+  (cond ((> 3 2) 'greater)
+        ((< 3 2) 'less))                 ;===>  greater
+  (cond ((> 3 3) 'greater)
+        ((< 3 3) 'less)
+        (else 'equal))                   ;===>  equal
+  
+  
+  ;; Eli Barzilay 
+  ;; In thread:
+  ;; R5RS macros...
+  ;; http://groups.google.com/groups?selm=skitsdqjq3.fsf%40tulare.cs.cornell.edu
+  
+  (let-syntax ((foo
+                (syntax-rules ()
+                  ((_ expr) (+ expr 1)))))
+    (let ((+ *))
+      (foo 3)))               ;==> 4
+  
+  ;; Al Petrofsky again
+  ;; In thread:
+  ;; Buggy use of begin in r5rs cond and case macros. 
+  ;; http://groups.google.com/groups?selm=87bse3bznr.fsf%40radish.petrofsky.org
+  
+  (let-syntax ((foo (syntax-rules ()
+                      ((_ var) (define var 1)))))
+    (let ((x 2))
+      (begin (define foo +))
+      (cond (else (foo x))) 
+      x))                    ;==> 2
+  
+  ;; Al Petrofsky
+  ;; In thread:
+  ;; An Advanced syntax-rules Primer for the Mildly Insane
+  ;; http://groups.google.com/groups?selm=87it8db0um.fsf@radish.petrofsky.org
+  
+  (let ((x 1))
+    (let-syntax
+        ((foo (syntax-rules ()
+                ((_ y) (let-syntax
+                           ((bar (syntax-rules ()
+                                   ((_) (let ((x 2)) y)))))
+                         (bar))))))
+      (foo x)))                        ;==> 1
+
+  ;; which would be done as follows using quasisyntax:
+  
+  (let ((x 1))
+    (let-syntax
+        ((foo (lambda (form)
+                (quasisyntax
+                 (let-syntax
+                     ((bar (lambda (_) 
+                             (syntax (let ((x 2)) ,(cadr form))))))
+                    (bar))))))
+      (foo x)))                 ;==> 1  
+
+  ;; another example:
+  
+  (let ((x 1))
+    (let-syntax
+        ((foo (syntax-rules ()
+                ((_ y) (let-syntax
+                           ((bar (syntax-rules ()
+                                   ((_ x) y))))
+                         (bar 2))))))
+      (foo x)))                         ;==> 1
+  
+  ;; Al Petrofsky
+  
+  (let-syntax ((x (syntax-rules ()))) 1)    ;==> 1
+ 
+  ;; This example actually illustrates a bug in R5RS.  If a Scheme system
+  ;; follows the letter of the standard, 1 should be returned, but
+  ;; the general agreement is that 2 should instead be returned.
+  ;; The reason is that in R5RS, let-syntax always introduces new scope, thus 
+  ;; in the following test, the let-syntax breaks the definition section
+  ;; and begins the expression section of the let. 
+  ;;
+  ;; The general agreement by the implementors in 1998 was that the following 
+  ;; should be possible, but isn't:
+  ;;
+  ;;   (define ---)
+  ;;   (let-syntax (---)
+  ;;     (define ---)
+  ;;     (define ---))
+  ;;   (define ---)
+  ;;
+  ;; Scheme systems based on the Portable syntax-case expander by Dybvig
+  ;; and Waddell do allow the above, and thus often violate the letter of
+  ;; R5RS.  In such systems, the following will produce a local scope:
+  ;;
+  ;;   (define ---)
+  ;;   (let-syntax ((a ---))
+  ;;     (let ()
+  ;;       (define ---)
+  ;;       (define ---)))
+  ;;   (define ---)
+  ;;
+  ;; Credits to Matthias Radestock and thanks to R. Kent Dybvig for the
+  ;; explanation and background
+  
+  (let ((x 1))
+    (let-syntax ((foo (syntax-rules () ((_) 2))))
+      (define x (foo))
+      3)
+    x)                 ;==> 2
+  
+  ;; Al Petrofsky
+  
+  (let ((a 1))
+    (letrec-syntax
+        ((foo (syntax-rules ()
+                ((_ b)
+                 (bar a b))))
+         (bar (syntax-rules ()
+                ((_ c d)
+                 (cons c (let ((c 3))
+                           (list d c 'c)))))))
+      (let ((a 2))
+        (foo a))))                ;==> (1 2 3 a) 
+  
+
+  
+  ;;==============================================================================
+  ;;
+  ;; Syntax-case: Examples and tests:
+  ;;
+  ;;==============================================================================
+  
+  ;; Various examples from the Chez Scheme documentation 
+  ;; Only the CASE macro needed a minor change
+  
+  (define-syntax cond       ; no change:
+    (lambda (x)
+      (syntax-case x ()
+        ((_ c1 c2 ...)
+         (let f ((c1 (syntax c1)) 
+                 (cmore (syntax (c2 ...))))
+           (if (null? cmore)
+               (syntax-case c1 (else =>)
+                 ((else e1 e2 ...) (syntax (begin e1 e2 ...)))
+                 ((e0)             (syntax (let ((t e0)) (if t t))))
+                 ((e0 => e1)       (syntax (let ((t e0)) (if t (e1 t)))))
+                 ((e0 e1 e2 ...)   (syntax (if e0 (begin e1 e2 ...)))))
+               (with-syntax ((rest (f (car cmore) (cdr cmore))))
+                 (syntax-case c1 (=>)
+                   ((e0)           (syntax (let ((t e0)) (if t t rest))))
+                   ((e0 => e1)     (syntax (let ((t e0)) (if t (e1 t) rest))))
+                   ((e0 e1 e2 ...) (syntax (if e0 (begin e1 e2 ...) rest)))))))))))
+  
+  (let ((=> #f))
+    (cond (#t => 'ok)))                   ;===> ok
+  
+  (cond ('(1 2) => cdr))                  ;===> (2)
+  
+  (cond ((< 3 2) 'less)
+        ((> 3 2) 'greater))               ;===>  greater
+  
+  (cond ((> 3 3) 'greater)
+        ((< 3 3) 'less)
+        (else 'equal))                    ;===>  equal
+  
+  
+  (define-syntax let0     ; no change
+    (lambda (x)
+      (define ids?
+        (lambda (ls)
+          (or (null? ls)
+              (and (identifier? (car ls))
+                   (ids? (cdr ls))))))
+      (define unique-ids?
+        (lambda (ls)
+          (or (null? ls)
+              (and (let notmem? ((x (car ls)) (ls (cdr ls)))
+                     (or (null? ls)
+                         (and (not (bound-identifier=? x (car ls)))
+                              (notmem? x (cdr ls)))))
+                   (unique-ids? (cdr ls))))))
+      (syntax-case x ()
+        ((_ ((i v) ...) e1 e2 ...)
+         (and (ids? (syntax (i ...)))
+              (unique-ids? (syntax (i ...))))
+         (syntax ((lambda (i ...) e1 e2 ...) v ...)))))) 
+
+  (let0 ((x 1) (y 2) (z 3)) (+ x y z))     ;==> 6
+
+  ; (let0 ((x 1) (y 2) (x 3)) (+ x y z))   ;==> syntax-error
+  
+  
+  (define-syntax case   ;; slight modification necessary:
+    (lambda (x)
+      (syntax-case x ()
+        ((_ e c1 c2 ...)
+         (with-syntax ((t (syntax t)))  ;; modification 
+           (with-syntax ((body
+                          (let f ((c1 (syntax c1)) (cmore (syntax (c2 ...))))
+                            (if (null? cmore)
+                                (syntax-case c1 (else)
+                                  ((else e1 e2 ...)    (syntax (begin e1 e2 ...)))
+                                  (((k ...) e1 e2 ...) (syntax (if (memv t '(k ...))
+                                                                   (begin e1 e2 ...)))))
+                                (with-syntax ((rest (f (car cmore) (cdr cmore))))
+                                  (syntax-case c1 ()
+                                    (((k ...) e1 e2 ...)
+                                     (syntax (if (memv t '(k ...))
+                                                 (begin e1 e2 ...)
+                                                 rest)))))))))
+             (syntax (let ((t e)) body))))))))
+  
+  
+  (case 'a 
+    ((b c) 'no)
+    ((d a) 'yes))
+
+  ;; Quasisyntax slightly more readable since it does not invert the
+  ;; structure of the code.  Also, since embedded occurrences of
+  ;; syntax or quasisyntax are regarded as continuations of the outer
+  ;; quasisyntax for the purpose of bound-identifier=? equivalence,
+  ;; we do not need to first bind t separately.  
+
+  (define-syntax case   
+    (lambda (x)
+      (syntax-case x ()
+        ((_ e c1 c2 ...)
+         (quasisyntax
+          (let ((t e))
+            ,(let f ((c1 (syntax c1)) (cmore (syntax (c2 ...))))
+               (if (null? cmore)
+                   (syntax-case c1 (else)
+                     ((else e1 e2 ...)    (syntax (begin e1 e2 ...)))
+                     (((k ...) e1 e2 ...) (syntax (if (memv t '(k ...))
+                                                      (begin e1 e2 ...)))))
+                   (syntax-case c1 ()
+                     (((k ...) e1 e2 ...)
+                      (quasisyntax
+                       (if (memv t '(k ...))
+                           (begin e1 e2 ...)
+                           ,(f (car cmore) (cdr cmore))))))))))))))
+                     
+  (case 'a 
+    ((b c) 'no)
+    ((d a) 'yes))
+  
+  
+  (define-syntax loop     ; no change
+    (lambda (x)
+      (syntax-case x ()
+        ((k e ...)
+         (with-syntax ((break (datum->syntax-object (syntax k) 'break)))
+           (syntax (call-with-current-continuation
+                    (lambda (break)
+                      (let f () e ... (f))))))))))
+  
+  (let ((n 3) (ls '()))
+    (loop
+     (if (= n 0) (break ls))
+     (set! ls (cons 'a ls))
+     (set! n (- n 1))))    ;==> (a a a)
+     
+     
+  
+  (define-syntax do        ; no change
+    (lambda (x)
+      (syntax-case x ()
+        ((_ (binding ...) (test res ...) exp ...)
+         (with-syntax ((((var val update) ...)
+                        (map (lambda (b)
+                               (syntax-case b ()
+                                 ((var val)
+                                  (syntax (var val var)))
+                                 ((var val update)
+                                  (syntax (var val update)))))
+                             (syntax (binding ...)))))
+           (syntax (let doloop ((var val) ...)
+                     (if test
+                         (begin (if #f #f) res ...)
+                         (begin exp ... (doloop update ...))))))))))
+  
+  (let ((x '(1 3 5 7 9)))
+    (do ((x x (cdr x))
+         (sum 0 (+ sum (car x))))
+      ((null? x) sum)))                ;==>  25
+  
+  
+  (define-syntax define-structure   ; no change
+    (lambda (x)
+      (define gen-id
+        (lambda (template-id . args)
+          (datum->syntax-object template-id
+                                (string->symbol
+                                 (apply string-append
+                                        (map (lambda (x)
+                                               (if (string? x)
+                                                   x
+                                                   (symbol->string
+                                                    (syntax-object->datum x))))
+                                             args))))))
+      (syntax-case x ()
+        ((_ name field ...)
+         (with-syntax
+             ((constructor (gen-id (syntax name) "make-" (syntax name)))
+              (predicate (gen-id (syntax name) (syntax name) "?"))
+              ((access ...)
+               (map (lambda (x) (gen-id x (syntax name) "-" x))
+                    (syntax (field ...))))
+              ((assign ...)
+               (map (lambda (x) (gen-id x "set-" (syntax name) "-" x "!"))
+                    (syntax (field ...))))
+              (structure-length (+ (length (syntax (field ...))) 1))
+              ((index ...) (let f ((i 1) (ids (syntax (field ...))))
+                             (if (null? ids)
+                                 '()
+                                 (cons i (f (+ i 1) (cdr ids)))))))
+           (syntax (begin
+                     (define constructor
+                       (lambda (field ...)
+                         (vector 'name field ...)))
+                     (define predicate
+                       (lambda (x)
+                         (and (vector? x)
+                              (= (vector-length x) structure-length)
+                              (eq? (vector-ref x 0) 'name))))
+                     (define access (lambda (x) (vector-ref x index))) ...
+                     (define assign
+                       (lambda (x update)
+                         (vector-set! x index update)))
+                     ...)))))))
+  
+  (define-structure tree left right)
+  (define t
+    (make-tree
+     (make-tree 0 1)
+     (make-tree 2 3)))
+  
+  t                     ;==> #(tree #(tree 0 1) #(tree 2 3))
+  (tree? t)             ;==> #t
+  (tree-left t)         ;==>#(tree 0 1)
+  (tree-right t)        ;==> #(tree 2 3)
+  (set-tree-left! t 0)
+  t                     ;==> #(tree 0 #(tree 2 3)) 
+  
+  )) ; repl
+
+
+

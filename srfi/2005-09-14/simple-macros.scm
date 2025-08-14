@@ -1,146 +1,1903 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Wayback Machine</title>
-<script src="//archive.org/includes/athena.js" type="text/javascript"></script>
-<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app216.us.archive.org';v.server_ms=244;archive_analytics.send_pageview({});});</script>
-<script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2mqEsuX0" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt" />
-<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ" />
-<script src="https://web-static.archive.org/_static/js/jquery-1.11.1.min.js"></script>
-</head>
-<body style="height:100vh;overflow:hidden;margin:0;display:flex;flex-flow:column nowrap;align-items:stretch;">
-<div style="flex:0 0;">
-<!-- BEGIN WAYBACK TOOLBAR INSERT -->
-<script>__wm.rw(0);</script>
-<div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;">
-<div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
-<div id="donato" style="position:relative;width:100%;">
-  <div id="donato-base">
-    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20060901211344/http%3A//www.het.brown.edu/people/andre/macros/implementation/version%25202.1/simple-macros.scm"
-	    scrolling="no" frameborder="0" style="width:100%; height:100%">
-    </iframe>
-  </div>
-</div><div id="wm-ipp-inside">
-  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;">
-    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
-      <a href="/web/" title="Wayback Machine home page"><img src="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-100.png, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0" /></a>
-    </div>
-    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
-      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm" onfocus="this.focus();this.select();" style="flex:1;"/><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20060901211344" /><input type="submit" value="Go" />
-      </form>
-      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
-                <div class="s" id="wm-nav-captures" style="flex:1;">
-                    <a class="t" href="/web/20060901211344*/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm" title="See a list of every capture for this URL">4 captures</a>
-          <div class="r" title="Timespan for captures of this URL">01 Sep 2006 - 20 Dec 2015</div>
-          </div>
-        <div class="k">
-          <a href="" id="wm-graph-anchor">
-            <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
-              <canvas id="wm-sparkline-canvas" width="725" height="27" border="0"></canvas>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="n">
-      <table>
-        <tbody>
-          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
-          <tr class="m">
-            <td class="b" nowrap="nowrap">Aug</td>
-            <td class="c" id="displayMonthEl" title="You are here: 21:13:44 Sep 01, 2006">SEP</td>
-            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20081120103258/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm" title="20 Nov 2008"><strong>Nov</strong></a></td>
-          </tr>
-          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
-          <tr class="d">
-            <td class="b" nowrap="nowrap"><img src="https://web-static.archive.org/_static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
-            <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 21:13:44 Sep 01, 2006">01</td>
-            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20081120103258/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm" title="10:32:58 Nov 20, 2008"><img src="https://web-static.archive.org/_static/images/toolbar/wm_tb_nxt_on.png" alt="Next capture" width="14" height="16" border="0" /></a></td>
-          </tr>
-          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
-          <tr class="y">
-            <td class="b" nowrap="nowrap">2005</td>
-            <td class="c" id="displayYearEl" title="You are here: 21:13:44 Sep 01, 2006">2006</td>
-            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20081120103258/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm" title="20 Nov 2008"><strong>2008</strong></a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
-      <div id="wm-btns" style="text-align:right;height:23px;">
-                <span class="xxs">
-          <div id="wm-save-snapshot-success">success</div>
-          <div id="wm-save-snapshot-fail">fail</div>
-          <a id="wm-save-snapshot-open" href="#" title="Share via My Web Archive" >
-            <span class="iconochive-web"></span>
-          </a>
-          <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in">
-            <span class="iconochive-person"></span>
-          </a>
-          <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
-        </span>
-                <a class="xxs" href="http://faq.web.archive.org/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
-        <a id="wm-tb-close" href="#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
-      </div>
-      <div id="wm-share" class="xxs">
-        <a href="/web/20060901211344/http://web.archive.org/screenshot/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm"
-           id="wm-screenshot"
-           title="screenshot">
-          <span class="wm-icon-screen-shot"></span>
-        </a>
-        <a href="#" id="wm-video" title="video">
-          <span class="iconochive-movies"></span>
-        </a>
-        <a id="wm-share-facebook" href="#" data-url="https://web.archive.org/web/20060901211344/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
-        <a id="wm-share-twitter" href="#" data-url="https://web.archive.org/web/20060901211344/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
-      </div>
-      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
-        <a id="wm-expand" class="wm-btn wm-closed" href="#expand"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
-      </div>
-    </div>
-  </div>
-    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
-        <div id="wm-capinfo-notice" source="api"></div>
-                <div id="wm-capinfo-collected-by">
-    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">COLLECTED BY</div>
-    <div style="padding:3px;position:relative" id="wm-collected-by-content">
-      <div style="display:inline-block;vertical-align:top;width:49%;">
-			<span class="c-logo" style="background-image:url(https://archive.org/services/img/accelovation)"></span>
-		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/accelovation" target="_new"><span class="wm-title">Accelovation Crawl</span></a></div>
-		<div style="max-height:75px;overflow:hidden;position:relative;">
-	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
-	  Web crawl snapshots generously donated from <a href="http://web.archive.org/web/20060409102451/http://www.accelovation.com/">Accelovation</a>.  This data is currently not publicly accessible.
-<br /><br />
-From <a href="http://web.archive.org/web/20060409102451/http://www.accelovation.com/">the site</a>:
-Accelovation is pioneering the delivery of Insight Discovery™ software solutions that help companies move from innovation idea to product reality faster and with more success.
-<br /><br />
-Our solutions are used by leading firms in the Fortune 500 and beyond – companies from a diverse set of industries ranging from consumer packaged goods to high tech, foods to chemicals, and others. We help them mine the online world for market and technical insights to help speed the process of innovation.
-<br />
-	</div>
-	      </div>
-    </div>
-    </div>
-    <div id="wm-capinfo-timestamps">
-    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center" title="Timestamps for the elements of this page">TIMESTAMPS</div>
-    <div>
-      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
-      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="https://web-static.archive.org/_static/images/loading.gif" alt="loading" /></div>
-    </div>
-    </div>
-  </div></div></div></div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20060901211344/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm</div>
-<script type="text/javascript">//<![CDATA[
-__wm.bt(725,27,25,2,"web","http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm","20060901211344",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt","https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ"], false);
-  __wm.rw(1);
-//]]></script>
-<!-- END WAYBACK TOOLBAR INSERT -->
- </div>
-<iframe id="playback" src="https://web.archive.org/web/20060901211344if_/http://www.het.brown.edu/people/andre/macros/implementation/version%202.1/simple-macros.scm" frameborder="0" style="flex:1 0">
-</iframe>
-<script>
-if (window.location.hash) {
-  document.getElementById("playback").src += window.location.hash;
-}
-</script>
-</body>
-</html>
+
+
+;;;===============================================================================
+;;;
+;;; Portable Hygienic Macros and Modules:
+;;;
+;;;   Copyright (c) 2005 Andre van Tonder
+;;;
+;;;   Permission is hereby granted, free of charge, to any person obtaining a 
+;;;   copy of this software and associated documentation files (the ``Software''), 
+;;;   to deal in the Software without restriction, including without limitation 
+;;;   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+;;;   and/or sell copies of the Software, and to permit persons to whom the 
+;;;   Software is furnished to do so, subject to the following conditions: 
+;;; 
+;;;   The above copyright notice and this permission notice shall be included in 
+;;;   all copies or substantial portions of the Software. 
+;;;
+;;;   THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+;;;   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+;;;   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+;;;   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+;;;   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+;;;   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+;;;   DEALINGS IN THE SOFTWARE. 
+;;;
+;;;===============================================================================
+
+
+
+;;;=====================================================================
+;;;
+;;; Gensym:
+;;;
+;;;=====================================================================
+
+;; For separate compilation, this should be redone to generate a
+;; globally unique symbol.  
+;; It is essential for our purposes that symbols generated by gensym
+;; not lose their separateness when converted to strings, and that
+;; two gensyms that are equal as strings be treated as equivalent 
+;; identifiers by eval.  For example, the native Chez gensym fails 
+;; the former and the native MzScheme gensym fails the latter.
+
+(define gensym                            
+  (let ((count 0))
+    (lambda maybe-prefix-string
+      (set! count (+ 1 count))
+      (string->symbol
+       (string-append (if (null? maybe-prefix-string)
+                          ""
+                          (car maybe-prefix-string))
+                      "#"
+                      (number->string count))))))
+
+
+;;;=====================================================================
+;;;
+;;; Miscellaneous utilities:
+;;;
+;;;=====================================================================
+
+(define (sexp-map f s)
+  (cond ((null? s) '())
+        ((pair? s) (cons (sexp-map f (car s))
+                         (sexp-map f (cdr s))))
+        ((vector? s)
+         (apply vector (sexp-map f (vector->list s))))
+        (else (f s))))
+
+(define (map-in-order f ls)
+  (if (null? ls)
+      '()
+      (let ((first (f (car ls))))
+        (cons first
+              (map-in-order f (cdr ls))))))
+
+(define (filter p? lst)
+      (if (null? lst)
+          '()
+          (if (p? (car lst))
+              (cons (car lst)
+                    (filter p? (cdr lst)))
+              (filter p? (cdr lst)))))
+
+(define (dotted-member? x ls =)
+  (cond ((null? ls) #f)
+        ((pair? ls) (or (= x (car ls))
+                        (dotted-member? x (cdr ls) =)))
+        (else (= x ls))))
+
+(define (dotted-map f lst)
+  (cond ((null? lst) '())
+        ((pair? lst) (cons (f (car lst))
+                           (dotted-map f (cdr lst))))
+        (else (f lst))))
+
+(define (dotted-for-each f lst)
+  (cond ((null? lst) '())
+        ((pair? lst) (begin (f (car lst))
+                            (dotted-for-each f (cdr lst))))
+        (else (f lst))))
+
+(define (every? p? ls)
+  (cond ((null? ls) #t)
+        ((pair? ls) (and (p? (car ls))
+                         (every? p? (cdr ls))))
+        (else #f)))
+
+(define (alist-cons key datum alist)
+  (cons (cons key datum) alist))
+
+(define (alist-ref key alist)
+  (cond ((assq key alist) => cdr)
+        (else #f)))
+
+(define (alist-delete key alist)             
+  (cond ((null? alist) 
+         '())
+        ((eq? (caar alist) key) 
+         (alist-delete key (cdr alist)))
+        (else 
+         (cons (car alist)
+               (alist-delete key (cdr alist))))))
+
+(define (alist-delete-first key alist)             
+  (cond ((null? alist) 
+         '())
+        ((eq? (caar alist) key)
+         (cdr alist))
+        (else 
+         (cons (car alist)
+               (alist-delete-first key (cdr alist))))))
+
+(define (alist-remove-duplicates alist)
+  (define (rem alist already)
+    (cond ((null? alist)               '())
+          ((memq (caar alist) already) (rem (cdr alist) already))
+          (else                        (cons (car alist)
+                                             (rem (cdr alist)
+                                                  (cons (caar alist)
+                                                        already))))))
+  (rem alist '()))
+
+(define (void) (if #f #f))
+
+(define (make-parameter val)
+  (lambda maybe-new
+    (if (null? maybe-new)
+        val
+        (set! val (car maybe-new)))))
+
+;; Since we do not assume the language to have macros already,  
+;; we avoid defining the usual macro for this.
+;; Usage: (parametrize par1 val1 ... parn valn thunk)
+
+(define (parametrize . args)
+  (if (null? (cdr args))
+      ((car args))
+      (let* ((parameter (car args))
+             (restore   (parameter)))
+        (parameter (cadr args))
+        (let ((result (apply parametrize (cddr args))))
+          (parameter restore)
+          result))))
+
+
+;;;==========================================================================
+;;;
+;;; Infrastructure for hygiene:
+;;;
+;;;==========================================================================
+
+;; The current level in the syntactic tower. 
+
+(define *level* (make-parameter 0))
+
+;; Creates a substitution context, in which bound-identifier=?
+;; identifiers share a location, so that substitutions can be done by an
+;; imperative update of an identifier (see bind! below) and we do not have
+;; to do any additional work to propagate substitution environments to leaves. 
+;; The resulting hygiene algorithm is eager, has linear complexity, and is
+;; very fast.
+
+;; Initial-level is the syntactic level in force when the originating
+;; syntax or quasisyntax expression was expanded.
+
+(define (make-renaming-procedure initial-level
+                                 colour
+                                 initial-environment
+                                 capturing?) 
+  
+  (let ((level-correction (- (*level*) initial-level))
+        (inserted '())
+        (environment initial-environment)
+        (environment-dirty? #f)) 
+    
+    ;; The optional initial tower of binding names will always be supplied
+    ;; (avoiding a search through the initial environment) except in
+    ;; the case of datum->syntax-object.  
+    
+    ;; A tower of bindings is an alist ((level . binding-name) ...)
+    ;; where level = non-negative-integer | all | free
+    ;;
+    ;; all  - a binding name valid for all levels. 
+    ;; free - a binding name prefix that is to be qualified by the level 
+    ;;        to obtain the binding name for a given level.
+    ;;        This mechanism keeps namespaces for different levels 
+    ;;        separate.
+    ;;
+    ;; See binding-name below for lookup sequence.
+    
+    (define (rename symbolic-name . maybe-tower)   
+      (cond ((assq symbolic-name inserted) => cdr)
+            (else
+             (if (null? maybe-tower)
+                 (cond ((env-lookup symbolic-name initial-environment)   
+                        => (lambda (entry)
+                             (insert symbolic-name entry #f)))
+                       (else (insert symbolic-name 
+                                     (list (cons 'free
+                                                 (paint-name symbolic-name
+                                                             colour)))
+                                     #t)))
+                 (insert symbolic-name (car maybe-tower) #t)))))
+    
+    (define (insert symbolic-name tower dirty?)
+      
+      (define (binding-name)                                         
+        (cond ((assq (current-level) tower) => cdr)
+              ((assq 'all            tower) => cdr)
+              (else 
+               (level-qualify (cdr (assq 'free tower))
+                              (current-level)))))
+      
+      (define bind!                 
+        (if capturing? 
+            (lambda (binding-name . maybe-level) (void))
+            (lambda (binding-name . maybe-level)
+              (set! tower
+                    (alist-cons (if (null? maybe-level)
+                                    (current-level)
+                                    (car maybe-level))
+                                binding-name 
+                                tower))
+              (mark-dirty!))))
+      
+      (define unbind!
+        (if capturing?
+            (lambda () (void))
+            (lambda ()
+              (set! tower
+                    (alist-delete-first (current-level) tower))
+              (mark-dirty!))))
+      
+      (define (current-level) (- (*level*) level-correction)) 
+      
+      ;; Generates a representation of the identifier that can be inserted
+      ;; in generated code.  
+      
+      (define (reflect-syntax) 
+        `(',colour ',symbolic-name ,(- (current-level) 1) ',tower ',(close-environment)))
+      
+      (define (mark-dirty!)
+        (set! dirty? #t)
+        (set! environment-dirty? #t))
+      
+      (define (mark-clean!)
+        (set! dirty? #f))
+      
+      (define (maybe-reflect-tower)
+        (if dirty?
+            (begin
+              (mark-clean!)
+              tower)
+            #f))
+      
+      (let ((new (make-identifier symbolic-name
+                                  binding-name
+                                  colour
+                                  bind!
+                                  unbind!
+                                  rename
+                                  close-environment
+                                  current-level
+                                  reflect-syntax
+                                  maybe-reflect-tower))) 
+        (set! inserted (alist-cons symbolic-name new inserted))
+        (if dirty? 
+            (set! environment-dirty? #t))  
+        new))
+    
+    ;; Provides a persistent snapshot of the current bindings.
+    ;; Invoked when compiling |syntax| forms and when executing 
+    ;; make-capturing-identifier.
+    
+    ;; To support separate compilation, environments are 
+    ;; included in the expanded representation of a module.
+    ;; We are careful to only record differences in environments
+    ;; that the serialized representation will be small.
+    
+    (define (close-environment)   
+      (if environment-dirty?
+          (begin 
+            (set! environment
+                  (reflect-environment
+                   (let loop ((inserted inserted))
+                     (if (null? inserted)
+                         environment
+                         (let ((maybe-tower (maybe-reflect-tower (cdar inserted))))
+                           (if maybe-tower
+                               (alist-cons (caar inserted)
+                                           maybe-tower 
+                                           (loop (cdr inserted)))
+                               (loop (cdr inserted))))))))
+            (set! environment-dirty? #f)))
+      environment)
+    
+    rename))
+
+;; Meta-renaming procedures are used to implement syntax and 
+;; quasisyntax expressions, which should paint identifiers with 
+;; a new colour without unifying previously different colours.  
+;; This is done by appending a new colour to an identifier's 
+;; existing colour.  
+
+(define (make-meta-renaming-procedure)
+  (let ((fresh-colour (generate-colour))
+        (colours->renamers '()))
+    (lambda (colour symbolic-name initial-level tower environment)  
+      (let ((rename
+             (cond ((assq colour colours->renamers) => cdr)
+                   (else
+                    (let ((rename (make-renaming-procedure
+                                   initial-level
+                                   (append-colours fresh-colour colour)
+                                   environment
+                                   #f)))  
+                      (set! colours->renamers
+                            (alist-cons colour rename colours->renamers))   
+                      rename)))))
+        (rename symbolic-name tower))))) 
+
+;; Used below for writing primitive macros in explicit renaming style.
+
+(define (make-primitive-renaming-procedure)      
+  (let ((rename
+         (make-renaming-procedure 0 no-colour (make-empty-env) #f)))
+    (lambda (symbolic-name)
+      (rename symbolic-name
+              (list (cons 'all symbolic-name)))))) 
+
+
+;;;=========================================================================
+;;;
+;;; The identifier type:
+;;;
+;;;=========================================================================
+
+(define identifier-tag (list 'identifier))
+
+(define real-vector?
+  ;; In case this code is rerun in same environment:
+  (eval 'vector? (scheme-report-environment 5)))
+
+(define (vector? x) (and (real-vector? x)
+                         (not (identifier? x))))
+
+(define (identifier? x) 
+  (and (real-vector? x)
+       (> (vector-length x) 0)
+       (eq? (vector-ref x 0) identifier-tag)))
+
+(define (make-identifier symbolic-name
+                         binding-name
+                         colour
+                         bind!
+                         unbind!
+                         renamer
+                         close-environment 
+                         current-level
+                         reflect-syntax 
+                         maybe-reflect-tower) 
+  (vector identifier-tag
+          symbolic-name
+          binding-name
+          colour
+          bind!
+          unbind!
+          renamer
+          close-environment 
+          current-level
+          reflect-syntax 
+          maybe-reflect-tower)) 
+
+(define (symbolic-name       id)                            (vector-ref id 1))
+(define (binding-name        id)                            ((vector-ref id 2)))
+(define (colour              id)                            (vector-ref id 3))
+(define (bind!               id binding-name . maybe-level) (apply (vector-ref id 4) binding-name maybe-level))
+(define (unbind!             id)                            ((vector-ref id 5)))
+(define (renamer             id)                            (vector-ref id 6))
+(define (close-environment   id)                            ((vector-ref id 7)))  
+(define (current-level       id)                            ((vector-ref id 8)))
+(define (reflect-syntax      id)                            ((vector-ref id 9))) 
+(define (maybe-reflect-tower id)                            ((vector-ref id 10)))
+
+;; Lexical bindings:
+
+(define (bind-lexical! id)
+  (bind! id (gensym (string-append "@" (symbol->string (symbolic-name id))))))
+
+(define (lexically-bound? id)
+  (char=? #\@ (string-ref (symbol->string (binding-name id)) 0)))
+
+;; Toplevel binding forms use as binding name the name 
+;; painted with the colour.  Since colours of macro-generated 
+;; substitution contexts are secret, this causes binding names in 
+;; macro-generated defines and define-syntaxes to be secret and 
+;; protects imported module locations (including primitives) from 
+;; being inadvertently rebound (although they can still be set!).  
+
+(define (bind-toplevel! id)
+  (bind! id 
+         (level-qualify (paint-name (symbolic-name id) (colour id))
+                        (current-level id))))                                  
+
+;; Imported bindings:
+
+(define (import! symbolic-name imported-name context-id . maybe-level)  
+  (let ((local-id ((renamer context-id) symbolic-name)))
+    (apply bind! local-id imported-name maybe-level))) 
+
+
+;;;=====================================================================
+;;;
+;;; Comparing identifiers:
+;;;
+;;;=====================================================================
+
+(define (bound-identifier=? x y)             
+  (and (identifier? x)
+       (eq? x y)))
+
+(define (free-identifier=? x y)                            
+  (and (identifier? x)
+       (identifier? y)
+       (eq? (binding-name x)
+            (binding-name y))))
+
+;; This should be used to compare literals independently of module.
+
+(define (literal-identifier=? x y)
+  (and (identifier? x)
+       (identifier? y)
+       (or (eq? (binding-name x)
+                (binding-name y))                             
+           (and (not (lexically-bound? x))
+                (not (lexically-bound? y))
+                (eq? (symbolic-name x)
+                     (symbolic-name y))))))
+       
+;; For internal use.  Equivalent to  
+;; (free-identifier=? x (syntax symbol))
+
+(define (free=? x symbol)           
+  (and (identifier? x)
+       (eq? (binding-name x) symbol)))  
+
+;; For internal use.  Equivalent to   
+;; (literal-identifier=? x (syntax symbol))
+
+(define (literal=? x symbol)           
+  (and (identifier? x)
+       (or (eq? (binding-name x) symbol)
+           (and (not (lexically-bound? x))
+                (eq? (symbolic-name x) symbol)))))
+
+
+;;;=====================================================================
+;;;
+;;; Intentional capture:
+;;;
+;;;=====================================================================
+
+(define (datum->syntax-object tid datum) 
+  (if (identifier? tid)
+      (datum->syntax (renamer tid) datum)
+      (syntax-error "Datum->syntax-object: First argument must be identifier:" tid))) 
+
+(define (datum->syntax rename datum)
+  (sexp-map (lambda (leaf)
+              (cond ((const? leaf)  leaf)
+                    ((symbol? leaf) (rename leaf))
+                    (else
+                     (syntax-error "Datum->syntax-object: Invalid datum:" leaf))))
+            datum))                   
+
+(define (syntax-object->datum stx)
+  (sexp-map (lambda (leaf)
+              (cond ((const? leaf)      leaf)
+                    ((identifier? leaf) (symbolic-name leaf))
+                    (else 
+                     (syntax-error "Syntax-object->datum: Invalid syntax object:" leaf))))
+            stx))
+
+;; A fluid identifier in a binding form will capture
+;; unbound free-identifier=? identifiers in its scope.
+;; The idetifier tid provides the environment for
+;; determining the denotation of the identifier.
+
+(define (make-capturing-identifier tid symbolic-name)
+  (or (and (identifier? tid)
+           (symbol? symbolic-name))
+      (syntax-error "Make-fluid-identifier :: identifier symbol -> identifier"
+                    tid symbolic-name))
+  (let ((rename (make-renaming-procedure 
+                 (current-level tid)
+                 (colour tid)
+                 (close-environment tid)
+                 #t)))
+    (rename symbolic-name)))
+
+
+;;;=======================================================================
+;;;
+;;; Environments:
+;;;
+;;;=======================================================================
+
+;; Table of reflected environments:
+
+(define *environments* (make-parameter '()))
+
+;; An environment is either a reflected environment (symbol)
+;; or an association possibly improper list whose tail may be a reflected   
+;; environment.
+
+(define (env-lookup key env)
+  (cond ((null? env) #f)
+        ((pair? env) (if (eq? key (caar env))
+                         (cdar env)
+                         (env-lookup key (cdr env))))
+        (else (env-lookup key 
+                          (reify-environment env)))))
+
+;; Returns a single-symbol representation of an environment 
+;; that can be included in object code.
+
+(define (reflect-environment env)  
+  (let ((key (gensym "env")))
+    (*environments* (alist-cons key
+                                (cons (*current-module-name*) env)
+                                (*environments*)))
+    key))
+
+;; The inverse of the above.
+
+(define (reify-environment reflected-env)
+  (cdr (alist-ref reflected-env (*environments*))))
+
+
+;;;=======================================================================
+;;;
+;;; Colours:
+;;;
+;;;=======================================================================
+
+;; To support separate compilation, generated colours should be 
+;; globally unique. 
+
+(define (generate-colour)
+  (gensym "#"))
+
+(define no-colour            (string->symbol ""))
+(define source-colour        (string->symbol "#top"))
+(define (module-colour name) (gensym (string-append "#" (symbol->string name))))
+
+;; Appending colours c1 and c2 must give a colour disjoint from
+;; the range of generate-colour unless either is no-colour.  
+
+(define (append-colours c1 c2)
+  (string->symbol 
+   (string-append (symbol->string c1)  
+                  (symbol->string c2))))
+
+;; Generates the painted names used for free toplevel or 
+;; module identifiers, or secret names in generated defines.
+;; Painted names should be disjoint from all source symbols
+;; and all previous and future gensyms.  
+
+(define (paint-name symbolic-name colour)    
+  (string->symbol                             
+   (string-append (symbol->string symbolic-name)
+                  (symbol->string colour)))) 
+
+;; Further qualifies a name by a syntactic level.
+
+(define (level-qualify name level)
+  (string->symbol 
+   (string-append (symbol->string name)
+                  (if (= level 0) 
+                      "" 
+                      (string-append "'"                              
+                                     (number->string level))))))
+
+
+;;;=========================================================================
+;;;
+;;; Expander dispatch: 
+;;;
+;;;=========================================================================
+
+;; Debugging information displayed by syntax-error.
+
+(define *backtrace* (make-parameter '())) 
+
+;; Transformers are user-defined macros.
+;; Expanders are system macros that fully expand
+;; their arguments to core Scheme.
+
+(define (expand t)
+  (parametrize *backtrace* (cons t (*backtrace*))
+               (lambda ()
+                 (cond ((identifier? t)                 (binding-name t))       
+                       ((syntax-use t (*transformers*)) => (lambda (transformer)
+                                                             (expand (transformer t))))
+                       ((syntax-use t expanders)        => (lambda (expander)
+                                                             (expander t)))
+                       ((list?  t)                      (map-in-order expand t))
+                       ((const? t)                      t)
+                       (else 
+                        (syntax-error "Expand: Invalid syntax object:" t))))))
+
+;; Used to determine internal defintions in lambda.
+
+(define (head-expand t)
+  (parametrize *backtrace* (cons t (*backtrace*))
+               (lambda ()
+                 (cond 
+                   ((syntax-use t (*transformers*)) => (lambda (transformer)
+                                                         (head-expand (transformer t))))
+                   (else t)))))
+
+(define (const? t)
+  (or (null?    t)
+      (boolean? t)
+      (number?  t)
+      (string?  t)
+      (char?    t)))
+
+(define (syntax-use t table)            
+  (and (pair? t)                          
+       (identifier? (car t))
+       (alist-ref (binding-name (car t)) table)))
+
+(define expanders '())
+
+(define (install-expanders)
+  (set! expanders
+        `((lambda           . ,expand-lambda)
+          (syntax           . ,expand-syntax)
+          (quasisyntax      . ,expand-quasisyntax)
+          (quote            . ,syntax-object->datum)
+          (,'quasiquote     . ,expand-quasiquote) 
+          (define           . ,expand-define)
+          (define-syntax    . ,expand-define-syntax)
+          (let-syntax       . ,expand-let-syntax)
+          (letrec-syntax    . ,expand-letrec-syntax) 
+          (begin-for-syntax . ,expand-begin-for-syntax)
+          (around-syntax    . ,expand-around-syntax)
+          (set-syntax!      . ,expand-set-syntax)
+          (module           . ,expand-module)
+          (import           . ,expand-import)
+          (import-for-all   . ,expand-import-for-all))))
+
+;; Global transformer table:
+;; This could benefit from being implemented 
+;; as an O(1) data structure:
+
+(define *transformers* (make-parameter '()))
+
+(define (register-transformer name proc)
+  (*transformers* (alist-cons name proc (*transformers*))))
+
+
+;;;=========================================================================
+;;;
+;;; Syntax:
+;;;
+;;;=========================================================================
+
+(define (expand-syntax form)
+  (define (descend x)
+    (cond ((pair? x)       `(cons ,(descend (car x)) ,(descend (cdr x))))
+          ((vector? x)     `(list->vector ,(descend (vector->list x))))
+          ((identifier? x) `(,(*current-renamer*) ,@(reflect-syntax x)))  
+          ((const? x)      `(quote ,x))
+          (else
+           (syntax-error "Syntax: Invalid element in syntax object:" form))))
+  (nest-in-fresh-scope 
+   (lambda () (descend (cadr form)))))
+
+
+(define *current-renamer* (make-parameter 'no-root-renamer)) 
+(define *in-syntax*       (make-parameter #f))
+
+(define (nest-in-fresh-scope thunk)
+  (if (*in-syntax*)
+      (thunk)
+      (parametrize *current-renamer* (gensym "rename")
+                   *in-syntax* #t 
+                   (lambda ()
+                     `(let ((,(*current-renamer*) (make-meta-renaming-procedure)))
+                        ,(thunk))))))
+ 
+
+;;;=========================================================================
+;;;
+;;; Quasisyntax and quasiquote: 
+;;;
+;;;=========================================================================
+
+
+(define (quasi x quasi-tag id-quoter)  
+    
+    (define (qq-expand x level)
+      
+      (cond
+        ((tag-backquote? x)                `(list ,(id-quoter (car x))
+                                                  ,(qq-expand (cadr x) (+ level 1))))
+        ((and (= level 0)
+              (tag-comma? x)
+              (pair? (cdr x)) 
+              (null? (cddr x)))            (expand (cadr x)))            
+        ((and (= level 0)
+              (pair? x)
+              (tag-comma? (car x)))        `(append (list . ,(map expand (cdar x)))
+                                                    ,(qq-expand (cdr x) 0)))
+        ((and (= level 0)
+              (pair? x)
+              (tag-comma-atsign? (car x))) `(append (append . ,(map expand (cdar x)))
+                                                    ,(qq-expand (cdr x) 0)))
+        ((and (> level 0)
+              (or (tag-comma? x)
+                  (tag-comma-atsign? x)))  `(cons ,(id-quoter (car x))
+                                                  ,(qq-expand (cdr x) (- level 1))))
+        ((pair? x)                         `(cons ,(qq-expand (car x) level)
+                                                  ,(qq-expand (cdr x) level)))
+        ((null? x)                         `(quote ()))
+        ((identifier? x)                   (id-quoter x))
+        ((vector? x)                       `(list->vector 
+                                             ,(qq-expand (vector->list x) level)))
+        (else                              (expand x))))
+    
+    (define (tag-comma? x)        (and (pair? x) 
+                                       (literal=? (car x) `unquote)))
+    (define (tag-comma-atsign? x) (and (pair? x)
+                                       (literal=? (car x) `unquote-splicing)))
+    (define (tag-backquote? x)    (and (pair? x)
+                                       (pair? (cdr x))
+                                       (null? (cddr x))
+                                       (literal=? (car x) quasi-tag)))
+    
+    (qq-expand x 0))
+
+
+(define (expand-quasisyntax form)
+  (or (and (pair? (cdr form))
+           (null? (cddr form))) 
+      (syntax-error "Quasisyntax:  Should have one argument"))
+  (nest-in-fresh-scope
+   (lambda () 
+     (quasi (cadr form)
+            'quasisyntax
+            (lambda (id) (expand-syntax `(dummy ,id)))))))
+ 
+
+(define (expand-quasiquote form)
+  (or (and (pair? (cdr form))
+           (null? (cddr form))) 
+      (syntax-error "Quasiquote:  Should have one argument"))
+  (quasi (cadr form)
+         'quasiquote
+         (lambda (id) `(quote ,(syntax-object->datum id)))))
+ 
+
+;;;=========================================================================
+;;;
+;;; Lambda:
+;;;
+;;;=========================================================================
+
+
+;; Here we expand internal definitions to internal definitions in
+;; the host Scheme, thus preserving the semantics of the latter.  
+;; We could just as easily have expanded to a letrec or letrec*.
+
+(define (expand-lambda exp)
+  (if (and (pair?    (cdr exp))
+           (formals? (cadr exp))
+           (list?    (cddr exp)))
+      (let ((formals (cadr exp))
+            (body    (cddr exp)))
+        (dotted-for-each bind-lexical! formals)
+        (scan-body body
+                   (lambda (definitions exp exps)
+                     (let ((result
+                            `(lambda ,(dotted-map binding-name formals)
+                               ,@(map (lambda (def)
+                                        `(define ,(binding-name (cadr def))
+                                           ,(expand (caddr def))))
+                                      definitions)
+                               ,exp
+                               ,@(map expand exps))))
+                       (for-each unbind! (map cadr definitions)) 
+                       (dotted-for-each unbind! formals)
+                       result))))
+      (syntax-error "Invalid lambda syntax:" exp)))
+
+;; Here we expand the first expression atomically in case expansion
+;; relies on side effects.  This is important in a procedural macro 
+;; system.  So that the first expression will be expanded correctly,
+;; definition-bound identifiers are bound as soon as they are
+;; encountered.  
+
+(define (scan-body forms k)
+  (let loop ((forms forms)
+             (defs  '()))
+    (if (null? forms)
+        (syntax-error "Lambda: Empty body.")
+        (let ((form  (head-expand (car forms)))
+              (forms (cdr forms)))
+          (cond ((define? form)                           
+                 (let ((def (normalize-definition form #f)))
+                   (bind-lexical! (cadr def))  
+                   (loop forms
+                         (cons def defs))))
+                ((begin? form)
+                 (loop (append (cdr form) forms)
+                       defs))
+                (else
+                 (k (reverse defs) 
+                    (expand form) 
+                    forms)))))))    
+
+(define (make-operator-predicate name)
+  (lambda (t)
+    (and (pair? t)
+         (free=? (car t) name))))
+
+(define define? (make-operator-predicate 'define))
+(define begin?  (make-operator-predicate 'begin))
+
+(define (formals? s)
+  (or (null? s)
+      (identifier? s)
+      (and (pair? s)
+           (identifier? (car s))
+           (formals? (cdr s))
+           (not (dotted-member? (car s)              
+                                (cdr s)
+                                bound-identifier=?)))))
+
+
+;;;=========================================================================
+;;;
+;;; Define, define-syntax! and set-syntax!
+;;;
+;;;=========================================================================
+
+
+(define (normalize-definition t syntax-definition?)
+  (cond ((pair? (cdr t))
+         (let ((_    (car t))
+               (head (cadr t))
+               (body (cddr t)))
+           (cond ((and (identifier? head)
+                       (pair? body)
+                       (null? (cdr body)))
+                  `(,_ ,head . ,body))
+                 ((and (pair? head)
+                       (identifier? (car head))
+                       (formals? (cdr head)))
+                  (let ((r (make-primitive-renaming-procedure)))
+                    (if syntax-definition?
+                        `(,_ ,(car head)
+                           ,(let ((transformer (r (symbolic-name (car head)))))
+                              `((,(r 'lambda) (,transformer)
+                                  (,(r 'lambda) (,(r 'form))
+                                    (,(r 'apply) ,transformer ,(r 'form))))
+                                (,(r 'lambda) (,(r 'dummy) . ,(cdr head)) . ,body))))
+                        `(,_ ,(car head)
+                           (,(r 'lambda) ,(cdr head) . ,body)))))
+                 (else (syntax-error "Syntax error in definition:" t)))))
+        (else (syntax-error "Syntax error in definition:" t))))
+
+;; A macro expands to an instance of for-syntax, which
+;; is a no-op at toplevel but will be further processed
+;; when inside a module.
+
+(define (expand-define-syntax t)
+  (let ((t (normalize-definition t #t)))
+    (bind-toplevel! (cadr t))
+    (let ((expanded
+           `(register-transformer ',(binding-name (cadr t))
+                                  ,(parametrize *level* (+ (*level*) 1)
+                                                (lambda ()
+                                                  (expand (caddr t)))))))
+      (eval expanded)  
+      `(for-syntax (quote ,expanded)))))       
+
+(define (expand-define t)
+  (let ((t (normalize-definition t #f)))
+    (bind-toplevel! (cadr t))
+    (*transformers* (alist-delete (binding-name (cadr t))
+                                  (*transformers*)))     
+    `(define ,(binding-name (cadr t))
+       ,(expand (caddr t)))))
+
+(define (expand-set-syntax t)
+  (or (and (list? t)
+           (= (length t) 3)
+           (identifier? (cadr t)))
+      (syntax-error))
+  (let ((expanded
+         `(set-syntax! ',(binding-name (cadr t))
+                       ,(parametrize *level* (+ (*level*) 1)
+                                     (lambda ()
+                                       (expand (caddr t)))))))
+    (eval expanded)
+    `(for-syntax (quote ,expanded))))               
+
+(define (set-syntax! binding-name transformer)            
+  (cond ((assq binding-name (*transformers*))
+         => (lambda (entry) 
+              (set-cdr! entry transformer)))
+        (else
+         (error "Set-syntax! Unbound variable:" binding-name))))
+
+
+;;;=========================================================================
+;;;
+;;; Let[rec]-syntax:
+;;;
+;;;=========================================================================
+
+(define (expand-let-syntax t)        
+  (scan-let t
+            (lambda (formals exps body)
+              (or (formals? formals)
+                  (syntax-error "Invalid formals:" formals))
+              (let ((transformers 
+                     (parametrize *in-syntax* #f  
+                                  *level* (+ (*level*) 1)
+                                  (lambda ()
+                                    (map (lambda (exp) 
+                                           (eval (expand exp)))
+                                         exps)))))
+                (for-each bind-lexical! formals)
+                (emit-lexical-syntax formals transformers body)))))
+
+(define (expand-letrec-syntax t)
+  (scan-let t
+            (lambda (formals exps body)
+              (or (formals? formals)
+                  (syntax-error "Invalid formals:" formals))
+              (for-each bind-lexical! formals)
+              (let ((transformers 
+                     (parametrize *in-syntax* #f
+                                  *level* (+ (*level*) 1)
+                                  (lambda ()
+                                    (map (lambda (exp) 
+                                           (eval (expand exp)))
+                                         exps)))))
+                (emit-lexical-syntax formals transformers body)))))
+
+
+;; Let[rec]-syntax is implemented as a splicing form, wrapping its
+;; body in an implicit begin instead of let as in R5RS.
+;; This is a more useful semantics, allowing the body to expand
+;; into toplevel definitions, and the R5RS semantics can be 
+;; obtained by explicitly writing the let.  
+
+(define (emit-lexical-syntax formals transformers body)
+  (parametrize *transformers*
+               (append (map (lambda (formal transformer)
+                              (cons (binding-name formal)
+                                    transformer))
+                            formals
+                            transformers)
+                       (*transformers*))
+               (lambda ()
+                 (let ((result (map-in-order expand body)))      
+                   (for-each unbind! formals)
+                   `(begin ,@result)))))
+
+(define (scan-let t k)                
+  (or (and (pair? (cdr t))
+           (list? (cadr t))
+           (list? (cddr t))
+           (every? (lambda (binding)
+                     (and (pair? binding)
+                          (identifier? (car binding))
+                          (pair? (cdr binding))
+                          (null? (cddr binding))))
+                   (cadr t)))
+      (syntax-error))
+  (let ((formals (map car (cadr t)))
+        (exps    (map cadr (cadr t)))
+        (body    (cddr t)))
+    (k formals
+       exps
+       body)))
+
+
+;;;===========================================================================
+;;;
+;;; Begin-for-syntax:
+;;;
+;;;===========================================================================
+
+;; Expands enclosed code at level + 1 and evaluate at expansion time.
+;; The expanded code cannot be discarded - it needs to be included in 
+;; the proper way in the module so that modules will compose correctly.
+;; We therefore quote it and wrap it in for-syntax, which is a no-op
+;; when evaluated at toplevel, but will be further processed when 
+;; included in a module.
+
+(define (expand-begin-for-syntax t)
+  (or (list? (cdr t))
+      (syntax-error))
+  (parametrize *level* (+ (*level*) 1)
+               (lambda ()
+                 (let ((result
+                        (map-in-order expand (cdr t))))
+                   (eval `(begin ,@result))
+                   `(begin ,@(map (lambda (form) 
+                                    `(for-syntax (quote ,form)))                              
+                                  result))))))             
+
+(define (for-syntax . exps) (void))
+
+
+;;;===========================================================================
+;;;
+;;; Syntactic-wind:
+;;;
+;;;===========================================================================
+
+;; Allows code to be executed before and after expanding an expression.
+
+(define (expand-around-syntax t)
+  (or (and (list? t)
+           (= (length t) 4))
+      (syntax-error))
+  (parametrize *level* (+ (*level*) 1)
+               (lambda () 
+                 (eval (expand (cadr t)))))
+  (let ((result (expand (caddr t))))
+    (parametrize *level* (+ (*level*) 1)
+                 (lambda ()
+                   (eval (expand (cadddr t)))
+                   result))))
+
+
+;;;============================================================================
+;;;
+;;; Modules:
+;;;
+;;;============================================================================
+
+
+(define (make-module name exports)
+  (list name exports))
+
+(define module-name    car)
+(define module-exports cadr)
+
+
+(define *loaded-modules*
+  (let ((loaded-for-expansion (make-parameter '()))
+        (loaded-for-execution (make-parameter '())))
+    (lambda (phase)
+      (case phase
+        ((expansion) loaded-for-expansion)
+        ((execution) loaded-for-execution)))))
+
+
+(define *current-module-name* (make-parameter (string->symbol ""))) 
+
+
+(define (expand-module exp)
+  
+  (or (eq? (*current-module-name*) (string->symbol ""))
+      (syntax-error "Nested modules are not allowed:" exp))
+  
+  (or (and (pair?       (cdr exp)) 
+           (identifier? (cadr exp))
+           (pair?       (cddr exp))
+           (list?       (caddr exp))
+           (formals?    (caddr exp))
+           (list?       (cdddr exp)))
+      (syntax-error "Invalid module syntax:" exp))
+      
+  ;; Since imported modules may be mutated during expansion
+  ;; that follows, we make sure that we continue with a clean
+  ;; slate afterwards.  This causes all modules imported after 
+  ;; expanding this module to be re-instantiated.  
+           
+  ((*loaded-modules* 'expansion) '())
+  ((*loaded-modules* 'execution) '())
+  
+  ;; To ensure repeatability and consistency with incremental compilation,
+  ;; modules are expanded in a fresh environment.
+  
+  (parametrize *current-module-name*         (symbolic-name (cadr exp))
+               *transformers*                (*transformers*)
+               *environments*                '()
+               (*loaded-modules* 'expansion) '()
+               (*loaded-modules* 'execution) '() 
+               (lambda ()
+                 (let* ((name     (cadr exp))
+                        
+                        ;; Paint the entire body with a new colour in a
+                        ;; clean Scheme environment, achieving a private
+                        ;; namespace.
+                                 
+                        (rename   (make-renaming-procedure
+                                   0
+                                   (module-colour (symbolic-name name)) 
+                                   (make-scheme-env)
+                                   #f))
+                        (body     (datum->syntax rename (syntax-object->datum (cddr exp))))
+                        (exports  (car body))
+                        (exps     (cdr body)) 
+                        (expanded (flatten-for-syntax (flatten-begins (map-in-order expand exps))))
+                        (defines  (extract-defines (append expanded
+                                                           (extract-for-syntax expanded))))     
+                        (code
+                         (let ((phase (gensym "phase")))
+                           `(begin ,@(map (lambda (def)
+                                            `(define ,(cadr def) (void)))
+                                          defines)    
+                                   (define ,(symbolic-name name)
+                                     (lambda (,phase)
+                                       (case ,phase
+                                         ((unloading)
+                                          (void) ;; prevents possibly empty clause
+                                          ,@(map (lambda (def)
+                                                   `(set! ,(cadr def) (void)))
+                                                 defines))
+                                         (else
+                                          ((*loaded-modules* ,phase)  
+                                           (alist-cons (quote ,(symbolic-name name)) 
+                                                       (make-module 
+                                                        ',(symbolic-name name)   
+                                                        ',(map (lambda (export-id)
+                                                                 (cons (symbolic-name export-id)
+                                                                       (binding-name export-id)))
+                                                               exports))
+                                                       ((*loaded-modules* ,phase))))
+                                          (case ,phase
+                                            ((expansion)
+                                             (*environments* 
+                                              (append (uncompress-envs 
+                                                       (quote ,(compress-envs (*environments*))))
+                                                      (*environments*)))
+                                             ,@(defines->sets (extract-for-syntax expanded)))    
+                                            ((execution)
+                                             (void) ;; prevents possibly empty clause
+                                             ,@(defines->sets (delete-for-syntax expanded))))))))))))
+                                          
+                   ;; Unload imported modules:
+                   
+                   (for-each (lambda (module-entry)
+                               (eval `(,(car module-entry) 'unloading)))
+                             (append ((*loaded-modules* 'expansion))
+                                     ((*loaded-modules* 'execution))))
+                   (eval code)                                        
+                   code))))
+                                       
+(define (flatten-begins forms)
+  (let loop ((result '())
+             (forms forms)) 
+    (if (null? forms)
+        (reverse result)
+        (let ((form  (car forms))
+              (forms (cdr forms)))
+          (if (call? form 'begin)
+              (loop result
+                    (append (cdr form) forms))
+              (loop (cons form result) 
+                    forms))))))
+
+(define (call? form name)
+  (and (pair? form)
+       (eq? (car form) name)))
+ 
+;; Each for-syntax has a single argument.
+;; Flattens (for-syntax '(begin e ...))  -> (for-syntax 'e) ...
+;;          (for-syntax '(for-syntax e)) -> (for-syntax 'e)
+;; and recurses.
+
+(define (flatten-for-syntax forms)  
+  (apply append 
+         (map (lambda (form)
+                (if (call? form 'for-syntax)
+                    (let ((embedded (cadadr form)))
+                      (cond
+                        ((call? embedded 'for-syntax) (flatten-for-syntax (list embedded)))
+                        ((call? embedded 'begin)      (flatten-for-syntax (map (lambda (form) 
+                                                                                 `(for-syntax ',form))
+                                                                               (cdr embedded))))
+                        (else (list form))))
+                    (list form)))
+              forms)))
+
+;; Extract expressions e occurring in forms (for-syntax 'e)
+
+(define (extract-for-syntax forms)                     
+  (map cadadr
+       (filter (lambda (form) 
+                 (call? form 'for-syntax))
+               forms)))
+
+(define (delete-for-syntax forms)                
+  (filter (lambda (form) 
+            (not (call? form 'for-syntax)))
+          forms))
+                                                
+(define (extract-defines forms)
+  (filter (lambda (form)
+            (call? form 'define))
+          forms))
+
+(define (defines->sets forms)
+  (map (lambda (form)
+         (if (call? form 'define)
+             `(set! ,(cadr form) ,(caddr form)) 
+             form))
+       forms))
+
+ 
+;; Second argument, if present, is a procedure : symbol -> symbol | #f
+;; representing an arbitrary computation on the imported symbols.
+;; If #f, the symbol is not imported.
+;; This argument is evaluated at the syntactic level + 1.
+
+(define (expand-import t . maybe-level)
+  (or (and (pair? (cdr t))
+           (identifier? (cadr t)))
+      (syntax-error "Import: Invalid syntax:" t))
+  (let ((k    (car t))
+        (name (symbolic-name (cadr t))) 
+        (comp (if (pair? (cddr t))
+                  (parametrize *level* (+ (*level*) 1)
+                               (lambda ()
+                                 (eval (expand (caddr t)))))   
+                  (lambda (symbol) symbol))))
+    
+    (if (not (alist-ref name ((*loaded-modules* 'expansion))))
+        (eval `(,name 'expansion))) 
+    
+    (and (pair? maybe-level)
+         (eq? (car maybe-level) 'all)
+         (if (not (alist-ref name ((*loaded-modules* 'execution))))
+             (eval `(,name 'execution)))) 
+    
+    (let* ((module-entry (alist-ref name ((*loaded-modules* 'expansion))))   
+           (exports      (module-exports module-entry)))
+      
+      (for-each (lambda (export)
+                  (let ((import-name (comp (car export))))
+                    (if import-name
+                        (apply import! import-name (cdr export) k maybe-level))))
+                exports)
+      `(begin
+         (for-syntax 
+          (quote (if (not (alist-ref ',name ((*loaded-modules* 'expansion))))     
+                     (,name 'expansion))))
+         (if (not (alist-ref ',name ((*loaded-modules* 'execution))))
+           (,name 'execution)))))) 
+
+(define (expand-import-for-all t)                 
+  (expand-import t 'all))
+
+
+;;;===========================================================================
+;;;
+;;; Compression stub:
+;;;
+;;;===========================================================================
+
+;; Because close-environment is careful to keep sharing and
+;; not record duplicate information, not much is needed here.
+;; We need do nothing more than filter out the environments 
+;; needed for the current module, discarding those that may have 
+;; been accumulated when importing other modules.
+
+(define (uncompress-envs compressed) compressed)
+
+(define (compress-envs envs)
+  (alist-remove-duplicates (filter-current-module envs)))
+ 
+(define (filter-current-module envs)
+  (filter (lambda (env) 
+            (eq? (cadr env) (*current-module-name*)))
+          envs))
+
+
+;;;===========================================================================
+;;;
+;;; Standard environments:
+;;;
+;;;===========================================================================
+
+(install-expanders)
+
+(define scheme-tokens '( 
+                        ;; R5RS Scheme minus macros and literals:
+                        
+                        * 
+                        + 
+                        - 
+                        ;; ...
+                        /  
+                        < 
+                        <= 
+                        = 
+                        ;; =>   
+                        > 
+                        >= 
+                        abs 
+                        acos 
+                        and 
+                        append 
+                        apply 
+                        asin 
+                        assoc
+                        assq
+                        assv
+                        atan
+                        begin
+                        boolean?
+                        caar
+                        cadr
+                        call-with-current-continuation
+                        call-with-input-file
+                        call-with-output-file
+                        call-with-values
+                        call/cc
+                        case
+                        car
+                        cdr
+                        caar
+                        cadr
+                        cdar
+                        cddr
+                        caaar
+                        caadr
+                        cadar
+                        caddr
+                        cdaar
+                        cdadr
+                        cddar
+                        cdddr
+                        caaaar
+                        caaadr
+                        caadar
+                        caaddr
+                        cadaar
+                        cadadr
+                        caddar
+                        cadddr
+                        cdaaar
+                        cdaadr
+                        cdadar
+                        cdaddr
+                        cddaar
+                        cddadr
+                        cdddar
+                        cddddr
+                        ceiling
+                        char->integer
+                        char-alphabetic?
+                        char-ci<=?
+                        char-ci<?
+                        char-ci=?
+                        char-ci>=?
+                        char-ci>?
+                        char-downcase
+                        char-lower-case?
+                        char-numeric?
+                        char-ready?
+                        char-upcase
+                        char-upper-case?
+                        char-whitespace?
+                        char<=?
+                        char<?
+                        char=?
+                        char>=?
+                        char>?
+                        char?
+                        close-input-port
+                        close-output-port
+                        complex?
+                        cond
+                        cons
+                        cos
+                        current-input-port
+                        current-output-port
+                        define
+                        ;; define-syntax
+                        delay
+                        denominator
+                        display
+                        do
+                        dynamic-wind
+                        ;; else            
+                        eof-object?
+                        eq?
+                        equal?
+                        eqv?
+                        error
+                        eval
+                        even?
+                        exact->inexact
+                        exact?
+                        exp
+                        expt
+                        floor
+                        for-each
+                        force
+                        gcd
+                        if
+                        imag-part
+                        inexact->exact
+                        inexact?
+                        input-port?
+                        integer->char
+                        integer?
+                        interaction-environment
+                        lambda
+                        lcm
+                        length
+                        let
+                        let*
+                        ;; let-syntax
+                        letrec
+                        ;; letrec-syntax
+                        list
+                        list->string
+                        list->vector
+                        list-ref
+                        list-tail
+                        list?
+                        load
+                        location
+                        log
+                        magnitude
+                        make-polar
+                        make-rectangular
+                        make-string
+                        make-vector
+                        map
+                        max
+                        member
+                        memq
+                        memv
+                        min
+                        modulo
+                        negative?
+                        newline
+                        not
+                        null-environment
+                        null?
+                        number->string
+                        number?
+                        numerator
+                        odd?
+                        open-input-file
+                        open-output-file
+                        or
+                        output-port?
+                        pair?
+                        peek-char
+                        port?
+                        positive?
+                        procedure?
+                        quasiquote
+                        quote
+                        quotient
+                        rational?
+                        rationalize
+                        read
+                        read-char
+                        real-part
+                        real?
+                        remainder
+                        reverse
+                        round
+                        scheme-report-environment
+                        set!
+                        set-car!
+                        set-cdr!
+                        sin
+                        sqrt
+                        string
+                        string->list
+                        string->number
+                        string->symbol
+                        string-append
+                        string-ci<=?
+                        string-ci<?
+                        string-ci=?
+                        string-ci>=?
+                        string-ci>?
+                        string-copy
+                        string-fill!
+                        string-length
+                        string-ref
+                        string-set!
+                        string<=?
+                        string<?
+                        string=?
+                        string>=?
+                        string>?
+                        string?
+                        substring
+                        symbol->string
+                        symbol?
+                        ;; syntax-rules
+                        tan
+                        transcript-off
+                        transcript-on
+                        truncate
+                        unbound
+                        ;; unquote
+                        ;; unquote-splicing
+                        values
+                        vector
+                        vector->list
+                        vector-fill!
+                        vector-length
+                        vector-ref
+                        vector-set!
+                        vector?
+                        with-input-from-file
+                        with-output-to-file
+                        write
+                        write-char
+                        zero?
+                        
+                        ;; Additions for macros and modules:
+                        
+                        define-syntax
+                        let-syntax
+                        letrec-syntax
+                        set-syntax!
+                        
+                        syntax
+                        quasisyntax
+                        identifier?
+                        bound-identifier=?
+                        free-identifier=?
+                        literal-identifier=?
+                        
+                        make-capturing-identifier
+                        datum->syntax-object       
+                        syntax-object->datum
+                        
+                        begin-for-syntax
+                        around-syntax
+                        
+                        syntax-error 
+                        
+                        module   
+                        import
+                        import-for-all
+                        import-primitives
+                        import-primitives-for-all
+                        ))
+
+(define (make-empty-env) (reflect-environment '()))
+
+(define make-scheme-env
+  (let ((env (map (lambda (name) 
+                    (cons name `((all . ,name))))   
+                  scheme-tokens)))
+    (lambda ()
+      (reflect-environment env))))
+
+(define scheme-module (make-module 'scheme
+                                   (map (lambda (token) (cons token token))
+                                        scheme-tokens))) 
+
+((*loaded-modules* 'expansion) (list (cons 'scheme scheme-module)))     
+((*loaded-modules* 'execution) (list (cons 'scheme scheme-module)))
+
+(define (scheme phase)
+  (case phase
+    ((unloading) (void))
+    (else
+     ((*loaded-modules* phase) (alist-cons 'scheme
+                                           scheme-module
+                                           ((*loaded-modules* phase)))))))
+
+
+;;;==========================================================================
+;;;
+;;; Debugging facilities:
+;;;
+;;;==========================================================================
+
+;; Displays a syntax object in human-readable format:
+
+(define (syntax-debug obj) 
+  (sexp-map (lambda (leaf)
+              (if (identifier? leaf) 
+                  (symbolic-name leaf)
+                  leaf))
+            obj)) 
+
+(define (syntax-error . args)
+  (newline)
+  (display "Syntax error:")
+  (newline) (newline)
+  (for-each (lambda (arg)
+              (display (syntax-debug arg)) (display " "))
+            args)
+  (newline) (newline)
+  (display "In source context:")
+  (newline) (newline)
+  (for-each (lambda (exp)
+              (display "  ") 
+              (display (syntax-debug exp))
+              (newline) (newline))
+            (*backtrace*))
+  (error "Expansion stopped"))
+
+
+;;;============================================================================
+;;;
+;;; Compiler and REPL integration:
+;;;
+;;;============================================================================
+
+;; The procedure make-expander can be integrated with the host REPL and 
+;; compiler.  The result of (make-expander) takes a sequence of source-level 
+;; s-expressions and expands it to a sequence of core Scheme expressions that 
+;; can be either compiled or fed to eval.  
+
+;; To compile a file separately, invoke (make-expander) to make an 
+;; expander with a clean environment.  A single invocation of the result
+;; of (make-expander) will expand the sequence of expressions to core
+;; Scheme.
+
+;; For REPL use, reuse a single expander for subsequent evaluations
+;; to ensure continuity of toplevel bindings.  
+
+;; Each time an expander is reinvoked, a new renaming procedure 
+;; is used, taking its initial toplevel binding environment from 
+;; the previous invocation of the same expander.  We could have reused the 
+;; same renaming procedure, but since the hygiene algorithm destructively 
+;; updates bindings, we would have had to guard against inconsistent states 
+;; in case an error occurred during expansion (relevant in a typical toplevel 
+;; debugging cycle where the system is not necessarily reinitialized after 
+;; each error).  
+;; As a result, identifiers with the same symbolic name in 
+;; separate toplevel expressions are not guaranteed to be 
+;; bound-identifier=?  This is not a serious restriction.   
+
+
+(define (make-expander)
+  (let ((source-rename (make-renaming-procedure 0 source-colour (make-scheme-env) #f)))
+    (lambda (exps)
+      (*backtrace*          '())
+      (*current-module-name* (string->symbol ""))
+      (*in-syntax*           #f)
+      (*level*               0)
+      (set! source-rename
+            (make-renaming-procedure 0
+                                     source-colour 
+                                     ;; This copies the toplevel binding environment 
+                                     ;; from the previous invocation.
+                                     (close-environment (source-rename 'dummy))
+                                     #f))
+      (map-in-order expand (datum->syntax source-rename exps)))))
+
+;; This may be used to simulate a REPL in the meantime.
+
+;; Due to the syntactic tower, we have the nice property that
+;;
+;; (for-each eval (expand-toplevel (list exp ...)))
+;;     == (for-each (lambda (exp)
+;;                    (eval (expand-toplevel (list exp)))))
+;;
+;; In other words, it doesn't matter whether we expand the whole 
+;; sequence first and then evaluate or expand and evaluate one by one.   
+
+(define repl 
+  (let ((expand-toplevel (make-expander)))
+    (lambda (exps)         
+      (for-each (lambda (exp)
+                  (for-each (lambda (result)
+                              (display result)
+                              (newline))
+                            (call-with-values
+                             (lambda ()
+                               (eval (car (expand-toplevel (list exp)))))                       
+                             list)))
+                exps))))
+    
+
+;;;=========================================================================
+;;;
+;;; The usual macros:                                                    
+;;;
+;;;=========================================================================
+
+;; Here we need to redefine all binding forms of the host Scheme.
+;; We also need to redefine all forms that treat parts of their body
+;; as literals.   
+
+
+;; Expands a sequence of expressions using primitive renaming procedure
+;; so that we can have access to primitives above without needing to import
+;; things.
+
+(define (primitive-expand exps)                     
+  (let ((rename (make-primitive-renaming-procedure))) 
+    (map-in-order expand 
+                  (datum->syntax rename exps))))
+    
+
+;; For a production system, instead of eval, the following can be replaced 
+;; by the result of primitive-expand, which can then be compiled with the 
+;; rest of the file.
+
+(for-each 
+ eval 
+ (primitive-expand 
+  '(                            
+    
+    (define-syntax let
+      (lambda (t)
+        (if (and (pair? t)
+                 (pair? (cdr t))
+                 (identifier? (cadr t)))
+            (scan-let (cons (car t) (cddr t))
+                      (lambda (formals exps body)
+                        (quasisyntax
+                         ((letrec ((,(cadr t) (lambda ,formals ,@body))) ,(cadr t))
+                          ,@exps))))
+            (scan-let t
+                      (lambda (formals exps body)
+                        (quasisyntax
+                         ((lambda ,formals ,@body) ,@exps)))))))
+   
+    
+    (define-syntax letrec
+      (lambda (t)
+        (scan-let t
+                  (lambda (formals exps body)
+                    (let ((definitions (map (lambda (formal exp)
+                                              (quasisyntax (define ,formal ,exp)))
+                                            formals
+                                            exps)))
+                      (quasisyntax ((lambda () ,@definitions ,@body))))))))
+    
+    
+    (define-syntax let*
+      (lambda (t)
+        (scan-let t
+                  (lambda (formals exps body)
+                    (let ((bindings (cadr t)))
+                      (if (or (null? bindings)
+                              (null? (cdr bindings)))
+                          (quasisyntax (let ,bindings ,@body))
+                          (quasisyntax (let (,(car bindings))
+                                         (let* ,(cdr bindings) ,@body)))))))))
+    
+    
+    (define-syntax (cond . clauses)
+      (if (null? clauses)
+          (syntax-error  "Cond: Must have at least one clause"))
+      (car
+       (let f ((clauses clauses))
+         (if (null? clauses)
+             '()
+             (list
+              (if (pair? clauses)
+                  (let ((clause (car clauses))
+                        (rest   (f (cdr clauses))))
+                    (if (or (null? clause)
+                            (not (list? clause)))
+                        (syntax-error "Cond: Invalid clause" clause))
+                    (if (and (literal-identifier=? (car clause) (syntax else))
+                             (null? rest))
+                        (quasisyntax (begin ,@(cdr clause)))
+                        (if (null? (cdr clause)) 
+                            (quasisyntax (let ((t ,(car clause)))
+                                           (if t t ,@rest)))
+                            (if (and (literal-identifier=? (cadr clause) (syntax =>))
+                                     (pair? (cddr clause))
+                                     (null? (cdddr clause)))
+                                (quasisyntax (let ((t ,(car clause)))
+                                               (if t (,(caddr clause) t) ,@rest)))
+                                (quasisyntax (if ,(car clause)
+                                                 (begin ,@(cdr clause))
+                                                 ,@rest))))))
+                  (syntax-error)))))))
+    
+    
+    (define-syntax (case . rest)
+      (or (pair? rest)
+          (syntax-error))
+      (let ((key (car rest))
+            (temp (syntax temp))
+            (clauses (cdr rest)))
+        (or (list? clauses)
+            (syntax-error))
+        (quasisyntax
+         (let ((,temp ,key))
+           (cond
+             ,@(map (lambda (clause)
+                      (or (pair? clause)
+                          (syntax-error "Case: Invalid clause:" clause))
+                      (quasisyntax
+                       (,(cond ((literal-identifier=? (car clause) (syntax else))
+                                (car clause))
+                               ((list? (car clause))
+                                (quasisyntax (memv ,temp ',(car clause))))
+                               (else
+                                (syntax-error "Case: Invalid literals list:" (car clause))))
+                         ,@(cdr clause))))
+                    clauses))))))
+    
+    
+    (define-syntax do
+      (lambda (exp)
+        (or (and (pair? (cdr exp))
+                 (pair? (cddr exp)))
+            (syntax-error))
+        (let ((specs (cadr exp))
+              (end (caddr exp))
+              (body (cdddr exp))
+              (loop (syntax loop)))
+          (or (and (list? specs)
+                   (every? do-spec? specs)
+                   (list? end))
+              (syntax-error))
+          (quasisyntax
+           (letrec ((,loop
+                      (lambda ,(map car specs)
+                        (cond ,end
+                              (else ,@body
+                                    (,loop
+                                      ,@(map (lambda (spec)
+                                               (if (null? (cddr spec))
+                                                   (car spec)
+                                                   (caddr spec)))
+                                             specs)))))))
+             (,loop ,@(map cadr specs)))))))
+    
+    
+    (define (do-spec? s)                       
+      (and (pair? s)
+           (identifier? (car s))
+           (pair? (cdr s))
+           (let ((rest (cddr s)))
+             (or (null? rest)
+                 (and (pair? rest)
+                      (null? (cdr rest)))))))
+    
+    
+    (define-syntax import-primitives
+      (lambda (form)
+        (expand-import-primitives form))) 
+    
+    (define-syntax import-primitives-for-all
+      (lambda (form)
+        (expand-import-primitives form 'all)))
+    
+    (define expand-import-primitives
+      (lambda (form . maybe-level)
+        (or (and (list? (cdr form))
+                 (every? identifier? (cdr form)))
+            (syntax-error))
+        (let ((k     (car form))
+              (names (map syntax-object->datum (cdr form))))
+          (for-each (lambda (name)
+                      (apply import! name name k maybe-level))
+                    names)
+          (syntax (void)))))
+    
+    
+    ))) ; REPL
+
+
+
+
+
